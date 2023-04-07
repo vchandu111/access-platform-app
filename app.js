@@ -13,18 +13,16 @@ fetch("data.csv")
     document.getElementById("search-btn").addEventListener("click", () => {
       // Retrieve email and group values
       const email = document.getElementById("email").value;
-      const group = document.getElementById("group").value;
+      // const group = document.getElementById("group").value;
 
       // Loop through array and search for matching row
-      const result = data.find(
-        (row) => row.email === email && row.group === group
-      );
+      const result = data.find((row) => row.email === email);
 
       // Display result
-      const resultEl = document.getElementById("result");
+      const resultEl = document.getElementById("resultDiv");
       resultEl.innerHTML = result
-        ? `<p>URL: ${result.url}</p>`
-        : "<p>No results found.</p>";
+        ? `<a class="anchor" href=${result.url}> Click here to start assessment</a>`
+        : "<p>No results found. Please recheck your email</p>";
       resultEl.classList.add("show");
     });
   });
