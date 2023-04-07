@@ -24,5 +24,6 @@ fetch("data.csv")
         ? `<a class="anchor" href=${result.url}> Click here to start assessment</a>`
         : "<p>No results found. Please recheck your email</p>";
       resultEl.classList.add("show");
+      console.log(result.url);
     });
   });
