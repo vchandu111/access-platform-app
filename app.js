@@ -21,7 +21,7 @@ fetch("data.csv")
       // Display result
       const resultEl = document.getElementById("resultDiv");
       resultEl.innerHTML = result
-        ? `<a class="anchor" href=${result.url}> Click here to start assessment</a>`
+        ? `<a class="anchor" target="blank" href=${result.url}> Click here to start assessment</a>`
         : "<p>No results found. Please recheck your email</p>";
       resultEl.classList.add("show");
       console.log(result.url);
