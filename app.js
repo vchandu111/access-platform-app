@@ -12,11 +12,11 @@ fetch("data.csv")
     // Add event listener to search button
     document.getElementById("search-btn").addEventListener("click", () => {
       // Retrieve email and group values
-      const email = document.getElementById("email").value;
+      const email = document.getElementById("email").value.toLowerCase();
       // const group = document.getElementById("group").value;
 
       // Loop through array and search for matching row
-      const result = data.find((row) => row.email === email);
+      const result = data.find((row) => row.email.toLowerCase() === email);
 
       // Display result
       const resultEl = document.getElementById("resultDiv");
