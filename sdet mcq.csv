@@ -1,5 +1,5 @@
 questionType,contentBody,intAnswer,prepTime,floatAnswer.max,floatAnswer.min,fitbAnswer,mcscAnswer,subjectiveAnswer,option.1,option.2,option.3,option.4,mcmcAnswer,tagRelationships,difficultyLevel
-mcsc,The introduction of reviews and inspections has often failed as a process improvement action. Identify the THREE most important measures that should be taken to reduce the risk that this test process improvement will fail. (for 2 out of 3 correct),,10,,,,Process ownership and experienced moderators who drive the inspection process.,,Process ownership and experienced moderators who drive the inspection process.,Management support, Training of those involved,"A,B & C",,64494195919e9d9625443ee6,0
+mcsc,The introduction of reviews and inspections has often failed as a process improvement action. Identify the THREE most important measures that should be taken to reduce the risk that this test process improvement will fail. (for 2 out of 3 correct),,10,,,,Process ownership and experienced moderators who drive the inspection process.,,Process ownership and experienced moderators who drive the inspection process.,Management support, Training of those involved,"A,B & C",,6462009e5dba6bad7fae2013,0
 mcsc,"Risks should be constantly reviewed. Given the current situation, which one of the following factors is most likely to lead to a revised view of product risk?",,10,,,," The concerns over the user interface raises the likelihood of a risk in that area and increases
 the amount of test effort needed for the user interface, thereby limiting the test effort available for
 other parts of the test management tool.",,The concerns over the user interface may lead to changes to the interface which cannot be implemented by development in time for the second test iteration.," The concerns over the user interface raises the likelihood of a risk in that area and increases
@@ -8,12 +8,12 @@ other parts of the test management tool.", The delivery of the application witho
  
 
  The method used for test estimation is not accurate enough and hence the money spent on
-testing exceeded its budget.",,64494195919e9d9625443ee6,
-mcsc,In which process client will be along with the project team,,10,,,,Rad and Jad,,Rad and Jad, Fast and Rad,Fast and Jad, Fast,,64494195919e9d9625443ee6,
-mcsc,Defect status report does not include:,,10,,,,Scope,,severity of defect,Type of defect,Retest Date,Scope,,64494195919e9d9625443ee6,
-mcsc,Which software testing metric focuses on defect that are left undetected by the team and found by the user,,10,,,,Defect deficiency,,Defect Leakage,Defect deficiency, Defect severity index, Defect removal Efficiency,,64494195919e9d9625443ee6,
+testing exceeded its budget.",,6462009e5dba6bad7fae2013,0
+mcsc,In which process client will be along with the project team,,10,,,,Rad and Jad,,Rad and Jad, Fast and Rad,Fast and Jad, Fast,,6462009e5dba6bad7fae2013,0
+mcsc,Defect status report does not include:,,10,,,,Scope,,severity of defect,Type of defect,Retest Date,Scope,,6462009e5dba6bad7fae2013,0
+mcsc,Which software testing metric focuses on defect that are left undetected by the team and found by the user,,10,,,,Defect deficiency,,Defect Leakage,Defect deficiency, Defect severity index, Defect removal Efficiency,,6462009e5dba6bad7fae2013,0
 mcsc,"Part of the testing strategy indicates that you are going to be using systematic test design techniques. Your manager has asked that you present the main advantages of using these techniques at the next board meeting. Identify THREE main benefits of using systematic test design techniques within this company. (for 2 out of 3 correct)  i) ""A. Easier to quickly adapt testing to changing requirements compared to experienced-based
-testing""    ii) Targets certain types of faults.  iii) Will guide experienced testers to find defects iv)Provides a way to differentiate depth of testing based on product risks by using different techniques v) More enhanced documentation and therefore higher repeatability and reproducibility vi) Will make non-systematic testing redundant vii) Will reduce the need for early reviews",,10,,,," ii,iv & v",," ii,iv & v"," i, ii & iii"," iii, iv & v", none,,64494195919e9d9625443ee6,
+testing""    ii) Targets certain types of faults.  iii) Will guide experienced testers to find defects iv)Provides a way to differentiate depth of testing based on product risks by using different techniques v) More enhanced documentation and therefore higher repeatability and reproducibility vi) Will make non-systematic testing redundant vii) Will reduce the need for early reviews",,10,,,," ii,iv & v",," ii,iv & v"," i, ii & iii"," iii, iv & v", none,,6462009e5dba6bad7fae2013,0
 mcsc,"""A number of options have been suggested for the level of independence to be employed for the testing on the next project, and are shown below.
  
  i.External test specialists perform non-functional testing.
@@ -28,14 +28,14 @@ mcsc,"""A number of options have been suggested for the level of independence to
  
  vi.Testing is performed by a different developer.
  
- Which of the following orders the above in a correct order of independence?""",,10,,,,"ii, v, i, iii",,"i, ii, iv, vi","ii, i, v, vi","ii, v, i, iii","i, iv, v, vi",,64494195919e9d9625443ee6,
-mcsc,"You are about to release a test progress report to a senior manager, who is not a test specialist. Which of the following topics should NOT be included in the test progress report?",,10,,,,Detailed overview of the risk-based test approach being used to ensure the exit criteria to be achieved,,Product risks which have been mitigated and those which are outstanding.,Recommendations for taking controlling actions,Status compared against the started exit criteria,Detailed overview of the risk-based test approach being used to ensure the exit criteria to be achieved,,64494195919e9d9625443ee6,
+ Which of the following orders the above in a correct order of independence?""",,10,,,,"ii, v, i, iii",,"i, ii, iv, vi","ii, i, v, vi","ii, v, i, iii","i, iv, v, vi",,6462009e5dba6bad7fae2013,0
+mcsc,"You are about to release a test progress report to a senior manager, who is not a test specialist. Which of the following topics should NOT be included in the test progress report?",,10,,,,Detailed overview of the risk-based test approach being used to ensure the exit criteria to be achieved,,Product risks which have been mitigated and those which are outstanding.,Recommendations for taking controlling actions,Status compared against the started exit criteria,Detailed overview of the risk-based test approach being used to ensure the exit criteria to be achieved,,6462009e5dba6bad7fae2013,0
 mcsc,"Match every stage of the software Development Life cycle with the Testing Life cycle:
  i. Hi-level design a Unit tests
  ii. Code b Acceptance tests
  iii. Low-level design c System tests
- iv. Business requirements d Integration tests",,10,,,,"i-c , ii-a , iii-d , iv-b",,"i-c , ii-a , iii-d , iv-b","i-c , ii-d , iii-a , iv-b","i-b , ii-a , iii-d , iv-c","i-c , ii-a , iii-d , iv-b",,64494195919e9d9625443ee6,
-mcsc,Which of the following is an example of an Operational Testing,,10,,,,"Verifying file labeling and protection functions are working properly, and determine system can run using document",,Attempted access without a proper password to the on­line data entry and display transactions (notification to the user of invalid authentication) will be tested,Testing that ignores the internal parts and focus on the output is as per requirement or not,Testing performed to evaluate whether systems or components pass data and control correctly to one another set,"Verifying file labeling and protection functions are working properly, and determine system can run using document",,64494195919e9d9625443ee6,
+ iv. Business requirements d Integration tests",,10,,,,"i-c , ii-a , iii-d , iv-b",,"i-c , ii-a , iii-d , iv-b","i-c , ii-d , iii-a , iv-b","i-b , ii-a , iii-d , iv-c","i-c , ii-a , iii-d , iv-b",,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following is an example of an Operational Testing,,10,,,,"Verifying file labeling and protection functions are working properly, and determine system can run using document",,Attempted access without a proper password to the on­line data entry and display transactions (notification to the user of invalid authentication) will be tested,Testing that ignores the internal parts and focus on the output is as per requirement or not,Testing performed to evaluate whether systems or components pass data and control correctly to one another set,"Verifying file labeling and protection functions are working properly, and determine system can run using document",,6462009e5dba6bad7fae2013,0
 mcsc,"The following statements relate to activities that are part of the fundamental test process.                                                                                                                                                                                       i. Evaluating the testability of requirements.
 ii. Repeating testing activities after changes.
 iii. Designing the test environment set-up.
@@ -45,283 +45,75 @@ Which statement below is TRUE?",,10,,,,"(i) and (iii) are part of analysis and d
 
 
  (i) and (iv) are part of analysis and design, (ii), (iii) and (v) are part of test implementation and
-execution.",,64494195919e9d9625443ee6,
+execution.",,6462009e5dba6bad7fae2013,0
 mcsc,Which of the following statements are true?                                                                                                                                                                                                                                                                        (i) For every development activity there is a corresponding testing activity.                                                                                                                                                                                                                (ii) Each test level has the same test objectives.                                                                                                                                                                                                                                                           (iii) The analysis and design of tests for a given test level should begin after the corresponding development activity.                                                                                                                                        (iv)Testers should be involved in reviewing documents as soon as drafts are available in the development life cycle.,,10,,,,"
 
 
  (i) and (iv)",, (i) and (ii),(iii) and (iv),(ii) and (iii),"
 
 
- (i) and (iv)",,64494195919e9d9625443ee6,
-mcsc,Which of the following pairs of test tools are likely to be most useful during the test analysis and design stage of the fundamental test process?                                                                                                  (i) Test execution tool                                                                                                                                                                                                                                                                                                 (ii) Test data preparation tool                                                                                                                                                                                                                                                                                      (iii) Test management tool                                                                                                                                                                                                                                                                                               (iv) Requirements management tool,,10,,,,(iii) and (iv),,(i) and (ii),(i) and (iv), (ii) and (iii),(iii) and (iv),,64494195919e9d9625443ee6,
+ (i) and (iv)",,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following pairs of test tools are likely to be most useful during the test analysis and design stage of the fundamental test process?                                                                                                  (i) Test execution tool                                                                                                                                                                                                                                                                                                 (ii) Test data preparation tool                                                                                                                                                                                                                                                                                      (iii) Test management tool                                                                                                                                                                                                                                                                                               (iv) Requirements management tool,,10,,,,(iii) and (iv),,(i) and (ii),(i) and (iv), (ii) and (iii),(iii) and (iv),,6462009e5dba6bad7fae2013,0
 mcsc,"Which of the following could be a reason for a failure?                                                                                                                                                                                                                                                      1) Testing fault                                                                                                                                                                                                                                                                                                              2) Software fault                                                                                                                                                                                                                                                                                                           3) Design fault                                                                                                                                                                                                                                                                                                                4) Environment Fault                                                                                                                                                                                                                                                                                                         5) Documentation Fault                                                                                                                                                                                                                                                                                                A. 2 is a valid reason; 1, 3, 4 & 5 are not                                                                                                                                                                                                                                                                   B. 1, 2, 3, 4 are valid reasons; 5 is not                                                                                                                                                                                                                                                                        C. 1, 2, 3 are valid reasons; 4 & 5 are not                                                                                                                                                                                                                                                                     D. All of them are valid reasons for failure",,10,,,,"2 is a valid reason; 1, 3, 4 & 5 are not",,"2 is a valid reason; 1, 3, 4 & 5 are not","1, 2, 3, 4 are valid reasons; 5 is not","1, 2, 3 are valid reasons; 4 & 5 are not","
 
-All of them are valid reasons for failure",,64494195919e9d9625443ee6,
+All of them are valid reasons for failure",,6462009e5dba6bad7fae2013,0
 mcsc,Consider the following statements about early test design: i. Early test design can prevent fault multiplication ii. Faults found during early test design are more expensive to fix iii. Early test design can find faults iv. Early test design can cause changes to the requirements v. Early test design takes more effort,,10,,,," i, iii & iv are true. ii & v are false",," i, iii & iv are true. ii & v are false","iii is true, i, ii, iv & v are false"," iii & iv are true. i, ii & v are false","
 
 
 i, iii, iv & v are true, ii us false
-",,64494195919e9d9625443ee6,
+",,6462009e5dba6bad7fae2013,0
 mcsc,"When assembling a test team to work on an enhancement to an existing system, which of the following has the highest level of test independence?",,10,,,,"
 
 
 A contract tester who has never worked for the organization before.",,A business analyst who wrote the original requirements for the system.,"A permanent programmer who reviewed some of the new code, but has not written any of it.", A permanent tester who found most defects in the original system.,"
 
 
-A contract tester who has never worked for the organization before.",,64494195919e9d9625443ee6,
-mcsc,"Consider a scenario , a developer develops the application and pass it to the tester for testing, tester found the defect and again pass it to the developer for fixing the defect, but developer mark it as NOT A BUG , why?",,10,,,, If the defect is not considered a genuine defect by the developer then it is marked as “Rejected” by the developer.,,"If the developer feels that the defect is not of very important priority and it can get fixed in the next releases or so in such a case, he can change the status of the defect as ‘Deferred’.","If the defect does not have an impact on the functionality of the application, then the status of the defect gets changed to “Not a Bug”.", If the defect is not considered a genuine defect by the developer then it is marked as “Rejected” by the developer., If the developer finds the defect as same as any other defect or if the concept of the defect matches any other defect then the status of the defect is changed to ‘Duplicate’ by the developer.,,64494195919e9d9625443ee6,
-mcsc,"When there are multiple variables in a screen with multiple values each, which is the best test design technique?",,10,,,,Orthogonal Arrays,,Orthogonal Arrays,State Transition,All-Pairs,Decision Tables,,64494195919e9d9625443ee6,
-mcsc,Where can the tests be added for execution?,,10,,,,Test Cycle,,Test metrics,Test Cycle,Test summary,Test Plan,,64494195919e9d9625443ee6,
-mcsc,Who is essentially responsible for the quality of a product?,,10,,,,Development Manager,,QA Manager ,Development Manager,Test Manager ,Customer ,,64494195919e9d9625443ee6,
-mcsc,System Testing is a combination of ,,10,,,,Functional & Non-Functional,,White-Box & Black-Box,Functional & Non-Functional,Verification & Validation,None,,64494195919e9d9625443ee6,
-mcsc,Who Does unit Testing,,10,,,,Developer,,Developer,Tester,BA,None,,64494195919e9d9625443ee6,
-mcsc,"To produce a good quality product, process should be",,10,,,,Efficient,,Complex,Efficient,Rigorous,None,,64494195919e9d9625443ee6,
-mcsc,_____________ summarizes the functionality to be tested without providing the steps to be followed to test the functionality mentioned in the Use case / Functional Specification,,10,,,, Test Scenario,,Test Case,Test Plan, Test Strategy, Test Scenario,,64494195919e9d9625443ee6,
-mcsc,"Consider a scenario of login where the tester will pass valid and invalid creditials, when the valid credentials are passed he should be able to enter in to the homepage, which is not happening. When the tester enters invalid credentials he should get an error message, which is also not happening. How will you address this?",,10,,,,There is a blocker on the login button which is not allowing  the user to navigate to the home page of particular application ,,wrong url used in the browser, The credentials entered in the text box are case sensitive.,There is a blocker on the login button which is not allowing  the user to navigate to the home page of particular application , ignore the login page and start testing the home page.,,64494195919e9d9625443ee6,
-mcsc,What is the issue type created by zephyr?,,10,,,,Test,,Test,Bug,Defect,Task,,64494195919e9d9625443ee6,
-mcsc,The deviation of the actual and expected result of system or software application is defined as ,,10,,,, Defect,,Validation ,Defect Management, Defect, verification,,64494195919e9d9625443ee6,
-mcsc,Defect status report does not include:,,10,,,, Scope,, Scope,severity of defect, Type of defect, Retest Date,,64494195919e9d9625443ee6,
-mcsc,"A test log is one of the documents that need to be produced in this domain in order to provide
-evidence of testing. However, the level of detail of test logs can vary. Which of the following is
-NOT an influencing factor for the level of detail of the test logs being produced?",,10,,,,Experience level of testers,,Test level,Level of test execution automation,Regulatory requirements,Experience level of testers,,64494195919e9d9625443ee6,
-mcsc,"Which of the following are valid reasons for adopting a different life cycle (from the V model), for increments after the first year?                                                                                                                           i. We do not have a clear understanding of the requirements from a customer perspective.                                                                                                                                                                                            ii. We see the risk of delivering requested functionality late as being higher than the risk of
-delivering a lower quality product.
-iii. We do not have a budget for additional regression testing which is needed to ensure that
-existing functionality is not compromised by future iterations.
-iv. The company test strategy does not fit well within the V life cycle model.",,10,,,, (i) and (ii),, (i) and (ii), (i) and (iv),"
-(ii) and (iii)", (ii) and (iv),,64494195919e9d9625443ee6,
-mcsc,"Risks should be constantly reviewed. Given the current situation, which one of the following factors is most likely to lead to a revised view of product risk?",,10,,,," The concerns over the user interface raises the likelihood of a risk in that area and increases
-the amount of test effort needed for the user interface, thereby limiting the test effort available for
-other parts of the test management tool.",,The concerns over the user interface may lead to changes to the interface which cannot be implemented by development in time for the second test iteration.," The concerns over the user interface raises the likelihood of a risk in that area and increases
-the amount of test effort needed for the user interface, thereby limiting the test effort available for
-other parts of the test management tool.", The delivery of the application without the interface changes may upset the user community.,"
+A contract tester who has never worked for the organization before.",,6462009e5dba6bad7fae2013,0
+mcsc,"Consider a scenario , a developer develops the application and pass it to the tester for testing, tester found the defect and again pass it to the developer for fixing the defect, but developer mark it as NOT A BUG , why?",,10,,,, If the defect is not considered a genuine defect by the developer then it is marked as “Rejected” by the developer.,,"If the developer feels that the defect is not of very important priority and it can get fixed in the next releases or so in such a case, he can change the status of the defect as ‘Deferred’.","If the defect does not have an impact on the functionality of the application, then the status of the defect gets changed to “Not a Bug”.", If the defect is not considered a genuine defect by the developer then it is marked as “Rejected” by the developer., If the developer finds the defect as same as any other defect or if the concept of the defect matches any other defect then the status of the defect is changed to ‘Duplicate’ by the developer.,,6462009e5dba6bad7fae2013,0
+mcsc,"When there are multiple variables in a screen with multiple values each, which is the best test design technique?",,10,,,,Orthogonal Arrays,,Orthogonal Arrays,State Transition,All-Pairs,Decision Tables,,6462009e5dba6bad7fae2013,0
+mcsc,Where can the tests be added for execution?,,10,,,,Test Cycle,,Test metrics,Test Cycle,Test summary,Test Plan,,6462009e5dba6bad7fae2013,0
+mcsc,Who is essentially responsible for the quality of a product?,,10,,,,Development Manager,,QA Manager ,Development Manager,Test Manager ,Customer ,,6462009e5dba6bad7fae2013,0
+mcsc,System Testing is a combination of ,,10,,,,Functional & Non-Functional,,White-Box & Black-Box,Functional & Non-Functional,Verification & Validation,None,,6462009e5dba6bad7fae2013,0
+mcsc,Who Does unit Testing,,10,,,,Developer,,Developer,Tester,BA,None,,6462009e5dba6bad7fae2013,0
+mcsc,"To produce a good quality product, process should be",,10,,,,Efficient,,Complex,Efficient,Rigorous,None,,6462009e5dba6bad7fae2013,0
+mcsc,_____________ summarizes the functionality to be tested without providing the steps to be followed to test the functionality mentioned in the Use case / Functional Specification,,10,,,, Test Scenario,,Test Case,Test Plan, Test Strategy, Test Scenario,,6462009e5dba6bad7fae2013,0
+mcsc,"Consider a scenario of login where the tester will pass valid and invalid creditials, when the valid credentials are passed he should be able to enter in to the homepage, which is not happening. When the tester enters invalid credentials he should get an error message, which is also not happening. How will you address this?",,10,,,,There is a blocker on the login button which is not allowing  the user to navigate to the home page of particular application ,,wrong url used in the browser, The credentials entered in the text box are case sensitive.,There is a blocker on the login button which is not allowing  the user to navigate to the home page of particular application , ignore the login page and start testing the home page.,,6462009e5dba6bad7fae2013,0
+mcsc,"If Web service operation has both input and output messages, then the operation is",,10,,,,Request Response Operation,,One Way operation,Request Response Operation,Solicit response operation,Notification Operation,,6462009e5dba6bad7fae2013,0
+mcsc,The basic Web Services platform is combination of _____ and _______.,,10,,,,XML + HTTP,,CSS + HTTP,XML + HTTP,XML + HTML,CSS + JAVA,,6462009e5dba6bad7fae2013,0
+mcsc,"A valid XML document means:
+ (i) The document must be well formed
+ (ii) The document must apply to the rules of the DTD",,10,,,,Both i and ii are true,,Both i and ii are true,Only i is true,Only ii is true,None of the above,,6462009e5dba6bad7fae2013,0
+mcsc,Select the Right Syntax to fetch the response code from a request.,,10,,,,get.getResponseCode();,,get.getresponsecode();,getResponseCode();,get.ResponseCode();,get.getResponseCode();,,6462009e5dba6bad7fae2013,0
+mcsc,Which testing will cover security aspects of the services created to make sure that appropriate security policies are enforced on relevant services according to enterprise security architectures.,,10,,,,Security testing,,Data abstraction or data service level,Component testing,Governance testing,Security testing,,6462009e5dba6bad7fae2013,0
+mcsc,"Assume you get the following response for a request:
  
-
- The method used for test estimation is not accurate enough and hence the money spent on
-testing exceeded its budget.",,64494195919e9d9625443ee6,
-mcsc,Which of the following is least likely to be used as a technique to identify project and product risks?,,10,,,, Inspections ,,Brainstorming, Inspections ,Expert interviews,"
-
-
- Independent assessments",,64494195919e9d9625443ee6,
-mcsc,In which process client will be along with the project team,,10,,,,Rad and Jad,,Rad and Jad, Fast and Rad,Fast and Jad, Fast,,64494195919e9d9625443ee6,
-mcsc,Defect status report does not include:,,10,,,,Scope,,severity of defect,Type of defect,Retest Date,Scope,,64494195919e9d9625443ee6,
-mcsc,The circle in the state transition diagram refers to,,10,,,, State,,Transition, Label, Arrow, State,,64494195919e9d9625443ee6,
-mcsc,_____________ summarizes the functionality to be tested without providing the steps to be followed to test the functionality mentioned in the Use case / Functional Specification,,10,,,, Test Scenario,, Test Case,Test Plan, Test Strategy, Test Scenario,,64494195919e9d9625443ee6,
-mcsc,Boundary value analysis is not suitable for,,10,,,, Boolean variables,, Sets,Identified Boundaries, Boolean variables, Range of values,,64494195919e9d9625443ee6,
-mcsc,Which software testing metric focuses on defect that are left undetected by the team and found by the user,,10,,,,Defect deficiency,,Defect Leakage,Defect deficiency, Defect severity index, Defect removal Efficiency,,64494195919e9d9625443ee6,
-mcsc,"If you wanted to access the element that has the text ""This element has an ID that changes every time the page is loaded"" in it, then which of the following is used?",,10,,,,"//div[contains(@id,""time_"")]",,//div[contains(@id_time())],//div[parameter(@id_time())],"//div[contains(@id,""time_"")]","//div[parameter(@id,""time_"")]",,64494195919e9d9625443ee6,
-mcsc,what is the purpose of CucumberOptions tag,,10,,,,it is used to link between feature file with step definition file,,it is used to link between feature file with test file,it is used to link between feature file with step definition file,it is used to link between feature file with testNG class,None of the above,,64494195919e9d9625443ee6,
-mcsc,What is the similarity between WebDriver’s close() and quit() methods?,,10,,,,closes the active web browser window.,,closes all opened web browser windows.,does not accept arguments.,closes the active web browser window.,None of the above,,64494195919e9d9625443ee6,
-mcsc,"consider the following HTML code snippet
-
-1  2 5
-3  4 6
-7 8 9
-write script to return 6.",,10,,,,driver.findElement(By.xpath(“//table/tr[2]/td[3]”)).getText();,,driver.findElement(By.xpath(“//table/tr[3]/td[3]”)).getText();,driver.findElement(By.xpath(“//table/tr[3]/td[2]”));,driver.findElement(By.xpath(“//table/tr[2]/td[2]”)).getText();,driver.findElement(By.xpath(“//table/tr[2]/td[3]”)).getText();,,64494195919e9d9625443ee6,
-mcsc,"Consider following code & identify the sequence of Test execution.
-public class NewTest {
- @Test
- public void A() {
- Assert.assertEquals(""vinay"", ""Ghouse"");
- }
- @Test
- public void B() {
- }
- @Test(priority=2)
- public void C() {
- }
- @Test(priority=1,dependsOnMethods=""A"",alwaysRun=true)
- public void D() {
- }
- 
-}",,10,,,,"A
-B
-D
-C",,"A
-D
-B
-C","D
-C
-A
-B","A
-B
-D
-C","C
-A
-B
-D",,64494195919e9d9625443ee6,
-mcsc,"Identify selenium script to perform mouse over on link named ""REGISTER""",,10,,,,"WebElement link_Home= driver.findElement(By.linkText(""REGISTER""));
- Actions builder = new Actions(driver);
- Action mouseoverhome = builder.moveToElement(link_Home).build();
- mouseoverhome.perform();",,"WebElement link_Home= driver.findElement(By.linkText(""REGISTER""));
- Actions builder = new Actions(driver);
- Action mouseoverhome = builder.moveToElement(link_Home).build();
- mouseoverhome.perform();","WebElement link_Home= driver.findElement(By.linkText(""REGISTER""));
- Actions builder = new Actions(driver);
- Action mouseoverhome = builder.moveToElement(link_Home).build().perform();","WebElement link_Home= driver.findElement(By.linkText(""REGISTER""));
- Actions builder = new Actions(driver);
- builder.moveToElement(link_Home).build().perform();","WebElement link_Home= driver.findElement(By.linkText(""REGISTER""));
- Actions builder = new Actions(driver);
- builder.moveToElement().build(link_Home).perform();",,64494195919e9d9625443ee6,
-mcsc,How do you verify if the checkbox/radio is checked or not ?,,10,,,,"driver.findElement(By.xpath(""xpath of the checkbox/radio button"")).isSelected();",,"driver.findElement(By.xpath(""xpath of the checkbox/radio button"")).isSelected();","driver.findElement(By.xpath(""xpath of the checkbox/radio button"")).isPresent();","driver.findElement(By.xpath(""xpath of the checkbox/radio button"")).isEnabled();","driver.findElement(By.xpath(""xpath of the checkbox/radio button"")).isElementPresent();",,64494195919e9d9625443ee6,
-mcsc,What is the difference between findElement and findElements?,,10,,,,"1.findElement() – it used to find the one web element. It return only one WebElement type.
-2.findElements()- it used to find more than one web element. It return List of WebElements.",,"1.findElements() – it used to find the one web element. It return only one WebElement type.
-2.findElement()- it used to find more than one web element. It return List of WebElements.","1.findElement() – it used to find more than one web element. It return List of WebElements.
-2.findElements()- it used to find the one web element. It return only one WebElement type.","1.findElement() – it used to find the one web element. It return only one WebElement type.
-2.findElements()- it used to find more than one web element. It return List of WebElements.",All of the above,,64494195919e9d9625443ee6,
-mcsc,"What would be the ideal way to identify an element without ID or Class ?
-
-<html>
-<head>
-<button>Test</button>
-</head>
-</html>",,10,,,,"By.xpath(""//button[contains(text(), 'Test')]"")",,"By.xpath(""//button[contains(., 'Test')]"")","By.text(""Sample'"")","By.xpath(""//button[contains(text(), 'Test')]"")",It is not possible to locate elements without an ID or Class name,,64494195919e9d9625443ee6,
-mcsc,"Consider the following HTML:
-
-<div class=""container"">
-<div class=""title""></div>
-</div>
-<div class=""container title"">
-</div>
-
-Using Selenium WebDriver, how would you select only the element with the 2 classes: 'container' and 'title' ?
-Select all the correct answers.",,10,,,,"By.xpath(""//div[contains(@class, 'container') and contains(@class, 'title')]"");",,"By.xpath(""//div[contains(@class, 'container') or contains(@class, 'title')]"");","By.xpath(""//div[contains(@class, 'container title')"");","By.xpath(""//div[contains(@class, 'container') and contains(@class, 'title')]"");","By.ClassName(""container title"");",,64494195919e9d9625443ee6,
-mcsc,"what is the annotation used in TestNG that provides data to the tests in Data driven testing?
-i. @Datadriventesting
-ii. @Data
-iii. @Test(dataprovider='dp')",,10,,,,iii is true where as I & ii is false,,I & ii is true where as iii is false,I & iii are true where as ii is false,iii is true where as I & ii is false,"I, ii & iii are true",,64494195919e9d9625443ee6,
-mcsc,Which is the package which is to be imported while working with WebDriver ?,,10,,,,org.openqa.selenium,,org.openqa.junit,org.java.util,org.openqa.TestNG,org.openqa.selenium,,64494195919e9d9625443ee6,
-mcsc,What is the difference between findElement and findElements?,,10,,,,"1.findElement() – it used to find the one web element. It return only one WebElement type.
-2.findElements()- it used to find more than one web element. It return List of WebElements.",,"1.findElements() – it used to find the one web element. It return only one WebElement type.
-2.findElement()- it used to find more than one web element. It return List of WebElements.","1.findElement() – it used to find more than one web element. It return List of WebElements.
-2.findElements()- it used to find the one web element. It return only one WebElement type.","1.findElement() – it used to find the one web element. It return only one WebElement type.
-2.findElements()- it used to find more than one web element. It return List of WebElements.",All of the above,,64494195919e9d9625443ee6,
-mcsc,Which method is present in Action Interface?,,10,,,,perform,,moveToElement,click,perform,contextClick,,64494195919e9d9625443ee6,
-mcsc,What is the javaScript Function used to enter the text in TextBox,,10,,,,"document.getElementById(‘what’).setAttribute(‘value’,’Selenium’)",,document.getElementById(‘what’).setValue(‘Selenium’),"document.getElementById(‘what’).setAttribute(‘value’,’Selenium’)",document.getElementById(‘what’).setText(‘Selenium’),document.getElementById(‘what’).setAttribute( ‘Selenium’),,64494195919e9d9625443ee6,
-mcsc,Select the option which is not a WebElement Method.,,10,,,,size(),,getText(),getTagName(),size(),sendKeys(),,64494195919e9d9625443ee6,
-mcsc,_________ is the use of firebug in selenium?,,10,,,,Inspecting Element,,Programming,Inspecting Element,Parallel Testing,Cross Browser Testing,,64494195919e9d9625443ee6,
-mcsc,Which selenium command check whether specific text exits in somewhere on the page?,,10,,,,VerifyTextPresent,,VerifyTextPresent,VerifyElementPresent,CheckTextPresent,VerifyPresentText,,64494195919e9d9625443ee6,
-mcsc,"where does the cursor is positioned on the element, by single parameter moveToElement function?",,10,,,,middle,,top-left,bottom-right,middle,top-right,,64494195919e9d9625443ee6,
-mcsc,Which Apache POI function returns the number of rows in current sheet,,10,,,,getLastRowNum();,,getLastRowNum();,getRows();,getLastRowCount();,getLastRow();,,64494195919e9d9625443ee6,
-mcsc,Test results of selenium script get displayed as pass or fail by:,,10,,,,By adding TestNG annotations in the selenium script,,Adding conditional statements in script,By default result will be get displayed as pass or fail after every execution,By adding TestNG annotations in the selenium script,Both A & C,,64494195919e9d9625443ee6,
-mcsc,Which is the following is false in case of waitFor command?,,10,,,,waitForFramePresent,,waitForAlertPresent,waitForTextPresent,waitForFramePresent,waitForPageToLoad,,64494195919e9d9625443ee6,
-mcsc,The // tells the query that,,10,,,,It needs to stop at the first element that it finds.,,This is comment,It needs to stop at the first element that it finds.,The path of the file or folder,All of these,,64494195919e9d9625443ee6,
-mcsc,"Identify the Output of the below program
- @Test
- public void Test1() {
- String Exp= ""Sunil"";
- String Ac=""Radha"";
- Assert.assertEquals(Ac, Exp);
- 
- } @Test(dependsOnMethods=""Test1"")
- public void Test2()
  {
- System.out.println(""Test1 is passed so Test2 is executing"");
- }
-Identify the way to execute failed testcase in TestNG.",,10,,,,"1) The output of the program is Failed.
-2) In project go to test-output folder and right click on testng-failed.xml and run",,"1) The output of the program is Failed.
-2) Right Click on the script editor and select Run As --> TestNG Test","1) The output of the program is Failed.
-2) Right Click on the Class and select Run As ---> TestNG Test","1) The output of the program is Failed.
-2) In project go to test-output folder and right click on testng-failed.xml and run","1) The output of the program is Failed.
-2) Click Run button from the menu bar",,64494195919e9d9625443ee6,
-mcsc,Which of the following is not an test data source under data driven framework,,10,,,,None of these,,Excel File,ADO Objects,CSV File,None of these,,64494195919e9d9625443ee6,
-mcsc,how can you ensure a test method runs even if the dependent test method fails,,10,,,,"@Test
- public void parentTest() { 
- Assert.fail(""parent test"");
- }
-
- @Test(dependsOnMethods={""parentTest""}, alwaysRun=true) 
- public void dependentTest() { 
- System.out.println(""dependent test"");
- }",,"@Test
- public void parentTest() { 
- Assert.fail(""parent test"");
- }
-
- @Test(dependsOnMethods={""parentTest""}, alwaysExecute=true) 
- public void dependentTest() { 
- System.out.println(""dependent test"");
- }","@Test
- public void parentTest() { 
- Assert.fail(""parent test"");
- }
-
- @Test(dependsOnMethods={""parentTest""}, alwaysRun=true) 
- public void dependentTest() { 
- System.out.println(""dependent test"");
- }","@Test
- public void parentTest() { 
- Assert.fail(""parent test"");
- }
-
- @Test(dependsOnMethods={""parentTest""}) 
- public void dependentTest() { 
- System.out.println(""dependent test"");
- }","@Test
- public void parentTest() { 
- Assert.fail(""parent test"");
- }
-
- @Test(dependsOnMethods={""parentTest""}, always=true) 
- public void dependentTest() { 
- System.out.println(""dependent test"");
- }",,64494195919e9d9625443ee6,
-mcsc,Cypress adds automatic waits for Assertions,,10,,,,yes,,yes,no,we have to add wait,it doesnt wait,,64494195919e9d9625443ee6,
-mcsc,Cypress architecture is based on the,,10,,,,Node server process,,Node server process,Json wired protocol,,,,64494195919e9d9625443ee6,
-mcsc,What is the difference between .then() and .should() commands?,,10,,,,"should() is an assertion to the result yielded from the previous command, whereas then() is used to perform further actions on the result yielded from the previous command.",,then() is used as an assertion whereas should() is used for further actions on the result yielded from the previous command.,"then() is used to set the conditions before the execution of a test, whereas, should() is used to set conditions after the execution of a test.",Both are the same and can be used interchangeably.,"should() is an assertion to the result yielded from the previous command, whereas then() is used to perform further actions on the result yielded from the previous command.",,64494195919e9d9625443ee6,
-mcsc,What is the difference between cy.get() and cy.contains() commands?,,10,,,,"cy.get() is used to get one or more DOM elements by selector, whereas, cy.contains() is used to get the DOM element containing the text (as passed in the contains('text')).",,"cy.get() is a query command used to get one or more DOM elements by selector, whereas, cy.contains() is used as an assertion on the subject yielded from the previous command.","cy.get() is used to get one or more DOM elements by selector, whereas, cy.contains() is used to get the DOM element containing the text (as passed in the contains('text')).","cy.get() is used to get the DOM element containing the text (as passed in the get), whereas, cy.contains() is used to get one or more DOM elements by a selector.",Both are the same and yield the same result.,,64494195919e9d9625443ee6,
-mcsc,The default location cypress/fixtures in cypress contain _____,,10,,,,Files containing test Data or any external data input needed during the test run.,,Files downloaded during a test run.,Files containing test Data or any external data input needed during the test run.,Screenshots after a test fail during the cypress run.,Videos are saved during cypress run.,,64494195919e9d9625443ee6,
-mcsc,Which BDD framework's syntax is used by Cypress to structure the test?,,10,,,,Mocha,,Jasmine,Cucumber,Mocha,Chai,,64494195919e9d9625443ee6,
-mcsc,What is the difference between cy.get() and .find() commands?,,10,,,,"cy.get is a query command to find the DOM element starting from the root, whereas, the .find command starts its search from the current subject.",,"cy.get is a query command to find the DOM element starting from the root, whereas, the .find command starts its search from the current subject.","cy.get is a query command to find the DOM element, whereas .find is used for visiting a URL or a web page.","cy.get is a query command to find the DOM element starting from the current context/subject, whereas .find starts its search from the root element.",,,64494195919e9d9625443ee6,
-mcsc,"
- What action will be performed by the below command?
-
-cy.contains('Recent Post')",,10,,,,Find an element in the document containing the text 'Recent Post',,"Assert that the element found in the document contains the text 'Recent Post', and fail the test if the specified text is not found.",Find an element in the document containing the text 'Recent Post',None of the above.,,,64494195919e9d9625443ee6,
-mcsc,Which of the below statements is true for the below command?,,10,,,,"cy.get() looks for '#element', starting from the root, and repeats the query until it finds the element.",,"cy.get() looks for '#element', starting from the root, and repeats the query until it finds the element.",cy.get() looks for '#element' and throws a time-out error if the element isn't found on the first try.,None of the above,,,64494195919e9d9625443ee6,
-mcsc,Which of the following command is used in cypress to visit a remote URL?,,10,,,,cy.visit(url),,cy.get(url),cy.load(url),cy.visit(url),cy.navigate(url),,64494195919e9d9625443ee6,
-mcsc,Cypress uses assertion libraries from _________:,,10,,,,Chai,,"Jasmine
-
-
-
-
-
-",Cucumber, Mocha,Chai,,64494195919e9d9625443ee6,
-mcsc, What is Cypress?,,10,,,,A testing framework,," A programming language
-",A testing framework,A database management system,A web development tool,,64494195919e9d9625443ee6,
-mcsc,Which programming language is used in Cypress?,,10,,,,JavaScript,," Java
-
-", Python,Ruby,JavaScript,,64494195919e9d9625443ee6,
-mcsc,Which command is used to click on an element in Cypress?,,10,,,,cy.click(),,"cy.type()
-",cy.click(),cy.visit(),cy.get(),,64494195919e9d9625443ee6,
-mcsc,Which command is used to type text into an input field in Cypress?,,10,,,," cy.type()
-
-",," cy.type()
-
-",cy.click(),cy.visit(),cy.get(),,64494195919e9d9625443ee6,
-mcsc,Hooks in cypress are used to ______,,10,,,,Set conditions that you want to run before a set of tests or before each test.,,Set conditions that you want to run before a set of tests or before each test.,Run one test at a time.,Skip a specified suite or test.,,,64494195919e9d9625443ee6,
-mcsc,Which BDD framework's syntax is used by Cypress to structure the test?,,10,,,,Mocha,,Jasmine,Cucumber,Mocha,Chai,,64494195919e9d9625443ee6,
-mcsc,Cypress uses assertion libraries from _________,,10,,,,Chai,,Jasmine,Cucumber,Mocha,Chai,,64494195919e9d9625443ee6,
-mcsc,What is the default wait time in Cypress,,10,,,,4 sec,,4 sec,3 sec,8 sec,5 sec,,64494195919e9d9625443ee6,
-mcsc,Cypress can be installed on,,10,,,,All the above,,Windows,Mac,Linux,All the above,,64494195919e9d9625443ee6,
-mcsc,In Cypress we cannot give custom waits,,10,,,,FALSE,,TRUE,FALSE,,,,64494195919e9d9625443ee6,
-mcsc,Cypress can be used for Unit Testing,,10,,,,TRUE,,TRUE,FALSE,,,,64494195919e9d9625443ee6,
-mcsc,What is the command to initialize a node project in a folder,,10,,,,npm init,,npm init,npm start,npm project,npm install cypress --save-dev,,64494195919e9d9625443ee6,
-mcsc,Following command is used for implicit assertions in cypress,,10,,,,expect(),,should(),expect(),assert(),All the above,,64494195919e9d9625443ee6,
-mcsc,What is Page Object Model,,10,,,,a design principle,,a design principle,a module in cypress,node package,All the above,,64494195919e9d9625443ee6,
-mcsc,"Observe the below cypress test and determine the output.
-describe('Actions', () => {
-
-it('first test', () => {
-cy.visit('www.amazon.in') //launch amazon.com
-cy.get('#nav-link-accountList').click() //click on the account list
-cy.get('#createAccountSubmit').click() //click on the create account link
-})
-
-it('second test', () => {
-cy.get('#nav-link-accountList').click() //click on the account list
-})
-
-
-})",,10,,,,Only the first test will be successful whereas the second test will fail.,,Both (first test and second test) will successfully run.,Only the first test will be successful whereas the second test will fail.,The first test will fail whereas the second test will be successfully run.,Both (the first test and the second test) will fail.,,64494195919e9d9625443ee6,
-mcsc,Which of the following command is used to Navigate back or forward to the previous or next URL in the browser's history?,,10,,,,cy.go(),,cy.go(),cy.visit(),cy.reload(),cy.get(),,64494195919e9d9625443ee6,
-mcsc,Which of the following command is used to refresh the page in cypress,,10,,,,cy.reload(),,cy.go(),cy.visit(),cy.reload(),cy.get(),,64494195919e9d9625443ee6,
+ 
+  ""timestamp"": 1491748899439,
+ 
+  ""status"": 401
+ 
+ }",,10,,,,"var jsonData = JSON.parse(responseBody); postman.setEnvironmentVariable(""token"", jsonData.timestamp);",,"var jsonData = JSON.parse(responseBody); postman.setGlobalVariable(""token"", jsonData.timestamp);","var jsonData = JSON.parse(responseBody); postman.setEnvironmentVariable(""token"", jsonData.timestamp);","var jsonData = JSON.parse(responseBody); postman.setEnvironmentVariable(""token"", timestamp.jsonData);","var jsonData = JSON.parse(responseBody); postman.setEnvironmentVariable(""tokens"", timestamp.jsonData);",,6462009e5dba6bad7fae2013,0
+mcsc,"When You run a request, where can you find the Response Status.",,10,,,,Header,,RAW,Header,XML,SOAP,,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following is correctly defining web service interoperability?,,10,,,,All of the above.,,Web services allow various applications to talk to each other and share data and services among themselves.,Other applications can also use the web services,Web services are used to make the application platform and technology independent.,All of the above.,,6462009e5dba6bad7fae2013,0
+mcsc,Choose the correct option with refernce to Rest API,,10,,,,The default media type for request and response is application/json,,There is no default media type for both request and response,The default media type for request and response is application/json,"The default media type foe request is application/json, while there is not media type for response","The default media type foe response is application/json, while there is not media type for request",,6462009e5dba6bad7fae2013,0
+mcsc,401 HTTP Response Code indicates,,10,,,,error indicates that you need to perform authentication before accessing the resource.,,Code indicates that the request was successful.,error indicates that you need to perform authentication before accessing the resource.,Occurs due to some error on Server side,"It happens especially with POST and PUT requests, when the data does not pass validation, or is in the wrong format",,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following protocol is used by RESTful web services as a medium of communication between client and server?,,10,,,,HTTP,,HTTP,FTP,SOAP,XML,,6462009e5dba6bad7fae2013,0
+mcsc,What is valid for Workspace in Postman?,,10,,,,All of these,,Postman workspaces allow you to organize and collaborate on API projects with your team and personal use.,We can create multiple workspaces in Postman.,My workspace is the default workspace in Postman.,All of these,,6462009e5dba6bad7fae2013,0
+mcsc,"Which of the following HTTP Status code means NOT FOUND, states that method is not available?",,10,,,,404,,400,401,404,409,,6462009e5dba6bad7fae2013,0
+mcsc,What is valid for Collection runner in Postman?,,10,,,,All of these.,,The Collection Runner allows you to run sets of requests in a specified sequence.,"The Collection Runner will log your request test results, and your scripts can pass data between requests as well as altering the request workflow.","You can run collections against specific environments, and can pass data files into a run.",All of these.,,6462009e5dba6bad7fae2013,0
+mcsc,"Identify the response code for the below scenraio:
+ It happens especially with POST and PUT requests, when the data does not pass validation, or is in the wrong format.",,10,,,,400,,400,401,404,405,,6462009e5dba6bad7fae2013,0
+mcsc,"Pick the variable scope in Postman which are scoped to a single request or collection run, and are no longer available when the run is complete.",,10,,,,Local variables,,Global variables,Collection variables,& Environment variable,Local variables,,6462009e5dba6bad7fae2013,0
+mcsc,What does History tab in Postman is used for?,,10,,,,Every request you send in Postman appears under the History tab of the sidebar.,,History is a collection.,History is a folder.,None of these,Every request you send in Postman appears under the History tab of the sidebar.,,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following HTTP method should be used to fetch resource using RESTful web service?,,10,,,,GET,,GET,DELETE,PUT,OPTIONS,,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following is not supported in Postman?,,10,,,,None of these,,PATCH,DELETE,COPY,None of these,,6462009e5dba6bad7fae2013,0
+mcsc,Which of the following HTTP method should be used to create resource using RESTful web service?,,10,,,,PUT,,GET,DELETE,PUT,OPTIONS,,6462009e5dba6bad7fae2013,0
+mcsc,"If Web service operation has both input and output messages, then the operation is",,10,,,,Request Response Operation,,One Way operation,Request Response Operation,Solicit response operation,Notification Operation,,6462009e5dba6bad7fae2013,0
+mcsc,Select the variable scope in Postman which are suitable if you need a value to override all other variable scopes but do not want the value to persist once execution has ended?,,10,,,,Local variables,,Global variables,Collection variables,Environment variables,Local variables,,6462009e5dba6bad7fae2013,0
+mcsc,"what does a REST URI Consist of:
+ 1. Base URL
+ 2. Resource
+ 3. Parameter",,10,,,,"1, 2 & 3",,1 & 2,"1, 2 & 3",1 only,1 & 3,,6462009e5dba6bad7fae2013,0
+mcsc,"Which of the following variable scope in Postman are suitable if you are only using a single environment, for example for auth / URL details ?",,10,,,,Collection variables,,Global variables,Collection variables,Local variables,Environment variables,,6462009e5dba6bad7fae2013,0
+mcsc,"What does it mean when a service is ""stateless?""",,10,,,,The service does not depend on the condition of any other service; all information needed to provide a response comes from the request and response is not stored.,,"The service is not tied to a particular framework, such as Java Enterprise Edition or Microsoft .NET",The service does not depend on the condition of any other service; all information needed to provide a response comes from the request and response is not stored.,"The service is created independently of a programming language, such as Java or C#",None of the above,,6462009e5dba6bad7fae2013,0
