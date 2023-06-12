@@ -1,0 +1,1048 @@
+Stack,Parent tags,Child tags,Time tag,Type tag,Difficulty Level,Question Description,Solution,Testing - Is the question correct in terms of spelling and grammar? ,Testing - Unambiguous Statement?,Testing - Is solution provided is correct?,"Is the question tagging (topic, time, difficulty level) correct? ",Sign-off Given by? ,Approved by Internal tester,"Comments, if any (By Tester) ",Migrated onto Levelup?,Updated after review,Reviewed by Instructor?,Reason for rejection,Updated after review
+Node,Node Intermediate,Caching,1 min,Knowledge,Low,What is caching in the context of web development?,"Caching in web development refers to the process of storing frequently used data or responses in a cache to improve application performance and reduce the load on the server. Caching can be implemented at various levels, such as the database level, application level, and client level, to reduce the number of requests made to the server and improve response time. When data is requested again, it can be retrieved from the cache rather than being regenerated, which can significantly improve the performance of the application.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Caching,3 min,Knowledge,Medium,What is the difference between server-side and client-side caching?,"Server-side caching is a technique of storing frequently accessed data on the server, so that it can be served quickly without performing expensive computations or accessing a database. It helps in reducing the load on the server and improving the performance of the web application.
+
+On the other hand, client-side caching involves storing data on the client's machine, typically in the web browser's cache. This data can include HTML, CSS, JavaScript files, and other resources. When a user revisits a page, the browser can load these cached resources from the local cache, rather than making a new request to the server.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Caching,3 min,Knowledge,Medium,What are some best practices for implementing caching in a Node.js application?,"Here are some best practices for implementing caching in a Node.js application:
+
+1.Determine what to cache: It's important to identify the data that needs to be cached. Caching everything may not be feasible or efficient. Identify the parts of your application that can benefit most from caching.
+
+2.Set an expiration time: Cache entries should have an expiration time. This ensures that stale data is not used, and the cache doesn't grow indefinitely. The expiration time should be set based on the data's frequency of change and importance.
+
+3.Use a consistent key naming convention: The key used to store cache data should be consistent and easy to understand. This helps in debugging and maintaining the application.
+
+4.Implement cache invalidation: When data changes, the corresponding cache entry should be invalidated. This ensures that the cache is always up-to-date.
+
+5.Monitor cache usage: Monitoring cache usage can help identify inefficiencies and bottlenecks. Tools like RedisMON can help monitor Redis cache usage.",Yes,Yes,Yes,Yes,Mahesh,Yes,its difficulty level should be medium,,Yes,Approved,Time should be 3 min.,Yes
+Node,Node Intermediate,Caching,5 min,Implementation,Medium,How can you use the Node.js fs module to cache file contents in a Node.js application?,"const fs = require('fs');
+const cache = {};
+
+function getFileContent(filePath) {
+  if (cache[filePath]) {
+    console.log('File content fetched from cache');
+    return Promise.resolve(cache[filePath]);
+  } else {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          console.log('File content fetched from disk');
+          cache[filePath] = data;
+          resolve(data);
+        }
+      });
+    });
+  }
+}
+
+// usage example
+getFileContent('/path/to/file.txt')
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,Tag should be implementation,Yes
+Node,Node Intermediate,Redis,3 min,Knowledge,Low,What is Redis and how does it work?,"Redis is an open-source, in-memory data structure store. It is often referred to as a data structure server, as it provides a rich set of data structures such as strings, hashes, lists, sets, and sorted sets. Redis is used to store and retrieve data quickly, as it keeps the data in memory and can persist it to disk if necessary.
+
+Redis is commonly used as a caching layer in web applications, as it can dramatically improve the performance of frequently accessed data.
+
+Redis uses a single-threaded, event-driven architecture that allows it to handle a large number of clients simultaneously. It also supports pipelining and Lua scripting, which can improve performance and flexibility.
+
+Redis can be used in standalone mode or in a clustered configuration for high availability and scalability. Redis Cluster divides the data across multiple nodes, providing automatic sharding and replication for improved fault tolerance.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Redis,3 min,Knowledge,Low,What are the advantages of using Redis as a data store?,"There are several advantages of using Redis as a data store, including:
+
+1. Fast performance: Redis stores all its data in memory, which makes it extremely fast compared to traditional disk-based databases. It can handle millions of requests per second and provides sub-millisecond latency, which makes it ideal for high-performance applications.
+
+2.Versatility: Redis supports a variety of data structures such as strings, hashes, lists, sets, and sorted sets. This makes it easy to model complex data structures and manipulate data in real-time.
+
+3.Scalability: Redis can be used in standalone mode or in a clustered configuration for high availability and scalability. Redis Cluster provides automatic sharding and replication, which makes it easy to scale Redis horizontally.
+
+4.Flexibility: Redis provides a number of advanced features such as Lua scripting, transactions, and pub/sub messaging. This makes it easy to build custom functionality and integrate Redis into a variety of applications.
+
+5.Persistence: Redis can persist its data to disk, which makes it more durable and reliable than pure in-memory databases. It also provides different persistence options, such as RDB snapshots and AOF logs, which can be used to balance performance and durability.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,3 min time is fine.,Yes
+Node,Node Intermediate,Redis,3 min,Implementation,Low,How would you implement a simple caching system using Redis in a web application? Write  code in node js ?,"we first create a Redis client using the redis package in Node.js. We then define a getFromCache function that takes a key argument and a callback function, and checks if the data for that key is in Redis. If it is, it calls the callback function with the cached data, otherwise it calls a fetchDataFromDatabase function that fetches the data from the database, stores it in Redis with a time-based expiration using the set method, and passes it to the callback function.
+
+const redis = require(""redis"");
+const client = redis.createClient();
+
+// Define a caching function
+function getFromCache(key, callback) {
+  client.get(key, (err, data) => {
+    if (err) throw err;
+    if (data !== null) {
+      console.log(""Using cached data..."");
+      callback(JSON.parse(data));
+    } else {
+      console.log(""Fetching data from database..."");
+      fetchDataFromDatabase(key, callback);
+    }
+  });
+}
+
+// Define a function to fetch data from the database
+function fetchDataFromDatabase(key, callback) {
+  // Fetch data from the database and pass it to the callback
+  const data = { key: ""value"" };
+  console.log(""Storing data in cache..."");
+  client.set(key, JSON.stringify(data), ""EX"", 30);
+  callback(data);
+}
+
+// Use the caching function in your application
+getFromCache(""my_key"", (data) => {
+  console.log(""Data:"", data);
+});
+
+
+Finally, in your application code, you would call getFromCache with the appropriate key and a callback function that uses the retrieved data. This allows you to cache frequently accessed data and improve the performance of your Node.js application.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Redis,5 min,Application,Medium,Can you describe how you would use Redis to implement rate limiting for API requests?,"const redis = require(""redis"");
+const client = redis.createClient();
+
+const MAX_REQUESTS_PER_MINUTE = 100;
+const BURST_SIZE = 10;
+
+// Middleware function to enforce rate limiting
+function rateLimit(req, res, next) {
+  const ip = req.ip;
+
+  // Get the current number of requests for this IP from Redis
+  client.get(ip, (err, numRequests) => {
+    if (err) throw err;
+
+    numRequests = parseInt(numRequests) || 0;
+
+    if (numRequests < MAX_REQUESTS_PER_MINUTE) {
+      // If the number of requests is below the limit, increment the count and continue
+      client.multi()
+        .incr(ip)
+        .expire(ip, 60)
+        .exec((err) => {
+          if (err) throw err;
+          next();
+        });
+    } else {
+      // If the number of requests is above the limit, return a 429 ""Too Many Requests"" error
+      res.status(429).send({ error: ""Too Many Requests"" });
+    }
+  });
+}
+
+// Use the rate limiting middleware in your API routes
+app.get(""/api"", rateLimit, (req, res) => {
+  res.send(""Hello, world!"");
+});
+",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Knowing different Redis data structures.,3 min,Knowledge,Medium,What are the redis data structures ?,"Redis supports various data structures, including:
+
+1. Strings: A string data structure can store any text or binary data, such as user names, passwords, session IDs, and serialized objects.
+
+2. Hashes: A hash data structure stores field-value pairs, which are useful for storing objects, configurations, and settings.
+
+3. Lists: A list data structure stores a collection of ordered elements, which can be useful for implementing queues, stacks, and message brokers.
+
+4. Sets: A set data structure stores a collection of unique, unordered elements, which can be used for counting, membership testing, and data deduplication.
+
+5. Sorted Sets: A sorted set data structure stores a collection of unique, ordered elements with a score assigned to each element, which can be used for ranking, sorting, and leaderboards.
+
+6. Bitmaps: A bitmap data structure is a space-efficient way of storing a large number of bits, which can be used for tracking user activity, such as clicks, impressions, and views.
+
+7. HyperLogLogs: A HyperLogLog data structure is a probabilistic algorithm for counting distinct elements in a set with a low memory footprint.
+
+8. Geospatial Indexes: Redis provides support for indexing and querying geospatial data using longitude and latitude coordinates.
+
+9.Streams: A stream data structure is a new data type introduced in Redis 5.0, which can be used for message passing, event sourcing, and real-time analytics.
+
+10. Bloom Filters: A Bloom Filter data structure is a probabilistic data structure for checking if an element is a member of a set with a low memory footprint.
+
+
+
+
+",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Knowing different Redis data structures.,1 min,Knowledge,Low,"What is a Redis hash data structure, and how is it different from a Redis string?","The key difference between a Redis hash and a Redis string is that a hash allows you to store multiple fields and values, while a string can only store a single value. With a hash, you can access individual fields and values using their keys, and you can also perform operations on multiple fields and values at once, such as incrementing or decrementing a numeric value, or appending a string value. In contrast, with a string, you can only perform operations on the entire value at once, such as setting or getting the value, or appending or prepending to the value.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Knowing different Redis data structures.,3 min,Knowledge,Medium,"What is a Redis list data structure, and how can it be used to implement a message queue?","A Redis list data structure is a collection of ordered elements, where each element is a string. Lists are useful for implementing queues, stacks, and message brokers.
+
+A Redis list can be used to implement a message queue by using the following operations:
+
+1. ""LPUSH"": This command pushes a message onto the front of the queue. The syntax is ""LPUSH <queue_name> <message> "" .
+
+2. ""RPUSH"" : This command pushes a message onto the end of the queue. The syntax is ""RPUSH <queue_name> <message> "" .
+
+3. ""LPOP"" : This command removes and returns the first message from the queue. The syntax is ""LPOP <queue_name> "" .
+
+4. ""RPOP"" : This command removes and returns the last message from the queue. The syntax is ""RPOP <queue_name>"" .
+
+5. ""BLPOP"": This command blocks until a message is available on the queue, and then removes and returns the first message. The syntax is ""BLPOP <queue_name> <timeout> "" .
+
+6. BRPOP: This command blocks until a message is available on the queue, and then removes and returns the last message. The syntax is ""BRPOP <queue_name> <timeout>"".
+
+7. ""LLEN"" : This command returns the length of the queue, which is the number of messages in the queue. The syntax is ""LLEN <queue_name> "" .
+
+Using these commands, you can create a simple message queue with Redis. Messages are added to the queue using LPUSH or RPUSH, and removed from the queue using LPOP or RPOP. You can also block until a message is available using BLPOP or BRPOP.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,"3min time is fine
+difficulty=>medium",Yes
+Node,Node Intermediate,Knowing different Redis data structures.,5 min,Application,Medium,"Write  code using Redis hashes store user profile information (e.g. name, email, bio, etc.) in a web application?","const redis = require('redis');
+const client = redis.createClient();
+
+// Define a function to store a user profile as a hash in Redis
+function storeUserProfile(userId, profile) {
+  client.hmset(`user:${userId}`, profile, (err, res) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(`User profile stored for user ${userId}`);
+    }
+  });
+}
+
+// Define a function to retrieve a user profile from Redis
+function getUserProfile(userId) {
+  client.hgetall(`user:${userId}`, (err, profile) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(`User profile retrieved for user ${userId}:`, profile);
+    }
+  });
+}
+
+// Example usage: store a user profile for user with ID 123
+const userProfile = {
+  name: 'Alice',
+  email: 'alice@example.com',
+  bio: 'I love coding and hiking!',
+};
+storeUserProfile(123, userProfile);
+
+// Example usage: retrieve the user profile for user with ID 123
+getUserProfile(123);
+",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Using different Redis commands.,3 min,Knowledge,Medium,How are Redis lists different from Redis sets?,"Redis lists and Redis sets are two different data structures in Redis.
+
+- ""Redis lists"" are ordered collections of elements where each element is identified by its index or position in the list. Lists in Redis are similar to arrays in other programming languages and can store up to 4 billion elements. Redis lists support operations like adding, removing, and retrieving elements from either end of the list, as well as inserting and deleting elements at a specific index.
+
+-""Redis sets"", on the other hand, are unordered collections of unique elements. Unlike lists, sets do not store elements in a particular order, and duplicates are not allowed. Redis sets are optimized for membership testing, which makes them useful for tasks like keeping track of online users or checking if a particular item is present in a collection. Redis sets support operations like adding and removing elements, as well as set operations like union, intersection, and difference between multiple sets.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,3min time,Yes
+Node,Node Intermediate,Using different Redis commands.,3 min,Knowledge,Medium,What is the difference between Redis sets and sorted sets?,"Redis sets and sorted sets are both data structures in Redis that store a collection of unique elements. The main difference between the two is that sorted sets, as the name suggests, store elements in a sorted order, while sets do not.
+
+Here are some key differences between Redis sets and sorted sets:
+
+1.Redis sets are unordered collections of unique elements, while sorted sets are ordered collections of unique elements where each element is associated with a score.
+
+2.In Redis sets, the order in which elements are stored is not important, and there is no way to retrieve the elements in a particular order. In sorted sets, elements are stored in ascending order based on their score.
+
+3.Redis sets are useful for tasks like keeping track of online users or checking if a particular item is present in a collection. Sorted sets are useful for tasks like ranking users based on their scores, keeping track of stock prices, or implementing leaderboards.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Using different Redis commands.,1 min,Knowledge,Low,What is the purpose of the GET command in Redis?,"The GET command in Redis is used to retrieve the value of a key from the Redis database. It takes a single argument, which is the key for which the value is to be retrieved. If the key exists in the database, the command returns the value associated with the key, otherwise, it returns a null value. The GET command can be used on keys that are associated with any data type in Redis, including strings, hashes, lists, sets, and sorted sets.
+
+syntax - GET key",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Using different Redis commands.,1 min,Knowledge,Low,How is the SET command used in Redis ?,"The SET command in Redis is used to set a key-value pair in the database. The syntax of the SET command is as follows:
+
+syntax : SET key value [EX seconds] [PX milliseconds] [NX|XX]
+
+where:
+key: The name of the key to be set.
+
+value: The value to be stored at the key.
+
+EX seconds or PX milliseconds: Optional parameters to set the expiration time for the key. EX sets the expiration time in seconds, while PX sets it in milliseconds.
+
+NX|XX: Optional parameters to set the condition for setting the key-value pair. NX means that the key should only be set if it does not already exist, while XX means that the key should only be set if it already exists.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Using different Redis commands.,1 min,Knowledge,Low,What is the purpose of the INCR command in Redis?,"The INCR command in Redis is used to increment the value of a key by 1. If the key does not exist, it is initialized with a value of 0 before being incremented. The INCR command is often used for implementing counters and other numeric operations in Redis.
+
+For example, if we have a key ""counter"" with a value of 5, we can use the INCR command to increment it as follows:
+Ex. > SET counter 5
+OK
+> INCR counter
+(integer) 6
+> INCR counter
+(integer) 7",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Using different Redis commands.,3 min,Knowledge,Medium,What is the purpose of the ZADD and SADD command in Redis?,"Both ZADD and SADD are used for adding members to a data structure in Redis, but they differ in the way they store and organize data. ZADD is used for adding members to a sorted set, where each member has a score associated with it, while SADD is used for adding members to an unordered set.
+
+The ZADD command in Redis is used to add one or more members to a sorted set, along with their scores. The command allows adding new members to the sorted set or updating the scores of existing members.
+Example:
+
+ZADD myset 10 ""member1""
+ZADD myset 20 ""member2""
+
+The SADD command in Redis is used to add one or more members to a set. The command allows adding new members to the set or ignoring members that are already present in the set.
+
+Example:
+
+SADD myset ""member1""
+SADD myset ""member2""
+",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,3min time maximum time required ,Yes
+Node,Node Intermediate,Monitoring and Logging.,1 min,Knowledge,Low,Explain what is Monitoring ?,"Monitoring is the process of observing and measuring the behavior of a system in real-time to ensure that it is performing as expected. This can involve tracking system metrics such as CPU usage, memory usage, network traffic, response times, and error rates, among others. The goal of monitoring is to detect issues as early as possible, ideally before they cause significant problems, and to provide visibility into system performance for troubleshooting and optimization purposes.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,1 min,Knowledge,Low,Explain what is Logging ?,"Logging, involves the recording of events and activities that occur within a system, typically in the form of text-based files. Logs can contain a wide range of information, including system errors, warnings, user actions, and performance metrics. The purpose of logging is to capture a detailed record of what has happened within a system, which can be used for debugging, auditing, compliance, and analysis purposes.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,3 min,Knowledge,Low,"What is the difference between monitoring and logging, and why are they important for system management?","Monitoring and logging are two related but distinct processes in system management.
+
+Monitoring is the ongoing process of observing and measuring a system's performance in real-time. It involves tracking metrics such as CPU usage, memory usage, network traffic, response times, and error rates, among others, to detect issues as early as possible and provide visibility into system performance.
+
+Logging, on the other hand, involves recording events and activities that occur within a system, typically in the form of text-based files. Logs can contain a wide range of information, including system errors, warnings, user actions, and performance metrics. The purpose of logging is to capture a detailed record of what has happened within a system, which can be used for debugging, auditing, compliance, and analysis purposes.
+
+Both monitoring and logging are important for system management because they provide critical insights into system performance and behavior. Monitoring allows for proactive management and troubleshooting, while logging provides a detailed record of events that can be used to diagnose issues and identify trends over time. Together, they help ensure the reliability, availability, and performance of a system.",Yes,Yes,Yes,Yes,Tanya,Yes,difficulty should be low ,,Yes,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,3 min,Knowledge,Medium,"What are some key performance metrics that should be monitored when running a Node.js application, and why are they important?","There are several key performance metrics that should be monitored when running a Node.js application, including:
+
+1.CPU usage: This metric measures the percentage of CPU resources being utilized by the Node.js process. High CPU usage can indicate that the application is experiencing processing bottlenecks or that it is running on insufficient hardware.
+
+2.Memory usage: This metric measures the amount of memory being consumed by the Node.js process. High memory usage can indicate memory leaks or other issues that can cause the application to crash or become unresponsive.
+
+3.Event loop latency: This metric measures the time it takes for the event loop to process incoming requests. High event loop latency can indicate that the application is experiencing performance issues or that it is not able to handle incoming requests efficiently.
+
+4.Request/response times: This metric measures the time it takes for the application to respond to incoming requests. High response times can indicate that the application is experiencing performance issues or that it is not able to handle incoming requests efficiently.
+
+5.Error rate: This metric measures the number of errors or exceptions occurring in the Node.js application. High error rates can indicate bugs or other issues that can cause the application to crash or become unresponsive.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,3 min time is enough,Yes
+Node,Node Intermediate,Monitoring and Logging.,3 min,Knowledge,Medium,What are some best practices for logging in a Node.js application ?,"Here are some best practices for logging in a Node.js application:
+
+1.Use a logging library: There are several popular logging libraries for Node.js, such as Winston, Bunyan, and Pino. These libraries provide a simple API for logging messages and can be configured to output logs to various destinations, including the console, files, and third-party logging services.
+
+2.Use structured logging: Structured logging formats like JSON or key-value pairs are preferred over plain text messages because they make it easier to search and analyze log data. Structured logging also allows for better integration with logging services like Elasticsearch, Logstash, and Kibana.
+
+3.Use log levels: Log levels allow developers to filter log messages based on their severity. Common log levels include error, warn, info, debug, and trace. Use appropriate log levels to help identify issues and debug problems.
+
+4.Log relevant information: Include relevant information in the log messages, such as the request path, HTTP status code, user ID, and error stack trace. This information can help in debugging and troubleshooting issues.
+
+5.Avoid logging sensitive information: Avoid logging sensitive information like passwords, credit card numbers, or personally identifiable information (PII). If sensitive data needs to be logged, use encryption or obfuscation to protect it.
+
+6.Use log rotation: Log files can grow rapidly and take up a lot of disk space. Use log rotation to limit the size of log files and archive old logs.
+
+7.Monitor log data: Use log analysis tools to monitor and analyze log data in real-time. This can help detect and diagnose issues before they become critical problems.
+
+By following these best practices, developers can ensure that logging in their Node.js application is efficient, effective, and secure.",Yes,Yes,Yes,Yes,Tanya,Yes,difficulty should be medium,,Yes,Approved,3 min time is enough,Yes
+Node,Node Intermediate,Monitoring and Logging.,5 min,Knowledge,Medium,How can you use tools like PM2 or Forever to manage and monitor a Node.js application in production?,"Tools like PM2 or Forever can be used to manage and monitor a Node.js application in production in the following ways:
+
+Process management: Both PM2 and Forever can be used to manage Node.js processes, including starting, stopping, and restarting them as needed. This ensures that the application is always running and available for end-users.
+
+Auto-restart: These tools can detect if a Node.js process crashes and automatically restart it. This helps to minimize downtime and ensure that the application is always available.
+
+Load balancing: PM2 and Forever can also be used for load balancing. They can spawn multiple instances of the Node.js process and distribute incoming requests among them. This helps to ensure that the application can handle high traffic loads.
+
+Log management: Both tools can be used to manage and view application logs. They can also be configured to rotate logs, compress them, and archive them for future analysis.
+
+Monitoring: PM2 and Forever can be used to monitor the health and performance of a Node.js application, including CPU usage, memory usage, and event loop latency. This helps to detect performance issues and optimize the application for better performance.
+
+Scalability: PM2 and Forever can be used to scale a Node.js application horizontally, by spawning additional instances of the Node.js process. This helps to ensure that the application can handle increasing traffic loads as the user base grows.
+
+Overall, using tools like PM2 or Forever can simplify the management and monitoring of a Node.js application in production. They help to ensure that the application is always available, performant, and scalable, and that issues are detected and addressed in a timely manner.
+
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,difficulty should be medium,,Yes,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,5 min,Knowledge,High,What RCA is and how logs would help do RCA if any outage ?,"Yes, maintaining logs is crucial for performing root cause analysis (RCA) in case of any outages or incidents in a system. Here are some best practices for maintaining logs that can be used for RCA:
+
+Log everything: Ensure that all relevant events and activities in the system are logged, including errors, warnings, user actions, system events, and application events. This can provide a complete picture of what happened before, during, and after an incident.
+
+Use structured logging: Structured logging can make it easier to search, filter, and analyze logs. By adding structured data to logs, it's possible to perform complex queries and analyses to identify patterns and root causes.
+
+Store logs centrally: Storing logs in a centralized location can make it easier to access and analyze logs. It also ensures that logs are available even if the system or application is unavailable.
+
+Rotate logs regularly: To prevent logs from consuming too much disk space, logs should be rotated regularly. This involves moving old logs to an archive location and creating new logs.
+
+Use log aggregation tools: Log aggregation tools like Elasticsearch, Logstash, and Kibana (ELK stack) or Graylog can help to collect, analyze, and visualize logs. These tools can also be used for real-time alerting and monitoring.
+
+Define retention policies: Define retention policies that specify how long logs should be stored and when they can be deleted. This can help to ensure compliance with data retention regulations and prevent unnecessary storage costs.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,Yes
+Node,Node Intermediate,Monitoring and Logging.,3 min,Implementation,Low,How can you implement logging in node js ?,"You can implement logging in Node.js by using a logging library like Winston or Bunyan. Here's an example of how to use Winston to log errors to a file:
+
+const winston = require('winston');
+
+// Create a new logger instance
+const logger = winston.createLogger({
+  level: 'error',
+  transports: [
+    new winston.transports.File({ filename: 'error.log' })
+  ]
+});
+
+// Log an error
+try {
+  // Some code that may throw an error
+} catch (error) {
+  logger.error(`An error occurred: ${error}`);
+}
+
+In this example, we first import the ""winston"" module and create a new logger instance with a logging level of error. We then add a File transport to log ""errors"" to a file named error.log.
+
+To log an error, we can use a try...catch block and call the logger.error method with the error object as the argument. This will log the error message to the error.log file.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,5 min,Implementation,Medium,"How can you configure Winston to log to multiple transports, such as a file and a database?","You can configure Winston to log to multiple transports, such as a file and a database, by adding multiple transports to your logger instance. Here's an example:
+
+const winston = require('winston');
+const { createLogger, transports, format } = winston;
+
+// Define your file transport
+const fileTransport = new transports.File({
+  filename: 'combined.log',
+  level: 'info',
+  format: format.combine(
+    format.timestamp(),
+    format.json()
+  )
+});
+
+// Define your database transport
+const dbTransport = new transports.DailyRotateFile({
+  filename: 'application-%DATE%.log',
+  datePattern: 'YYYY-MM-DD',
+  zippedArchive: true,
+  maxSize: '20m',
+  maxFiles: '14d',
+  format: format.combine(
+    format.timestamp(),
+    format.json()
+  )
+});
+
+// Create a logger instance with multiple transports
+const logger = createLogger({
+  level: 'info',
+  transports: [fileTransport, dbTransport]
+});
+
+// Log a message to both transports
+logger.info('This message will be logged to both the file and the database.');
+
+
+In this example, we first import the necessary modules from the winston library, including the ""createLogger"", ""transports"", and ""format"" modules.
+
+We then define two transports: one for logging to a file ("" File""  transport) and one for logging to a database (""DailyRotateFile""  transport). We specify the desired log levels, file names, rotation settings, and formatting options for each transport.
+
+Finally, we create a logger instance with both transports by passing an array of transports to the transports option. We can then log a message to both transports using the logger's ""info"" method.
+
+By adding multiple transports to your logger instance, you can log to multiple destinations simultaneously, such as a file, a database, a console, or a remote logging service.
+
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,difficulty should be medium,,Yes,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,5 min,Implementation,Medium,"What is the purpose of adding metadata to a Winston log message, and how can you do this in your application?","Adding metadata to a Winston log message can be useful for providing additional context or details about the event being logged. Metadata can include any key-value pairs that provide more information about the log message, such as the user who initiated the event, the version of the application, or the request ID.
+
+Here's an example of how to add metadata to a Winston log message in your application:
+
+javascript
+Copy code
+const winston = require('winston');
+
+// Create a logger instance
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp'] }),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+// Log an event with metadata
+const metadata = { requestId: '123456', userId: 'user123' };
+logger.info('User successfully logged in', metadata);
+In this example, we first create a logger instance with a json format and two transports (console and file).
+
+To add metadata to our log messages, we use the metadata formatter from the winston.format module. This formatter adds any extra data passed as an object to the info method as metadata to the log message.
+
+We then log an event with some metadata, including the request ID and user ID. This metadata will be included in the log message as a separate object.
+
+By adding metadata to your log messages, you can make it easier to filter and search through logs for specific events or user activities, and provide more context for debugging or troubleshooting issues.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Monitoring and Logging.,5 min,Application,Medium,Write code to track user activity and behavior in a Node.js application using logging ?,"const express = require('express');
+const winston = require('winston');
+
+// Create a logger instance
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console(),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+// Create an Express app
+const app = express();
+
+// Define a route for handling user logins
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  // Authenticate the user
+  if (authenticateUser(username, password)) {
+    logger.info(`User ${username} logged in`);
+    res.send('Login successful');
+  } else {
+    logger.warn(`Failed login attempt for user ${username}`);
+    res.status(401).send('Invalid username or password');
+  }
+});
+
+// Define a route for handling user profile updates
+app.put('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  const { name, email } = req.body;
+
+  // Update the user profile
+  updateUserProfile(userId, { name, email });
+
+  logger.info(`User ${userId} updated their profile`);
+  res.send('Profile updated successfully');
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+",Yes,Yes,Yes,Yes,Tanya,Yes,"difficulty should be medium, check grammar context of the question is not clear, what type of implementation",,Yes,Approved,,
+Node,Node Intermediate,What is a Server,1 min,Knowledge,Low,What is server ?,"A server is a computer program or device that provides functionality or services to other programs or devices, referred to as clients, over a network. In other words, it is a program that listens for incoming requests from clients and responds to them by providing the requested service or data. Servers can provide a wide range of services such as file sharing, web hosting, email, database management, and more. They can be hardware devices or software programs running on a physical or virtual machine.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,What is a Server,3 min,Knowledge,Low,What is a web server and how does it work in web development?,"A web server is a software application that handles HTTP requests and responses over the internet or a local network. In web development, a web server is responsible for delivering web pages, files, and resources requested by clients (usually web browsers).
+
+When a client (such as a web browser) makes a request to the web server, the server receives the request and sends a response back to the client. The response can include web pages, images, videos, or any other content requested by the client. The web server may also execute server-side scripts (such as PHP or Node.js) to generate dynamic content before sending it to the client.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,"AWS, Azure, GCP, etc.",5 min,Implementation,Medium,Write down the required steps to deploy a web application on AWS?,"To deploy a web application on AWS, follow these general steps:
+
+Create an AWS account and sign in to the AWS Management Console
+.
+Choose the AWS service that best fits your application's needs (e.g., EC2, Elastic Beanstalk, Lambda, etc.).
+
+Launch an EC2 instance and configure the instance with the required specifications (e.g., operating system, network settings, storage, etc.).
+
+Install and configure any required software packages and dependencies.
+
+Deploy the application code and assets to the instance, either manually or using a deployment tool (e.g., AWS CodeDeploy).
+
+Set up an Elastic Load Balancer to distribute incoming traffic across multiple instances, if needed.
+
+Configure the necessary security groups and permissions to ensure the application is secure.
+
+Test the application to ensure it is running properly.
+
+Set up monitoring and logging tools to keep track of the application's performance and health.
+
+Optionally, set up auto-scaling and failover mechanisms to ensure the application remains available and responsive even during periods of high traffic or instance failures.
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,to make them implementation based change the language of the question,,Yes,Approved,,
+Node,Node Intermediate,cloud service providers,5 min,Knowledge,Medium,How do you create a new virtual machine instance in Amazon Web Services (AWS)?,"To create a new virtual machine instance in AWS, you can follow these steps:
+
+1.Log in to your AWS Management Console and select the EC2 service.
+2.Click on the ""Launch Instance"" button to start the instance creation wizard.
+3.Choose an Amazon Machine Image (AMI) for the instance, which contains the operating system and any other software required.
+4.Select an instance type, which determines the hardware resources (CPU, memory, storage, etc.) allocated to the instance.
+5.Configure the instance details, such as network settings, security groups, and storage volumes.
+6.Review and confirm the instance configuration, and then click on the ""Launch"" button to start the instance.
+7.Once the instance is running, you can connect to it using a remote desktop or SSH client, and install any additional software or configuration required.",Yes,Yes,Yes,Yes,Tanya,Yes,level is meduim,,Yes,Approved,If student is expected to explain not to implement than 5min time is enough,Yes
+Node,Node Intermediate,cloud service providers,1 min,Knowledge,Low,What are cloud service providers?,"Cloud service providers are companies that offer various cloud computing services to users and businesses, including computing power, storage, databases, analytics, and other tools and functionalities through the internet. Examples of cloud service providers include Amazon Web Services (AWS), Microsoft Azure, Google Cloud, IBM Cloud, and Oracle Cloud. These providers offer different pricing models, service level agreements (SLAs), and security features to their users, allowing them to choose the most suitable option for their needs.",Yes,Yes,Yes,Yes,Tanya,Yes,"1 minute question
+grammer mistake in question",,Yes,Approved,,
+Node,Node Intermediate,Infrastructure as a Service.,1 min,Knowledge,Medium,What is Infrastructure as a Service (IaaS) in the context of Amazon Web Services (AWS),"Infrastructure as a Service (IaaS) is a cloud computing model where a cloud provider offers virtualized computing resources over the internet. In the case of Amazon Web Services (AWS), IaaS refers to the suite of on-demand computing services that provide organizations with access to scalable computing resources such as virtual machines, storage, and network infrastructure.
+
+With AWS IaaS, users can quickly provision and access compute, storage, and networking resources in a self-service manner, without the need to invest in or manage physical infrastructure. This enables organizations to rapidly scale up or down their infrastructure to meet changing business needs and pay only for what they use.
+
+AWS provides a wide range of IaaS services, including Amazon Elastic Compute Cloud (EC2) for virtual servers, Amazon Simple Storage Service (S3) for scalable object storage, Amazon Virtual Private Cloud (VPC) for networking, and many others. These services can be used in isolation or together to build complex and highly available systems.
+",Yes,Yes,Yes,Yes,Tanya,Yes,level is meduim and check the solution,,Yes,Approved,,
+Node,Node Intermediate,Infrastructure as a Service.,3 min,Knowledge,Medium,What are the benefits of using Infrastructure as a Service in AWS? Explain in detail ?,"There are many benefits of using Infrastructure as a Service (IaaS) in AWS, including:
+
+1.Scalability: IaaS allows users to quickly scale up or down their infrastructure based on changing business needs. This enables organizations to avoid the costs and complexity of managing physical infrastructure and only pay for what they use.
+
+2.Flexibility: With IaaS in AWS, users have access to a wide range of virtualized computing resources such as servers, storage, and networking. This enables organizations to build complex and highly available systems to meet specific business needs.
+
+3.Cost Savings: IaaS can help reduce costs by eliminating the need to purchase and maintain physical infrastructure. Additionally, users only pay for the resources they use, which can help reduce overall IT expenses.
+
+4.High Availability: AWS provides highly available infrastructure that is designed to minimize downtime and ensure that systems are always up and running.
+
+5.Security: AWS offers robust security features, including network isolation, encryption, and identity and access management, to help users secure their infrastructure and data.
+
+6.Automation: AWS IaaS allows users to automate many tasks such as provisioning and scaling resources, enabling organizations to reduce manual effort and improve operational efficiency.
+
+7.Global Reach: AWS has a global network of data centers, allowing users to deploy resources in multiple regions to reduce latency and improve performance.
+
+Overall, using IaaS in AWS can help organizations reduce costs, increase agility, and improve reliability and security.
+
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,time can be 3 minutes,,Yes,Approved,,
+Node,Node Intermediate,Infrastructure as a Service.,3 min,Knowledge,Medium,What are some limitations or drawbacks to using Infrastructure as a Service in AWS?,"While Infrastructure as a Service (IaaS) in AWS has many benefits, there are also some limitations and drawbacks to consider. Here are some of the most common ones:
+
+1.Complexity: AWS is a complex platform with many services and features, which can make it difficult to navigate and manage. This complexity can also make it challenging to design and deploy infrastructure that meets the specific needs of an organization.
+
+2.Cost: While IaaS in AWS can be cost-effective, it can also be expensive if resources are not optimized or if there is a lack of cost control. Organizations need to be aware of the pricing model for each service and manage resources to avoid unnecessary costs.
+
+3.Security: While AWS has many security features and best practices, there is still a risk of security breaches if proper security measures are not taken. Organizations need to ensure that their systems and applications are secure and that data is properly encrypted and protected.
+
+4.Dependence on AWS: Organizations that use IaaS in AWS become dependent on the platform and its services. This dependence can create vendor lock-in, where it is difficult to migrate to another platform or provider.
+
+5.Availability: While AWS provides high availability and redundancy, there is still a risk of service disruptions or outages. Organizations need to have a disaster recovery plan in place to mitigate the impact of any disruptions.
+
+6.Technical Expertise: Using IaaS in AWS requires technical expertise and knowledge of AWS services and features. Organizations may need to hire specialized personnel or rely on third-party consultants to manage their infrastructure.",Yes,Yes,Yes,Yes,Tanya,Yes,"3 minute, medium level",,Yes,Approved,,
+Node,Node Intermediate,Introduction and usage of EC2,1 min,Knowledge,Low,What is EC2 in AWS ?,"EC2 (Elastic Compute Cloud) is a service provided by Amazon Web Services (AWS) that allows you to launch and manage virtual servers in the cloud. These virtual servers are called instances, and you can choose from different types and sizes depending on your needs. You can customize the instances with different operating systems, applications, and security settings. EC2 is a flexible and scalable solution that allows you to easily increase or decrease the amount of computing power you need without having to invest in physical infrastructure.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and usage of EC2,3 min,Knowledge,Low,What is the use of EC2?,"EC2 (Elastic Compute Cloud) is a core component of Amazon Web Services (AWS) that provides scalable computing capacity in the cloud. EC2 instances are virtual servers that can be launched on-demand and configured with various sizes and configurations to meet specific computing needs.
+
+The primary use of EC2 is to provide flexible and scalable computing resources for running applications, hosting websites, processing data, and performing various other tasks. EC2 instances can be easily launched, configured, and managed through a web-based console or API, making it simple to provision and manage computing resources as needed.
+
+EC2 also provides a wide range of features and capabilities, including support for multiple operating systems, integration with other AWS services, automatic scaling and load balancing, high availability and fault tolerance, and various security measures. These capabilities make EC2 a powerful tool for building and deploying applications in the cloud, and help businesses of all sizes reduce costs, increase efficiency, and improve agility.
+
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and usage of EC2,3 min,Knowledge,Medium,What are the benefits of using EC2 instances in AWS for hosting your applications? explain in detail each ?,"There are several benefits of using EC2 instances in AWS for hosting applications:
+
+1.Scalability: EC2 instances can be easily scaled up or down based on application demand. This allows businesses to quickly respond to changes in traffic and avoid the costs of maintaining idle resources.
+
+2.Flexibility: EC2 provides a wide range of instance types, each optimized for different use cases, such as compute-intensive workloads or memory-intensive applications. This allows businesses to choose the instance type that best fits their needs and optimize performance and cost.
+
+3.Reliability: EC2 offers a high degree of availability and fault tolerance through features such as auto scaling and the ability to deploy instances across multiple availability zones. This ensures that applications can continue running even in the event of hardware or network failures.
+
+4.Security: EC2 offers a variety of security features, including virtual private clouds, security groups, and network access control lists, to ensure that applications and data are protected.
+
+5.Cost-effectiveness: EC2 instances can be purchased on a pay-as-you-go basis, allowing businesses to avoid the costs of hardware and maintenance. In addition, AWS offers a range of pricing models, such as spot instances, reserved instances, and on-demand instances, to help optimize costs.
+
+6.Integration: EC2 integrates with a variety of AWS services, such as Elastic Load Balancing, Amazon RDS, and Amazon S3, to provide a complete infrastructure for hosting applications.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and usage of EC2,5 min,Implementation,Medium,"How do you launch an EC2 instance in AWS, and what are the key configuration options to consider? explain with help of sample code. ","To launch an EC2 instance in AWS, follow these steps:
+
+1.Log in to the AWS Management Console and navigate to the EC2 dashboard.
+2.Click the ""Launch Instance"" button.
+3.Select an Amazon Machine Image (AMI) for your instance, which determines the operating system and software pre-installed on the instance.
+4.Choose an instance type, which determines the computing resources available to your instance, such as CPU, memory, and network performance.
+5.Configure your instance details, such as the number of instances to launch, the VPC and subnet to launch them in, and any IAM roles to associate with the instances.
+6.Add storage volumes to your instance, such as an Amazon Elastic Block Store (EBS) volume for persistent storage.
+7.Configure any additional options, such as security groups, which control inbound and outbound traffic to the instance, and user data, which can be used to pass configuration information to the instance at launch.
+8.Review your instance configuration and launch the instance.
+
+
+Here is a sample Python code to launch an EC2 instance using the Boto3 SDK:
+
+import boto3
+
+# Create an EC2 client
+ec2 = boto3.client('ec2')
+
+# Specify the instance parameters
+instance_type = 't2.micro'
+image_id = 'ami-0c94855ba95c71c99'
+key_name = 'my-key-pair'
+security_group_ids = ['sg-1234567890abcdef0']
+
+# Launch the instance
+response = ec2.run_instances(
+    ImageId=image_id,
+    InstanceType=instance_type,
+    KeyName=key_name,
+    SecurityGroupIds=security_group_ids,
+    MinCount=1,
+    MaxCount=1
+)
+
+# Print the instance ID
+instance_id = response['Instances'][0]['InstanceId']
+print(f""Launched EC2 instance {instance_id}"")
+
+
+This code launches a single EC2 instance with the specified instance type, AMI, key pair, and security group. Additional configuration options can be added as needed.
+
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and usage of EC2,1 min,Knowledge,Low,Are EC2 and EC2 instances different in AWS?,"No, EC2 and EC2 instance are not different things, they are actually the same thing.
+
+EC2 stands for Elastic Compute Cloud, which is a web service offered by AWS that provides resizable compute capacity in the cloud. An EC2 instance is a virtual server in the cloud that can be launched and managed using the EC2 service. When you launch an EC2 instance, you are creating a virtual machine on which you can run your own applications. So, in short, EC2 and EC2 instance refer to the same thing - a virtual server that can be launched and managed using the EC2 service in AWS.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,"AWS, Azure, GCP, etc.",1 min,Knowledge,Low,What is S3 in context of AWS?,"In the context of AWS (Amazon Web Services), S3 stands for ""Simple Storage Service."" It is a scalable, highly available, and secure object storage service provided by AWS.
+
+S3 allows you to store and retrieve files or objects in the cloud from anywhere in the world, and provides a simple web-based interface or API to manage your data. S3 can store any type of data, such as images, videos, documents, and backups, and is designed to provide durability, availability, and scalability.
+
+S3 offers various features like versioning, cross-region replication, lifecycle policies, access control, and more, which make it a popular choice for hosting static websites, backing up data, and storing large amounts of unstructured data.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Knowledge,Low,What is bucket in S3 ?,"In Amazon S3, a bucket is a container for storing objects or files in the cloud. Buckets are the top-level containers in S3, and all objects are stored in a bucket. Each bucket is identified by a unique name that is globally unique across all AWS accounts.
+
+When you create a bucket, you need to choose a name that follows a specific naming convention, which includes the use of lowercase letters, numbers, periods, and hyphens. Bucket names must be unique across all existing bucket names in Amazon S3, and once a bucket is created, its name cannot be changed.
+
+You can use S3 buckets to store and retrieve a wide variety of data, including media files, backups, log files, and database backups. You can also use S3 buckets for hosting static websites or as a content delivery network (CDN).",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Knowledge,Low,What are the different features of S3? Explain in detail,"Amazon S3 (Simple Storage Service) provides a wide range of features that make it a powerful and flexible storage solution for data in the cloud. Here are some of the key features of S3:
+
+1.Object storage: S3 is designed for storing and retrieving objects or files, such as media files, backups, log files, and database backups.
+
+2.Scalability: S3 is highly scalable and can handle any amount of data, from a few gigabytes to terabytes or even petabytes of data.
+
+3.Availability: S3 provides high availability by replicating data across multiple availability zones within a region, ensuring that data is always available when needed.
+
+4.Security: S3 provides various security features, including encryption, access control, and bucket policies, to protect data stored in S3 from unauthorized access.
+
+5.Durability: S3 provides high durability by storing multiple copies of data across multiple availability zones within a region, reducing the risk of data loss due to hardware failures or other disasters.
+
+6.Lifecycle policies: S3 allows you to automate the management of your objects using lifecycle policies, which can be used to transition objects to lower-cost storage classes or delete them based on predefined rules.
+
+7.Versioning: S3 supports object versioning, which allows you to store multiple versions of an object and retrieve older versions if needed.
+
+8.Cross-region replication: S3 allows you to replicate data to different regions for disaster recovery or compliance purposes.
+
+9.Performance: S3 provides high performance for data access, with low latency and high throughput, making it suitable for use cases such as data analytics and machine learning.
+
+10.Integration with other AWS services: S3 integrates with other AWS services, such as EC2, Lambda, and Glacier, making it easy to use S3 as a data store for these services.
+
+
+
+
+",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,3 Min time is fine.,Yes
+Node,Node Intermediate,Introduction and use of S3.,1 min,Knowledge,Low,What are the requirements for naming bucket in S3?,"Choose a unique and meaningful name for your bucket. The name should follow the naming conventions, which are:
+Bucket names must be globally unique across all AWS accounts.
+Bucket names must be between 3 and 63 characters long.
+Bucket names can contain lowercase letters, numbers, periods, and hyphens.
+Bucket names cannot begin or end with a period or hyphen.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Knowledge,Low,How can you create an S3 bucket ?,"You can create an S3 bucket using the AWS Management Console, AWS CLI (Command Line Interface), or AWS SDKs (Software Development Kits). Here are the steps to create an S3 bucket using the Management Console:
+
+1.Open the AWS Management Console and navigate to the S3 service.
+
+2.Click on the ""Create bucket"" button.
+
+3.Choose a unique and meaningful name for your bucket. The name should follow the naming conventions, which are:
+Bucket names must be globally unique across all AWS accounts.
+Bucket names must be between 3 and 63 characters long.
+Bucket names can contain lowercase letters, numbers, periods, and hyphens.
+Bucket names cannot begin or end with a period or hyphen.
+
+4.Choose the region where you want to create the bucket.
+
+5.Choose the options for bucket properties, such as versioning, server access logging, and encryption.
+
+6.Set up the permissions for the bucket, including access control and bucket policy.
+
+7.Review the settings and click on the ""Create bucket"" button to create the bucket.
+
+Once you have created the bucket, you can start uploading objects to it using various methods, such as the Management Console, CLI, SDKs, or APIs.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,5 min,Knowledge,Medium,"What is an object in S3, and what are its key characteristics explain in detail.","In Amazon S3, an object is a fundamental storage unit that contains data and metadata. An object can be any type of file or data, such as text files, images, videos, or application data. Objects are stored in S3 buckets, and each object is identified by a unique key that consists of a prefix and a name.
+
+Here are the key characteristics of an object in S3:
+
+1.Object data: The data stored in an object can range from a few bytes to multiple terabytes.
+
+2.Object key: Each object is identified by a unique key, which consists of a prefix and a name. The key can be used to retrieve the object from the S3 bucket.
+
+3.Metadata: Objects can have metadata associated with them, which can include information such as the object's content type, creation date, and last modified date.
+
+4.Versioning: S3 supports versioning of objects, which allows you to store multiple versions of an object and retrieve older versions if needed.
+
+5.Access control: Objects can have access control policies applied to them, which determine who can access the object and what actions they can perform on the object.
+
+6.Lifecycle policies: Objects can be managed using lifecycle policies, which can be used to transition objects to lower-cost storage classes or delete them based on predefined rules.
+
+7.Encryption: Objects can be encrypted using server-side encryption or client-side encryption, providing an additional layer of security for the data stored in S3.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Knowledge,Medium,Explain how to store file in S3 ? ,"You can store files in Amazon S3 using the following steps:
+
+1. Create an S3 bucket: First, create an S3 bucket in the AWS Management Console, using the S3 service. You will need to choose a unique name for your bucket and select the appropriate region where you want your data to be stored.
+
+2. Upload files: Once you have created your S3 bucket, you can upload files to it. You can upload files to S3 using the AWS Management Console, AWS CLI, AWS SDKs, or third-party tools. For example, you can use the AWS Management Console to upload files by selecting the bucket and using the ""Upload"" button.
+
+3.Set permissions: After uploading files to your S3 bucket, you can set permissions for the files. You can choose to make files public, restrict access to specific users, or grant access to authenticated AWS users.
+
+4.Access files: Once your files are stored in S3, you can access them using the appropriate URL or API calls. You can also use S3 features like object versioning, lifecycle policies, and cross-region replication to manage and protect your data.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Knowledge,Medium,What is a bucket policy in S3 explain in detail ?,"
+A bucket policy is a JSON-based document that allows you to define permissions for an S3 bucket or a specific set of objects within a bucket. Bucket policies provide a way to configure fine-grained access controls that can limit access to your S3 resources based on a wide range of criteria, such as IP address, user agent, or time of day.
+
+Bucket policies are attached to S3 buckets and can be created, modified, or deleted using the AWS Management Console, AWS CLI, or AWS SDKs. A bucket policy consists of a set of statements, where each statement defines a specific permission or restriction.
+
+A bucket policy statement includes the following elements:
+
+Sid: A statement identifier that makes it easy to reference a specific statement within a policy.
+
+Effect: Specifies whether the statement allows or denies access.
+
+Principal: Identifies the AWS account or IAM user or role to which the policy applies.
+
+Action: Specifies the set of actions that are allowed or denied by the statement.
+
+Resource: Identifies the S3 bucket or object to which the policy applies.
+
+Condition: Optional condition(s) that further restrict the access granted by the statement.
+
+Bucket policies are a powerful tool for controlling access to S3 resources, but they require careful design and testing to avoid unintended consequences. Before creating a bucket policy, it is important to understand the potential impact on your application and the security implications of each statement.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Implementation,Medium,How do you configure a bucket policy to allow public access to certain objects in an S3 bucket? Show it's implementation,"To configure a bucket policy to allow public access to certain objects in an S3 bucket, you can follow these steps:
+
+1.Open the AWS Management Console and navigate to the S3 service.
+
+2.Select the bucket for which you want to configure public access.
+
+3.Click on the ""Permissions"" tab, and then select ""Bucket Policy"".
+
+In the bucket policy editor, paste the following policy, replacing <bucket-name> and <key-prefix> with the name of your bucket and the prefix of the objects you want to make public:
+
+{
+  ""Version"": ""2012-10-17"",
+  ""Statement"": [
+    {
+      ""Sid"": ""PublicReadGetObject"",
+      ""Effect"": ""Allow"",
+      ""Principal"": ""*"",
+      ""Action"": ""s3:GetObject"",
+      ""Resource"": ""arn:aws:s3:::<bucket-name>/<key-prefix>*""
+    }
+  ]
+}
+
+5. Click on ""Save"" to save the policy.
+
+This policy allows anyone to read objects with the specified key prefix in the specified S3 bucket. You can customize the policy to allow or restrict access based on specific IP addresses, users, or groups by modifying the ""Principal"" and ""Condition"" elements of the policy statement.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,3 min,Implementation,Medium,How do you set up static website hosting on an S3 bucket? Show it's implementation,"You can set up a static website hosting on an S3 bucket by following these steps:
+
+1.Create an S3 bucket - If you don't already have an S3 bucket, create a new one and give it a name that is the same as the domain or subdomain you want to use for your website.
+
+2.Upload your website files to the S3 bucket - Upload your website files to the S3 bucket using the AWS Management Console or the AWS CLI. Ensure that the files have public read permissions so that they can be accessed by website visitors.
+
+3.Enable static website hosting - In the S3 Management Console, go to the ""Properties"" tab of the bucket and click on ""Static website hosting"". Then, select ""Use this bucket to host a website"" and specify the name of your index and error documents (usually ""index.html"" and ""error.html"" respectively).
+
+4.Set permissions - Make sure that your bucket policy allows public access to your website files by adding the following policy to the bucket policy editor:
+
+{
+  ""Version"":""2012-10-17"",
+  ""Statement"":[{
+     ""Sid"":""PublicReadGetObject"",
+     ""Effect"":""Allow"",
+     ""Principal"": ""*"",
+     ""Action"":[""s3:GetObject""],
+     ""Resource"":[""arn:aws:s3:::example-bucket/*""]
+   }]
+}
+
+5.Configure DNS settings - Finally, update your DNS settings to point your domain or subdomain to the endpoint URL of your S3 bucket. You can find the endpoint URL under the ""Static website hosting"" section in the S3 Management Console.
+
+
+Once you have completed these steps, your static website should be accessible at the domain or subdomain you have configured",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Introduction and use of S3.,5 min,Knowledge,Medium,How do you configure lifecycle policies to automatically delete objects in an S3 bucket after a certain period of time? ," You can configure lifecycle policies in an S3 bucket to automatically delete objects after a certain period of time by following these steps:
+
+1.Open the AWS Management Console and navigate to the S3 service.
+
+2.Select the bucket for which you want to configure lifecycle policies.
+
+3.Click on the ""Management"" tab, and then select ""Lifecycle"".
+4.Click on the ""Add lifecycle rule"" button.
+
+5.Specify a name for your lifecycle rule.
+
+6.Choose the objects you want to target by selecting a prefix or tag filter. You can also apply the rule to all objects in the bucket.
+
+7.Choose the action you want to take on the selected objects. In this case, select ""Permanently delete objects"".
+
+8.Specify the number of days after which the objects should be deleted. For example, you can specify ""30"" days to delete objects that are older than 30 days.
+
+9.Click on ""Review"" to review your configuration, and then click on ""Create rule"" to create the lifecycle policy.
+
+Once you have created the lifecycle policy, it will automatically delete objects that match the filter criteria and are older than the specified number of days.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Rejected,,
+Node,Node Intermediate,CI/CD,1 min,Knowledge,Low,Explain what CI/CD is ?,"CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that are used by software development teams to automate the process of building, testing, and deploying software changes.
+
+Continuous Integration refers to the process of automatically building and testing code changes whenever they are made. This ensures that new code is integrated with the existing codebase without causing any errors or conflicts. Continuous Deployment refers to the process of automatically deploying code changes to production servers after they have been tested and approved.
+
+GitHub Actions is a CI/CD tool that is integrated into the GitHub platform. It allows developers to automate their software development workflows by defining custom actions that can be triggered by events, such as code changes, pull requests, or issues.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,Can be defined in 1min,Yes
+Node,Node Intermediate,CI/CD,3 min,Knowledge,Low,What is the difference between Continuous Integration and Continuous Deployment?,"Here's a comparative answer to highlight the key differences between Continuous Integration (CI) and Continuous Deployment (CD):
+
+Continuous Integration vs. Continuous Deployment:
+
+1.Purpose:
+
+-CI: The purpose of Continuous Integration is to regularly build, test, and integrate code changes into a shared repository to detect defects and integration issues early in the development cycle.
+-CD: The purpose of Continuous Deployment is to automatically deploy code changes to production environments once they have passed all tests and met any necessary criteria to speed up the release of software changes and ensure that the software is always in a releasable state.
+
+
+Workflow:
+
+-CI: In a CI workflow, code changes are automatically built and tested as soon as they are pushed to the shared repository. This helps ensure that code changes are compatible with the existing codebase and meet the quality standards of the development team.
+-CD: In a CD workflow, code changes that pass through the CI process are automatically deployed to a staging or production environment, often without the need for manual approval. This helps speed up the release of software changes and ensure that the software is always in a releasable state.
+
+
+Focus:
+
+-CI: The focus of CI is on building and testing code changes to detect defects and integration issues early in the development cycle.
+-CD: The focus of CD is on deploying code changes to production as quickly and efficiently as possible, while maintaining high quality and reliability.
+
+Automation:
+
+-CI: CI workflows typically involve a high level of automation, including automated builds, tests, and feedback, to ensure that code changes are thoroughly tested and validated before they are released.
+-CD: CD workflows involve even more automation than CI, including automated deployments to production environments, to speed up the release of software changes and reduce the risk of human error.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,CI/CD,3 min,Knowledge,Low,How does CI/CD help to improve code quality?,"Continuous Integration and Continuous Deployment (CI/CD) can help improve code quality in several ways:
+
+1.Early Detection of Defects: CI/CD processes involve continuously building, testing, and integrating code changes, which allows defects and integration issues to be detected early in the development cycle. This helps ensure that issues are addressed before they become more costly and time-consuming to fix, and reduces the likelihood of bugs making it into production.
+
+2.Faster Feedback Loops: CI/CD workflows provide developers with rapid feedback on the quality of their code changes. This helps developers quickly identify and fix defects, leading to higher quality code and a more efficient development process.
+
+3.Increased Test Coverage: CI/CD workflows typically involve running automated tests as part of the build and deployment process. This can help increase the overall test coverage of an application, ensuring that all critical functionality is thoroughly tested.
+
+4.Consistent Builds: CI/CD workflows ensure that all builds are consistent and reproducible. This helps reduce the risk of issues arising due to environment differences, and ensures that everyone on the development team is working with the same codebase and build artifacts.
+
+5.Improved Collaboration: CI/CD workflows promote collaboration between developers, testers, and operations teams, which helps ensure that everyone is working towards the same goals and that issues are identified and addressed early in the development process.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,CI/CD,3 min,Knowledge,Medium,What tools are commonly used in a CI/CD pipeline?,"Several tools are commonly used in a CI/CD pipeline to automate and streamline the software development process. Here are some of the most commonly used tools:
+
+1.Source Control Management (SCM) Systems: SCM systems like Git or SVN are used to manage and version control code changes.
+
+2.Build Tools: Build tools like Maven, Gradle, or Ant are used to compile code, run tests, and create deployable artifacts.
+
+3.Continuous Integration (CI) Tools: CI tools like Jenkins, Travis CI, or CircleCI are used to automate the build and testing process and to provide feedback to developers.
+
+4.Configuration Management Tools: Configuration management tools like Ansible, Puppet, or Chef are used to manage server configurations and automate infrastructure deployment.
+
+5.Containerization Tools: Containerization tools like Docker or Kubernetes are used to package and deploy applications in lightweight, portable containers.
+
+6.Testing Tools: Testing tools like JUnit, Selenium, or Cucumber are used to automate testing processes and ensure that software meets quality standards.
+
+7.Deployment Tools: Deployment tools like AWS CodeDeploy, Capistrano, or Octopus Deploy are used to automate the deployment of applications to production environments.
+
+8.Monitoring Tools: Monitoring tools like Nagios, New Relic, or Datadog are used to monitor the performance and health of applications and infrastructure.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,3 min time is good,Yes
+Node,Node Intermediate,CI/CD,3 min,Knowledge,Medium,What is the role of automated testing in a CI/CD pipeline?,"Automated testing plays a critical role in a CI/CD pipeline as it helps to ensure that code changes are of high quality and can be deployed to production without introducing any new bugs or issues.
+
+Here are some of the specific roles of automated testing in a CI/CD pipeline:
+
+1.Detecting Defects Early: Automated tests are run as part of the build process, which allows defects and integration issues to be detected early in the development cycle. This helps ensure that issues are addressed before they become more costly and time-consuming to fix, and reduces the likelihood of bugs making it into production.
+
+2.Reducing Manual Effort: Automated testing eliminates the need for manual testing, which can be time-consuming, error-prone, and expensive. Automated tests can be run repeatedly, quickly, and reliably, which reduces the need for manual effort and increases efficiency.
+
+3.Increasing Test Coverage: Automated testing can be used to test a wide range of scenarios and use cases, which helps increase the overall test coverage of an application. This ensures that all critical functionality is thoroughly tested and helps reduce the risk of defects making it into production.
+
+4.Providing Rapid Feedback: Automated testing provides rapid feedback on the quality of code changes. This allows developers to quickly identify and fix defects, leading to higher quality code and a more efficient development process.
+
+5.Ensuring Consistency: Automated tests ensure that all builds are consistent and reproducible. This helps reduce the risk of issues arising due to environment differences, and ensures that everyone on the development team is working with the same codebase and build artifacts.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,CI/CD,3 min,Knowledge,Medium,How do you measure the effectiveness of your CI/CD pipeline?,"Measuring the effectiveness of a CI/CD pipeline is essential to ensure that it is meeting the goals and objectives of the organization. Here are some ways to measure the effectiveness of a CI/CD pipeline:
+
+1.Build Success Rate: The build success rate is the percentage of builds that are successful. A high build success rate indicates that the pipeline is functioning well and that the code changes are of high quality.
+
+2.Build Time: The build time is the amount of time it takes to complete a build. A shorter build time indicates that the pipeline is efficient and that the development team can iterate quickly.
+
+3.Lead Time: The lead time is the time it takes for a code change to be deployed to production. A shorter lead time indicates that the pipeline is effective and that the development team can respond quickly to business needs.
+
+4.Deployment Frequency: The deployment frequency is the number of deployments per unit of time. A higher deployment frequency indicates that the pipeline is efficient and that the development team can deliver features quickly.
+
+5.Mean Time to Recovery (MTTR): The MTTR is the average time it takes to recover from a failure. A shorter MTTR indicates that the pipeline is resilient and that the development team can respond quickly to failures.
+
+6.Test Coverage: Test coverage is the percentage of code that is covered by automated tests. A higher test coverage indicates that the pipeline is thorough and that the development team is testing critical functionality.
+
+7.Customer Satisfaction: Customer satisfaction measures how satisfied customers are with the product. A higher customer satisfaction score indicates that the pipeline is delivering high-quality code changes that meet the needs of customers.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,3 min time is good,Yes
+Node,Node Intermediate,CI/CD,3 min,Knowledge,Low,How do you configure CI/CD pipelines to automatically build and deploy code changes to a staging environment?,"To configure CI/CD pipelines to automatically build and deploy code changes to a staging environment, you can follow these steps:
+
+1.Choose a suitable CI/CD tool or platform such as Jenkins, Travis CI, or CircleCI.
+
+2.Set up a version control system (VCS) such as Git or SVN to manage your codebase and ensure version control.
+
+3.Configure a build script or pipeline that automates the build process of your application code, including compiling, testing, and packaging.
+
+4.Integrate your build script or pipeline with your VCS so that it automatically triggers a build whenever a new code change is committed to the repository.
+
+5.Configure a deployment pipeline that automates the deployment process of your application code to the staging environment, including server provisioning, environment configuration, and deployment.
+
+6.Integrate your deployment pipeline with your build pipeline so that it automatically deploys the new build to the staging environment after a successful build.
+
+7.Set up automated testing and validation processes in the deployment pipeline to ensure that the application is functioning as expected in the staging environment.
+
+8.Configure notifications and alerts to keep the development team informed about the progress of the build and deployment processes.
+
+9.Continuously monitor and improve your CI/CD pipeline to optimize performance, minimize downtime, and improve overall efficiency.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,3 min time is good,Yes
+Node,Node Intermediate,CI/CD,5 min,Knowledge,Low,How do you integrate automated testing into your CI/CD pipeline to ensure code quality and prevent regressions?,"Integrating automated testing into your CI/CD pipeline is essential to ensure code quality and prevent regressions. Here are some steps to follow to achieve this:
+
+1.Choose a suitable testing framework and toolset that can be integrated into your CI/CD pipeline. Some popular options include JUnit, Selenium, and Cucumber.
+
+2.Create a suite of automated tests that cover all critical functionality and user scenarios. These tests should be designed to simulate real-world usage of your application and ensure that it is functioning as expected.
+
+3.Integrate your automated tests with your CI/CD pipeline so that they are executed automatically every time a new build is created.
+
+4.Set up a test reporting and analysis system to monitor the results of your automated tests. This should include metrics such as test pass/fail rates, code coverage, and performance benchmarks.
+
+5.Configure your pipeline to halt the deployment process if any of the automated tests fail. This will prevent regressions and ensure that only code that passes all tests is deployed to production.
+
+6.Implement a continuous testing strategy that enables you to test your application at every stage of the development process. This will help you catch defects early and reduce the risk of introducing regressions.
+
+7.Continuously monitor and improve your automated tests to ensure that they are providing accurate and reliable results. This may involve updating tests as the application changes or modifying the testing framework to better suit your needs.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,3 min,Knowledge,Low,What are GitHub Actions? Explain.,"GitHub Actions is a tool that allows developers to automate repetitive tasks and workflows directly from their GitHub repositories. With GitHub Actions, developers can create custom workflows that run automated tests, build and deploy their code, and perform other tasks in response to specific events, such as a push to a branch or the creation of a pull request.
+
+These workflows are defined in YAML files and can include a wide range of actions, which are pre-built or custom scripts that perform specific tasks. For example, an action might build a Docker image, deploy an application to a cloud service, or send a notification to a messaging platform like Slack.
+
+GitHub Actions is integrated with GitHub, which means that developers can see the status of their workflows directly in their pull requests, issues, and commit history. They can also trigger workflows manually from the GitHub UI, and monitor their progress and output logs in real-time.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,3 min,Knowledge,Low,Why are we using github action ?,"We use GitHub Actions for several reasons, including:
+
+1.Automating repetitive tasks: GitHub Actions allows us to automate repetitive tasks such as building, testing, and deploying our code, freeing up time and resources for more valuable work.
+
+2.Streamlining development workflows: With GitHub Actions, we can create custom workflows that automate our development workflows, allowing us to move faster and more efficiently.
+
+3.Improving code quality: By automating testing and code reviews, we can catch errors and issues earlier in the development process, leading to higher-quality code.
+
+4.Integrating with other tools: GitHub Actions integrates with a wide range of other tools and services, such as Docker, AWS, and Azure, allowing us to build and deploy our code in the environment of our choice.
+
+5.Saving time and resources: By automating tasks and workflows, we can save time and resources, reduce the risk of human error, and improve the overall efficiency of our development process.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,1 min,Knowledge,Medium,What is the difference between a GitHub Action and a GitHub Workflow?,"GitHub Actions and GitHub Workflows are related concepts, but they have different meanings:
+
+-GitHub Actions is the name of the overall platform and service that allows developers to define and run workflows that automate tasks in response to events in their GitHub repositories.
+
+-GitHub Workflows, on the other hand, are the actual sequences of steps and actions that run in response to a specific event. A workflow is defined in a YAML file, and it contains a series of jobs, which in turn contain a series of steps.
+
+So, to summarize: GitHub Actions is the overall platform, while GitHub Workflows are the specific YAML files that define the actual sequences of steps and actions that run when triggered by an event",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,3 min,Knowledge,Medium,"How do you store sensitive data, such as API keys or access tokens, securely in GitHub Actions?","Storing sensitive data, such as API keys or access tokens, securely in GitHub Actions is important to prevent unauthorized access or misuse of the data. Here are some best practices for storing sensitive data in GitHub Actions:
+
+1.Use GitHub's built-in Secrets feature to store sensitive data. Secrets are encrypted environment variables that can be used in your GitHub Actions workflows. To use a secret in your workflow, you'll need to reference it using the ${{ secrets.SECRET_NAME }} syntax.
+
+2.Use a third-party key management service, such as HashiCorp Vault or AWS Secrets Manager, to store sensitive data. You can then use a GitHub Action to retrieve the secrets from the key management service and use them in your workflow.
+
+3.Avoid hard-coding sensitive data in your workflow YAML files or in your action code. Instead, use environment variables or secrets to reference the data.
+
+4.Be careful when sharing or collaborating on GitHub Actions workflows that use sensitive data. Make sure to review the workflow code and remove any sensitive data before sharing it with others.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,5 min,Implementation,Low,"How do you create a custom GitHub Action?
+Write the steps required.","To create a custom GitHub Action, you'll need to follow these steps:
+
+1/Create a new repository on GitHub that will contain your custom action code.
+
+2.Create a new directory within your repository that will contain the action code.
+
+ 3.This directory should have a name that reflects the purpose of the action.
+
+4.Create a new YAML file within the directory that will define the inputs and outputs of the action, as well as the steps that the action will perform.
+
+5.Write the code for the action steps. Depending on the complexity of the action, you may need to use a specific programming language or framework.
+Commit and push your changes to the repository.
+
+Once you've created your custom action, you can use it in your workflows by referencing its repository and directory name in your workflow YAML file. You can also share your custom action with others by publishing it to the GitHub Marketplace, which allows other users to easily discover and use your action in their own workflows.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,3 min,Knowledge,Medium,How do you use secrets in GitHub Actions?,"GitHub Actions allows you to use secrets to securely store sensitive information, such as access tokens, passwords, and API keys. These secrets are encrypted and only made available to your workflows, making them a safe way to store sensitive data.
+
+To use secrets in GitHub Actions, you need to first define them in the repository settings. You can do this by going to the repository settings, selecting ""Secrets"", and then adding a new secret. You can name the secret and provide the value, which will be encrypted and stored securely.
+
+Once you have defined the secrets, you can use them in your workflows by referencing them with the ${{ secrets.SECRET_NAME }} syntax. For example, if you have a secret named ""API_TOKEN"", you can reference it in your workflow file like this:
+
+steps:
+  - name: Call API
+    run: curl -H ""Authorization: Bearer ${{ secrets.API_TOKEN }}"" https://api.example.com/
+
+
+When you run the workflow, the value of the ""API_TOKEN"" secret will be substituted into the command, allowing the API call to be made securely.
+
+It's important to note that secrets are only available to the workflow jobs that are run on the repository where the secrets are defined. If you want to use the same secrets in multiple repositories, you will need to define them in each repository separately.
+
+In addition, you should always take care to ensure that secrets are not accidentally exposed in your workflow files or logs. You can use environment variables or other methods to avoid exposing secrets in plain text.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,5 min,Implementation,Medium,"How can you trigger a GitHub Action when a pull request is created or updated?
+Also show an example workflow file that uses the pull_request event","You can trigger a GitHub Action when a pull request is created or updated by using the pull_request event in your workflow. The pull_request event is triggered whenever a pull request is opened, updated, or synchronized.
+
+To use the pull_request event, you need to create a workflow file in your repository's .github/workflows directory, and specify the pull_request event as the trigger for the workflow. Here is an example workflow file that uses the pull_request event:
+
+name: My Pull Request Workflow
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and test
+        run: |
+          # Build and test your code here
+In this example, the workflow is triggered whenever a pull request is opened or edited. The workflow runs a job called ""build"", which checks out the code, builds and tests it.
+
+You can customize the workflow to perform any actions that you need when a pull request is created or updated. For example, you can use the pull_request event to automatically run tests, deploy changes to a staging environment, or assign reviewers to the pull request.
+
+By using the pull_request event in your workflows, you can automate your development processes and ensure that changes are tested and reviewed before they are merged into the main branch.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,GA workflow,1 min,Knowledge,Low,"What is a GitHub Action workflow, and how does it work?","A GitHub Action workflow is a set of automated tasks that can be triggered by events on the GitHub platform, such as the creation of a pull request or the pushing of code to a repository. Workflows are defined using YAML syntax, and can include one or more jobs, each consisting of one or more steps.
+
+When a trigger event occurs, GitHub will automatically execute the workflow, which involves running the jobs in the order specified. Each job runs on a separate virtual environment, which can be configured with specific operating systems, software versions, and other parameters.
+
+Within a job, each step represents a discrete action that can be performed, such as running a command, invoking an external API, or uploading a file. Steps can also have dependencies on previous steps, and can pass data between each other using environment variables or outputs.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Github Actions,3 min,Knowledge,Low,What are the different triggers that can be used to start a GitHub Action workflow?,"There are several different triggers that can be used to start a GitHub Action workflow, including:
+
+1.Push: when code is pushed to a repository
+2.Pull request: when a pull request is opened, closed, or updated
+3.Scheduled: at a specific time or on a recurring schedule
+4.Manual: when a user manually triggers the workflow
+5.Webhooks: when an external event occurs, such as a deployment or a new issue being opened
+6.External repository dispatches: when an event occurs in an external repository that is configured to dispatch events to the current repository.
+
+These triggers can be combined in various ways to create workflows that respond to different events and perform different actions, depending on the needs of the project.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,

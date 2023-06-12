@@ -1,0 +1,1819 @@
+Stack,Parent tags,Child tags,Time tag,Type tag,Difficulty Level,Question Description,Solution,Testing - Is the question correct in terms of spelling and grammar? ,Testing - Unambiguous Statement?,Testing - Is solution provided is correct?,"Is the question tagging (topic, time, difficulty level) correct? ",Sign-off Given by? ,Approved by Internal tester,"Comments, if any (By Tester) ",Migrated onto Levelup?,Updated after review,Reviewed by Instructor/PI?,Reason for rejection,Updated after review
+Node,Node Intermediate,Mongo Advance  Queries,1 min,Implementation,Medium,How do you perform a wildcard search in MongoDB? HINT: Use $regex operator,"To perform a wildcard search in MongoDB, you can use regular expressions with the $regex operator. Here's an example query:
+
+db.collection.find({ field: { $regex: /pattern/ } })
+
+In this query, field is the name of the field you want to search, and pattern is the regular expression pattern you want to match. The $regex operator matches any string that contains the specified pattern.
+
+For example, to find all documents in a collection where the name field contains the string ""John"", you can use the following query:
+
+db.users.find({ name: { $regex: /John/ } })
+
+This will return all documents where the name field contains the string ""John"", such as ""John Smith"", ""John Doe"", etc.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,Mongo Aggregations,1 min,Implementation,Low,How do you use the $match operator in a MongoDB aggregation pipeline to find all documents in a collection where the age field is greater than or equal to 18?,"The $match operator is used in the MongoDB aggregation pipeline to filter and select documents based on specified conditions. Here's the basic syntax for using $match:
+
+db.collection.aggregate([
+  { $match: { <query> } }
+])
+For example, to find all documents in a collection where the age field is greater than or equal to 18, you can use the following aggregation pipeline:
+
+
+db.users.aggregate([
+  { $match: { age: { $gte: 18 } } }
+])
+
+This will return all documents where the age field is greater than or equal to 18.
+
+
+",Yes,Yes,Yes,Yes,Mahesh,Yes,its difficulty level should be low and it will take mostly 1 min ,,Yes,Rejected,It's child tag should be mongodb Aggregation,Yes
+Node,Node Intermediate,Mongo Aggregations,1 min,Implementation,Low,"How do you use the $match operator in a MongoDB aggregation pipeline to first filter the documents where age is greater than or equal to 18, and then apply a second filter to select only documents where the name field contains the string ""John"".","You can use multiple $match operators in an aggregation pipeline to apply multiple filters. In this case, MongoDB applies the filters in the order they appear in the pipeline. For example:
+
+db.users.aggregate([
+  { $match: { age: { $gte: 18 } } },
+  { $match: { name: { $regex: /John/ } } }
+])",Yes,Yes,Yes,Yes,,Yes,,,,,,
+Node,Node Intermediate,Mongo Advance  Queries,1 min,Implementation,Low,How do you sort the results of a MongoDB query in descending order?,"db.users.find().sort({ age: -1 })
+db.users.find().sort({ age: -1, name: 1 })
+",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question because students would be know we can use this operator for this query but i dont think all of them know the syntax for that operator,,Yes,Approved,,
+Node,Node Intermediate,Mongo Advance  Queries,1 min,Implementation,Low,How do you limit the number of results returned in a MongoDB query?,"db.users.find().limit(10)
+db.users.find({ age: { $gte: 18 } }).sort({ age: -1 }).limit(10)
+",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question because students would be know we can use this operator for this query but i dont think all of them know the syntax for that operator,,Yes,Approved,,
+Node,Node Intermediate,Mongo Advance  Queries,1 min,Implementation,Low,How do you use the $in operator in a MongoDB query?,"The $in operator in MongoDB is used to find documents where the value of a field matches any value in a specified array. Here's the basic syntax for using $in:
+
+db.collection.find({ field: { $in: [value1, value2, ...] } })
+",Yes,Yes,Yes,Yes,Mahesh,Yes,its difficulty level should be low and it will take mostly 1 min and its implementation question,,Yes,Approved,,
+Node,Node Intermediate,Mongo Advance  Queries,1 min,Implementation,Medium,"How do you use the $regex operator in a MongoDB query to return all documents in the users collection where the name field starts with ""J"".","The $regex operator in MongoDB is used to find documents where the value of a field matches a specified regular expression pattern. Here's the basic syntax for using $regex:
+
+db.collection.find({ field: { $regex: /pattern/ } })
+
+For example, to find all documents in a collection named users where the name field starts with ""J"", you can use the following query:
+
+db.users.find({ name: { $regex: /^J/ } })
+This will return all documents in the users collection where the name field starts with ""J"".",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question because students would be know we can use this operator for this query but i dont think all of them know the syntax for that operator,,Yes,Approved,,
+Node,Node Intermediate,Mongo Advance  Queries,1 min,Implementation,Medium,How do you perform a text search in MongoDB?,"To perform a text search in MongoDB, you can use the $text operator in a query. Here's the basic syntax for using $text:
+
+db.collection.find({ $text: { $search: ""search string"" } })
+In this syntax, collection is the name of the collection you want to search in, and ""search string"" is the text you want to search for. The $text operator returns all documents that contain the specified text in any field that has been indexed for text search.",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question,,Yes,Rejected,,
+Node,Node Intermediate,Mongo Aggregations,1 min,Implementation,Medium,How do you use the $group operator in a MongoDB aggregation pipeline? Use code to return a list of documents that show the total count of each category in the products collection.,"The $group operator in MongoDB is used to group documents by a specified key and perform aggregate operations on the grouped data. Here's the basic syntax for using $group in an aggregation pipeline:
+
+db.collection.aggregate([
+  { $group: {
+      _id: ""group by field"",
+      newField: { $operation: ""$field"" },
+      ...
+    }
+  }
+])
+In this syntax, collection is the name of the collection you want to aggregate, and _id is the field that you want to group by. You can specify the _id field as a constant value, an expression, or a combination of fields.
+
+You can also use $group to perform various aggregate operations on the grouped data, such as calculating the sum, average, minimum, maximum, or count of a field. To perform an operation, you can use one of the aggregation operators, such as $sum, $avg, $min, $max, or $count. For example, to group documents by the category field and calculate the total count of each category, you can use the following query:
+
+db.products.aggregate([
+  { $group: {
+      _id: ""$category"",
+      count: { $sum: 1 }
+    }
+  }
+])
+
+This will return a list of documents that show the total count of each category in the products collection.",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question,,Yes,Rejected,It's child tag should be mongodb Aggregation,Yes
+Node,Node Intermediate,Mongo Aggregations,3 min,Implementation,High,"How do you use the $project operator in a MongoDB aggregation pipeline? suppose you have a collection of documents with the following structure:
+{
+  ""_id"": ObjectId(""123456789012345678901234""),
+  ""name"": ""Alice"",
+  ""age"": 30,
+  ""gender"": ""female""
+}
+
+If you want to include only the name and age fields in the output, how can you do it? 
+How would you add a new field called age_group based on the age field,
+which checks whether the age field is less than 18, and returns the string ""minor"" if true, or ""adult"" if false.","The $project operator in a MongoDB aggregation pipeline is used to reshape documents, to include, exclude or rename fields, and to create new computed fields.
+
+The basic syntax of $project is as follows:
+
+
+{
+  $project: {
+    <field1>: <expression1>,
+    <field2>: <expression2>,
+    ...
+  }
+}
+Here, <field1> and <field2> are the names of the fields that you want to include or exclude from the output, and <expression1> and <expression2> are the expressions that you use to transform or compute values for those fields.
+
+For example, suppose you have a collection of documents with the following structure:
+
+
+{
+  ""_id"": ObjectId(""123456789012345678901234""),
+  ""name"": ""Alice"",
+  ""age"": 30,
+  ""gender"": ""female""
+}
+If you want to include only the name and age fields in the output, you can use the following $project stage in your aggregation pipeline:
+
+
+{
+  $project: {
+    _id: 0,
+    name: 1,
+    age: 1
+  }
+}
+Here, _id: 0 means that the _id field should be excluded from the output, while name: 1 and age: 1 mean that the name and age fields should be included in the output.
+
+You can also use expressions to transform or compute values for fields. For example, if you want to add a new field called age_group based on the age field, you can use the following $project stage:
+
+
+{
+  $project: {
+    _id: 0,
+    name: 1,
+    age: 1,
+    age_group: {
+      $cond: {
+        if: { $lt: [""$age"", 18] },
+        then: ""minor"",
+        else: ""adult""
+      }
+    }
+  }
+}
+Here, $cond is a conditional expression that checks whether the age field is less than 18, and returns the string ""minor"" if true, or ""adult"" if false. The result of this expression is assigned to a new field called age_group.
+
+Note that the $project stage can also be used to rename fields using the syntax <existing_field>: <new_field_name>. For example, you can rename the name field to full_name using the following $project stage:
+
+
+{
+  $project: {
+    _id: 0,
+    full_name: ""$name"",
+    age: 1
+  }
+}
+Here, full_name: ""$name"" means that the full_name field should have the same value as the name field, but with a new name.",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question,,Yes,Rejected,It's child tag should be mongodb Aggregation,Yes
+Node,Node Intermediate,Mongo Aggregations,1 min,Implementation,High,"How do you use the $lookup operator in a MongoDB aggregation pipeline? Suppose you have two collections, orders and products. Each order document contains a product_id field that references a product document. How will you retrieve all orders with the corresponding product information?","{
+  $lookup: {
+    from: <collection>,
+    localField: <field in input collection>,
+    foreignField: <field in referenced collection>,
+    as: <output field>
+  }
+}
+
+Here, <collection> is the name of the collection you want to join with, <field in input collection> is the name of the field in the input documents that you want to use for the join, <field in referenced collection> is the name of the field in the referenced documents that you want to use for the join, and <output field> is the name of the new array field that will contain the joined documents.
+
+For example, suppose you have two collections, orders and products. Each order document contains a product_id field that references a product document. If you want to retrieve all orders with the corresponding product information, you can use the following $lookup stage in your aggregation pipeline:
+
+{
+  $lookup: {
+    from: ""products"",
+    localField: ""product_id"",
+    foreignField: ""_id"",
+    as: ""product_info""
+  }
+}
+",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question,,Yes,Rejected,3 min time and It's child tag should be mongodb Aggregation,Yes
+Node,Node Intermediate,Mongo Aggregations,1 min,Implementation,Medium,"How do you use the $unwind operator in a MongoDB aggregation pipeline? Suppose you have a collection of documents with the following structure:
+{
+  ""_id"": ObjectId(""123456789012345678901234""),
+  ""name"": ""Alice"",
+  ""interests"": [""music"", ""sports"", ""movies""]
+}
+How would you output one document for each interest of each person?","The $unwind operator in a MongoDB aggregation pipeline is used to deconstruct an array field in the input documents and output one document for each element of the array. The $unwind operator is often used in combination with other operators, such as $group and $project, to manipulate and analyze the elements of the array.
+
+The basic syntax of the $unwind operator is as follows:
+
+{
+  $unwind: {
+    path: <array field>,
+    includeArrayIndex: <optional>,
+    preserveNullAndEmptyArrays: <optional>
+  }
+}
+Here, <array field> is the name of the array field you want to unwind. The optional includeArrayIndex parameter lets you specify a new field to output that contains the index of each element in the array. The optional preserveNullAndEmptyArrays parameter lets you specify whether to include documents in the output for empty or null arrays.
+
+For example, suppose you have a collection of documents with the following structure:
+
+
+{
+  ""_id"": ObjectId(""123456789012345678901234""),
+  ""name"": ""Alice"",
+  ""interests"": [""music"", ""sports"", ""movies""]
+}
+If you want to output one document for each interest of each person, you can use the following $unwind stage in your aggregation pipeline:
+
+
+{
+  $unwind: {
+    path: ""$interests""
+  }
+}
+Here, ""interests"" is the name of the array field you want to unwind. After the $unwind stage, each input document will be split into multiple documents, one for each interest. The resulting documents will have the same fields as the input documents, except that the ""interests"" field will contain only one value.
+
+You can also use the includeArrayIndex parameter to include the index of each interest in the output:
+
+
+{
+  $unwind: {
+    path: ""$interests"",
+    includeArrayIndex: ""interest_index""
+  }
+}
+Here, ""interest_index"" is the name of the new field that will contain the index of each interest in the array.",Yes,Yes,Yes,Yes,Mahesh,Yes,implementation type question,,Yes,Rejected,It's child tag should be mongodb Aggregation,Yes
+Node,Node Intermediate,Mongo Aggregations,3 min,Implementation,Medium,"Create a MongoDB aggregation pipeline that calculates the average value of a given field ""fieldToAverage"" across all documents in a collection, grouped by the value of another field ""fieldName"". ","db.collection.aggregate([
+  {
+    $group: {
+      _id: ""$fieldName"",
+      average: { $avg: ""$fieldToAverage"" }
+    }
+  }
+])",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,1 min,Knowledge,Low,What is Socket.IO?,"Socket.IO is a JavaScript library for real-time web applications that enables bidirectional, event-driven communication between a client (usually a web browser) and a server. It allows developers to create real-time web applications that can update the user interface in response to data changes without the need for the user to refresh the page.
+
+Socket.IO works by establishing a persistent connection between the client and server, allowing data to be transmitted in real-time. It uses websockets, a protocol for real-time communication over the web, as well as fallback mechanisms such as polling and long-polling for browsers that do not support websockets.
+
+With Socket.IO, developers can create applications that involve real-time chat, collaboration, online gaming, and more. It is open-source and can be used with Node.js, a popular server-side JavaScript runtime.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,1 min time is fine to define socket.io,Yes
+Node,Node Intermediate,socket.io,3 min,Knowledge,Medium,What are the advantages of using Socket.IO?,"Real-time communication: Socket.IO enables real-time bidirectional communication between a client and server, which allows for real-time updates and messaging in web applications.
+
+Cross-browser support: Socket.IO provides fallback mechanisms such as polling and long-polling to support real-time communication in browsers that do not support websockets.
+
+Scalability: Socket.IO is designed to be scalable and can be used in a distributed architecture to handle a large number of concurrent connections.
+
+Ease of use: Socket.IO is easy to use and provides a simple API for developers to work with. It also includes built-in features for error handling, connection management, and more.
+
+Customization: Socket.IO can be customized to suit the needs of different applications. Developers can create custom events and data structures to meet their specific requirements.
+
+Open source: Socket.IO is open source and has a large community of developers contributing to its development and maintenance.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,Difficutly of this question should be type of medium,Yes
+Node,Node Intermediate,socket.io,3 min,Knowledge,Medium,What are the disadvantages of using Socket.IO?,"Increased complexity: Socket.IO adds complexity to the codebase, especially for applications that don't require real-time communication. Developers may need to spend more time learning the Socket.IO API and troubleshooting issues.
+
+Performance: Socket.IO may have lower performance compared to lower-level socket libraries due to its additional overhead, especially if the application doesn't require fallback mechanisms.
+
+Security: Because Socket.IO allows real-time communication between a client and server, it can also introduce security vulnerabilities if not properly secured. Developers need to be aware of potential security issues and take appropriate measures to prevent attacks.
+
+Debugging: Debugging Socket.IO applications can be challenging, especially when dealing with complex real-time interactions between multiple clients and servers.
+
+Compatibility: Socket.IO is built on top of websockets, which may not be supported by all browsers. This means developers may need to implement fallback mechanisms for some clients, adding additional complexity.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,Difficutly of this question should be type of medium,Yes
+Node,Node Intermediate,socket.io,1 min,Knowledge,Low,What is a socket in Socket.IO?,"In Socket.IO, a socket refers to an individual connection between a client and a server. A socket is a unique identifier for a connection, and it represents a bidirectional communication channel between the client and server.
+
+When a client connects to a Socket.IO server, a new socket is created to represent that connection. The server maintains a list of all connected sockets, and it can send and receive messages to and from each socket.
+
+Sockets in Socket.IO are event-driven, which means that they can send and receive messages in response to specific events. The client and server can emit events to each other, and they can also listen for events from each other.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,1 min time,Yes
+Node,Node Intermediate,socket.io,3 min,Knowledge,Medium,What is a namespace in Socket.IO?,"In Socket.IO, a namespace is a mechanism for grouping sockets together based on a common identifier. It allows developers to create separate communication channels within the same server instance, each with its own events and listeners.
+
+When a client connects to a Socket.IO server, it can join a specific namespace by specifying the namespace in the connection URL. For example, a client can connect to the namespace ""/chat"" by connecting to the URL ""http://localhost:3000/chat"".
+
+Once a client has joined a namespace, it can emit and receive events specific to that namespace. The server can also emit events to all sockets within a namespace or to a specific socket within that namespace.
+
+Namespaces are useful for applications that require multiple communication channels within the same server instance. For example, a chat application might use one namespace for private messages and another namespace for group chat messages. By separating these channels into different namespaces, the application can better organize its code and reduce the risk of message collisions.
+
+Socket.IO also provides a default namespace, which all sockets automatically join when they connect to the server. This namespace is identified by the string ""/"", and it is used for general communication between the client and server.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,3 min,Knowledge,Medium,What is a room in Socket.IO?,"In Socket.IO, a room is a mechanism for grouping sockets together based on a common identifier. Rooms allow developers to broadcast messages to specific subsets of connected sockets.
+
+When a socket connects to a Socket.IO server, it can join a specific room by calling the ""join"" method on the socket object. For example, a socket can join the room ""chatroom1"" by calling the method ""socket.join('chatroom1')"".
+
+Once a socket has joined a room, it can receive messages broadcasted to that room using the ""emit"" method on the server object. For example, the server can broadcast a message to all sockets in the room ""chatroom1"" by calling the method ""io.to('chatroom1').emit('message', 'Hello chatroom1!')"".
+
+Rooms are useful for applications that require group messaging or real-time collaboration between subsets of connected sockets. For example, in a real-time multiplayer game, players might be grouped together based on their location or level, and the server can broadcast game state updates to each group separately.
+
+Socket.IO also provides a default room, which all sockets automatically join when they connect to the server. This room is identified by the string ""socket.id"", where ""socket.id"" is the unique identifier assigned to each socket when it connects to the server.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,3 Min time is needed,Yes
+Node,Node Intermediate,socket.io,3 min,Implementation,Medium,How can you join a room in Socket.IO? Use code to demonstrate.,"To join a room in Socket.IO, a socket can call the join() method on the socket object. The join() method takes a string argument, which is the name of the room to join.
+
+Here's an example of how to join a room in Socket.IO:
+
+
+// Client-side code
+const socket = io();
+
+// Join a room called ""chatroom1""
+socket.emit('joinRoom', 'chatroom1');
+
+// Server-side code
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  // Join the room specified by the client
+  socket.on('joinRoom', (roomName) => {
+    socket.join(roomName);
+    console.log(`Socket ${socket.id} joined room ${roomName}`);
+  });
+});
+
+In the example above, when the client connects to the server, it emits a ""joinRoom"" event with the room name ""chatroom1"". On the server, the socket joins the ""chatroom1"" room by calling the join() method on the socket object. The server logs a message indicating that the socket has joined the room.
+
+Once a socket has joined a room, it can receive messages broadcasted to that room using the emit() method on the server object. For example, the server can broadcast a message to all sockets in the room ""chatroom1"" by calling the method io.to('chatroom1').emit('message', 'Hello chatroom1!').",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,1 min time,Yes
+Node,Node Intermediate,socket.io,5 min,Implementation,Medium,How can you send a message to a specific room in Socket.IO? Use code to demonstrate.,"To send a message to a specific room in Socket.IO, the server can use the to() method on the server object to target sockets in that room. The to() method takes a string argument, which is the name of the room to send the message to.
+
+Here's an example of how to send a message to a specific room in Socket.IO:
+
+// Server-side code
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  // Join the room specified by the client
+  socket.on('joinRoom', (roomName) => {
+    socket.join(roomName);
+    console.log(`Socket ${socket.id} joined room ${roomName}`);
+  });
+  
+  // Send a message to the room specified by the client
+  socket.on('sendMessage', (data) => {
+    io.to(data.room).emit('message', data.message);
+  });
+});
+In the example above, when the client sends a ""sendMessage"" event with the message and room name, the server broadcasts the message to all sockets in that room by calling the to() method on the server object with the room name specified by the client. The server uses the emit() method to send the ""message"" event to all sockets in the specified room, along with the message data.
+
+Note that if the server needs to send a message to all sockets, it can use the broadcast object on the socket object, like so: socket.broadcast.emit('message', 'Hello, everyone!');. However, if the server needs to send a message to a specific room, it should use the to() method as shown in the example above.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,difficulty medium,Yes
+Node,Node Intermediate,socket.io,5 min,Implementation,Low,How can you emit an event with data in Socket.IO? Use code to demonstrate.,"To emit an event with data in Socket.IO, you can use the emit() method on the socket object on the client-side, and on the server object on the server-side. The emit() method takes two arguments: the first argument is the name of the event, and the second argument is the data to be sent along with the event.
+
+Here's an example of how to emit an event with data in Socket.IO:
+
+
+// Client-side code
+const socket = io();
+
+// Emit a ""message"" event with some data
+socket.emit('message', { text: 'Hello, world!' });
+
+
+// Server-side code
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  // Handle a ""message"" event with data
+  socket.on('message', (data) => {
+    console.log(`Received message: ${data.text}`);
+  });
+});
+In the example above, the client emits a ""message"" event with some data attached to it. On the server, the on() method is used to listen for the ""message"" event, and when it is received, the data attached to the event is logged to the console.
+
+Note that the second argument to the emit() method can be any type of data, such as a string, number, boolean, or object. The data can also be structured in any way that makes sense for your application.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,difficulty easy and level implementation ,Yes
+Node,Node Intermediate,socket.io,5 min,Implementation,Low,How can you handle incoming events in Socket.IO?,"To handle incoming events in Socket.IO, you can use the on() method on the socket object on the client-side, and on the server object on the server-side. The on() method takes two arguments: the first argument is the name of the event to handle, and the second argument is a callback function that will be called when the event is received.
+
+Here's an example of how to handle incoming events in Socket.IO:
+
+
+// Client-side code
+const socket = io();
+
+// Handle a ""message"" event from the server
+socket.on('message', (data) => {
+  console.log(`Received message: ${data.text}`);
+});
+
+
+// Server-side code
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  // Emit a ""message"" event to the client
+  socket.emit('message', { text: 'Hello, client!' });
+});
+In the example above, the server emits a ""message"" event to the client when it connects, and the client handles the event by logging the message to the console. On the server, the on() method is used to listen for the ""message"" event, and when it is received, the server sends a message back to the client by calling the emit() method on the socket object.
+
+Note that the name of the event must match exactly between the client and server for the event to be handled correctly. The data attached to the event can be of any type or structure, as long as it is properly handled by the receiving code.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,difficulty easy and level implementation ,Yes
+Node,Node Intermediate,socket.io,1 min,Implementation,Low,How can you listen for incoming connections on a Socket.IO server? Use code to demonstrate.,"To listen for incoming connections on a Socket.IO server, you need to create an instance of the server and attach it to a port. This can be done using the listen() method on the server object.
+
+Here's an example of how to listen for incoming connections on a Socket.IO server:
+
+
+// Server-side code
+const io = require('socket.io')();
+
+io.on('connection', (socket) => {
+  console.log(`New connection: ${socket.id}`);
+});
+
+io.listen(3000, () => {
+  console.log('Socket.IO server started');
+});
+In the example above, the server creates a new instance of the Socket.IO server and listens for incoming connections on port 3000. When a client connects, the connection event is emitted and a callback function is called that logs the ID of the connected socket to the console.
+
+Note that the listen() method takes two arguments: the first argument is the port number to listen on, and the second argument is an optional callback function that is called once the server has started listening for connections. If the second argument is not provided, the server will start listening immediately.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,"1 min time and easy diffficulty level, type tag implementation ",Yes
+Node,Node Intermediate,socket.io,3 min,Implementation,Low,How can you initialize a Socket.IO server in Node.js? Use code to demonstrate.,"To initialize a Socket.IO server in Node.js, you first need to install the Socket.IO library using npm. You can do this by running the following command in your project directory:
+
+npm install socket.io
+Once you have installed Socket.IO, you can create a new instance of the server using the require() function and passing in the http module as an argument. Here's an example of how to create a new instance of the Socket.IO server:
+
+
+// Server-side code
+const http = require('http');
+const io = require('socket.io')(http.createServer());
+
+io.on('connection', (socket) => {
+  console.log(`New connection: ${socket.id}`);
+});
+
+http.listen(3000, () => {
+  console.log('Socket.IO server started');
+});
+In the example above, the http module is used to create a new HTTP server, which is then passed as an argument to the socket.io() function to create a new instance of the Socket.IO server. The connection event is handled by logging the ID of the connected socket to the console. Finally, the server listens for incoming connections on port 3000 using the listen() method on the http server object.
+
+Note that in this example, we are using the http module to create an HTTP server, but you could also use other frameworks like Express or Koa to create your server.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,type tag should be implementation ,Yes
+Node,Node Intermediate,socket.io,5 min,Application,Medium,How can you emit an event with data from the client to the server in Socket.IO? Use code to demonstrate.,"To emit an event with data from the client to the server in Socket.IO, you can use the emit() method on the socket object on the client-side. The emit() method takes two arguments: the first argument is the name of the event to emit, and the second argument is the data to send with the event.
+
+Here's an example of how to emit an event with data from the client to the server in Socket.IO:
+
+
+// Client-side code
+const socket = io();
+
+// Emit a ""message"" event to the server
+socket.emit('message', { text: 'Hello, server!' });
+
+
+// Server-side code
+const io = require('socket.io')(http.createServer());
+
+io.on('connection', (socket) => {
+  // Handle a ""message"" event from the client
+  socket.on('message', (data) => {
+    console.log(`Received message: ${data.text}`);
+  });
+});
+
+http.listen(3000, () => {
+  console.log('Socket.IO server started');
+});
+In the example above, the client emits a ""message"" event to the server with a data object containing a text property. On the server, the on() method is used to listen for the ""message"" event, and when it is received, the server logs the message to the console.
+
+Note that the name of the event must match exactly between the client and server for the event to be emitted and received correctly. The data attached to the event can be of any type or structure, as long as it is properly handled by the receiving code.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,5 min,Application,Medium,How can you broadcast a message to all clients connected to the server in Socket.IO? Use code to demonstrate.,"To broadcast a message to all clients connected to the server in Socket.IO, you can use the broadcast flag on the server-side emit() method. This will send the message to all connected clients except for the client that initiated the event.
+
+Here's an example of how to broadcast a message to all clients connected to the server in Socket.IO:
+
+
+// Server-side code
+const io = require('socket.io')(http.createServer());
+
+io.on('connection', (socket) => {
+  // Handle a ""chat message"" event from the client
+  socket.on('chat message', (msg) => {
+    // Broadcast the message to all other connected clients
+    socket.broadcast.emit('chat message', msg);
+  });
+});
+
+http.listen(3000, () => {
+  console.log('Socket.IO server started');
+});
+In the example above, when a client sends a ""chat message"" event to the server, the server broadcasts the message to all other connected clients using the broadcast flag on the emit() method. This will send the message to all other clients except for the client that initiated the event.
+
+Note that to send the message to all clients, including the client that initiated the event, you can simply use the regular emit() method without the broadcast flag.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,5 min,Application,High,How can you send a message to a specific client in Socket.IO? Use code to demonstrate.,"To send a message to a specific client in Socket.IO, you need to have a reference to the socket object representing that client. You can store a reference to the socket object for each client when they connect to the server.
+
+Here's an example of how to send a message to a specific client in Socket.IO:
+
+
+// Server-side code
+const io = require('socket.io')(http.createServer());
+const clients = {}; // object to store references to client socket objects
+
+io.on('connection', (socket) => {
+  // Store a reference to the socket object for this client
+  clients[socket.id] = socket;
+
+  // Handle a ""private message"" event from the client
+  socket.on('private message', ({ to, message }) => {
+    // Send the message to the specified client
+    clients[to].emit('private message', { from: socket.id, message });
+  });
+});
+
+http.listen(3000, () => {
+  console.log('Socket.IO server started');
+});
+In the example above, when a client connects to the server, the server stores a reference to the socket object for that client in an object called clients, using the socket.id as the key. When a client sends a ""private message"" event to the server, the server retrieves the socket object for the target client from the clients object using the to property of the message, and sends the message to that client using the emit() method.
+
+Note that in this example, there is no error handling for cases where the specified client does not exist or is not currently connected to the server. You should add appropriate error handling to your code to handle such cases.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,10 min,Application,High,How can you use Socket.IO with Express.js to serve web pages? Use code to demonstrate.,"You can use Socket.IO with Express.js to serve web pages by using the express middleware provided by Socket.IO. The socket.io module exports a function that takes an http server instance as an argument and returns a Socket.IO server instance. You can then use the Socket.IO server instance to handle incoming connections and events.
+
+Here's an example of how to use Socket.IO with Express.js to serve web pages:
+
+
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+// Serve static files from the ""public"" directory
+app.use(express.static('public'));
+
+// Route for the home page
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+// Handle incoming connections with Socket.IO
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  // Handle a ""chat message"" event from the client
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+
+    // Broadcast the message to all other connected clients
+    io.emit('chat message', msg);
+  });
+
+  // Handle the disconnect event
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
+// Start the server
+http.listen(3000, () => {
+  console.log('listening on *:3000');
+});
+In the example above, we define an Express.js app and a http server instance. We then create a Socket.IO server instance using the http server instance, and use it to handle incoming connections and events. We also define a route for the home page and serve static files from the public directory using the express.static() middleware.
+
+When a client connects to the server, the connection event is triggered and the server logs a message to the console. When a client sends a ""chat message"" event to the server, the server broadcasts the message to all other connected clients using the emit() method on the Socket.IO server instance. When a client disconnects from the server, the disconnect event is triggered and the server logs a message to the console.
+
+Note that in this example, we are using the http server instance to create both the Express.js app and the Socket.IO server instance. If you already have an existing Express.js app, you can create a separate http server instance and pass it to both the Express.js app and the Socket.IO server instance.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,10 min,Application,High,How can you use Socket.IO with React.js to create real-time applications?,"To use Socket.IO with React.js, you'll need to install the socket.io-client package, which is the Socket.IO client for the browser. Here's an example of how to use Socket.IO with React.js to create a real-time chat application:
+
+Install socket.io-client using npm:
+
+
+npm install socket.io-client
+Import the socket.io-client library in your React.js component:
+
+
+import io from 'socket.io-client';
+In the componentDidMount() method of your component, create a new Socket.IO client instance and connect to the Socket.IO server:
+
+
+
+componentDidMount() {
+  this.socket = io('http://localhost:3000');
+}
+In this example, we're connecting to a Socket.IO server running on localhost on port 3000.
+
+Define an event handler to handle incoming messages from the server:
+
+javascript
+Copy code
+handleIncomingMessage = (message) => {
+  this.setState({ messages: [...this.state.messages, message] });
+};
+In this example, we're updating the component's state with the new message.
+
+Emit an event to the server when the user submits a new message:
+
+
+handleSubmit = (event) => {
+  event.preventDefault();
+  const message = this.state.newMessage;
+  this.socket.emit('chat message', message);
+  this.setState({ newMessage: '' });
+};
+In this example, we're emitting a chat message event to the server with the user's message. We're also clearing the input field after the message has been sent.
+
+Handle incoming messages from the server by listening for the chat message event:
+
+
+componentDidMount() {
+  this.socket = io('http://localhost:3000');
+  this.socket.on('chat message', this.handleIncomingMessage);
+}
+In this example, we're using the on() method to listen for the chat message event and pass the incoming message to the handleIncomingMessage() method we defined earlier.
+
+That's it! With these steps, you can create a real-time chat application using Socket.IO and React.js. Of course, you'll need to add more functionality to your application to make it fully functional, but this should give you a good starting point.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,,
+Node,Node Intermediate,socket.io,10 min,Application,High,"How can you use Socket.IO to create a chat application?
+You can use the below html code
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO Chat Example</title>
+  </head>
+  <body>
+    <ul id=""messages""></ul>
+    <form id=""message-form"">
+      <input id=""message-input"" autocomplete=""off"" />
+      <button>Send</button>
+    </form>
+    <script src=""/socket.io/socket.io.js""></script>
+    <script src=""chat.js""></script>
+  </body>
+</html>","Here's a simple example of how to use Socket.IO to create a chat application:
+
+Set up a Socket.IO server using Node.js and the socket.io package:
+
+
+const http = require('http');
+const server = http.createServer();
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});
+In this example, we're creating a new HTTP server and initializing a new instance of Socket.IO. We're listening for the connection event, which is emitted by the server when a new client connects. When a client connects, we log a message to the console and listen for incoming chat message events. When we receive a chat message event, we log the message to the console and emit the same message to all connected clients using the io.emit() method. We're also listening for the disconnect event, which is emitted by the server when a client disconnects.
+
+
+In this example, we're including the Socket.IO client library using the /socket.io/socket.io.js URL. We're also including a chat.js script, which is where we'll write our client-side code.
+
+Write the client-side code in chat.js:
+
+
+const socket = io();
+const form = document.getElementById('message-form');
+const input = document.getElementById('message-input');
+const messages = document.getElementById('messages');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const message = input.value;
+  socket.emit('chat message', message);
+  input.value = '';
+});
+
+socket.on('chat message', (msg) => {
+  const li = document.createElement('li');
+  li.textContent = msg;
+  messages.appendChild(li);
+});
+In this example, we're initializing a new instance of the Socket.IO client and setting up event listeners for the message form and the chat message event. When the user submits a new message, we emit a chat message event to the server with the message contents. We also clear the input field after the message has been sent. When we receive a chat message event from the server, we create a new list item element and add the message contents to it, then append the list item to the messages element on the page.
+
+That's it! With these steps, you can create a basic chat application using Socket.IO. Of course, you'll need to add more features and functionality to make it a fully-featured chat application, but this should give you a good starting point.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,3 min,Knowledge,Medium,How can you handle disconnections on the server in Socket.IO?,"In Socket.IO, you can handle disconnections on the server by listening to the disconnect event. When a client disconnects from the server, the disconnect event is emitted. To handle this event and perform any necessary cleanup or logging operations, you can add a listener for disconnect on the server-side code.
+
+Here is an example code snippet that shows how to handle disconnections on the server in Socket.IO:
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log(`Client connected with ID ${socket.id}`);
+
+  socket.on('disconnect', () => {
+    console.log(`Client disconnected with ID ${socket.id}`);
+    // perform any necessary cleanup or logging operations
+  });
+});
+In the above example, a listener is added for the disconnect event inside the connection event handler. When a client disconnects, the disconnect event is emitted and the listener logs a message with the ID of the disconnected client. You can replace the logging operation with any custom logic required for your application.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,Medium difficulty ,Yes
+Node,Node Intermediate,socket.io,3 min,Knowledge,Medium,How can you handle disconnections on the client in Socket.IO?,"In Socket.IO, you can handle disconnections on the client by listening to the disconnect event. When the client loses its connection to the server, the disconnect event is emitted on the client-side code.
+
+Here is an example code snippet that shows how to handle disconnections on the client in Socket.IO:
+
+
+const socket = io('http://localhost:3000');
+
+socket.on('connect', () => {
+  console.log('Connected to server');
+});
+
+socket.on('disconnect', () => {
+  console.log('Disconnected from server');
+  // perform any necessary cleanup or logging operations
+});
+In the above example, a listener is added for the disconnect event on the socket object. When the client loses its connection to the server, the disconnect event is emitted and the listener logs a message. You can replace the logging operation with any custom logic required for your application.
+
+It's important to note that Socket.IO automatically attempts to reconnect to the server when the connection is lost. You can configure the reconnection behavior using the options provided by Socket.IO.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,5 min,Knowledge,Low,How can you set up a Socket.IO client in a web browser?,"To set up a Socket.IO client in a web browser, you need to include the Socket.IO client library in your HTML file. You can do this by adding the following script tag to the head section of your HTML file:
+
+
+<script src=""/socket.io/socket.io.js""></script>
+Make sure to adjust the src attribute to match the location of the Socket.IO client library on your server.
+
+Once the Socket.IO client library is included in your HTML file, you can create a new io object to connect to the server using the io() function. Here is an example code snippet that shows how to set up a Socket.IO client in a web browser:
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO Client</title>
+    <script src=""/socket.io/socket.io.js""></script>
+  </head>
+  <body>
+    <h1>Socket.IO Client</h1>
+    <script>
+      const socket = io('http://localhost:3000');
+
+      socket.on('connect', () => {
+        console.log('Connected to server');
+      });
+
+      socket.on('message', (data) => {
+        console.log(`Received message: ${data}`);
+      });
+
+      socket.emit('message', 'Hello from client');
+    </script>
+  </body>
+</html>
+In the above example, a new io object is created with the URL of the server. Listeners are added for the connect and message events, and an event is emitted with the emit function. You can replace the event names and event data with your own custom events and data.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,3 min,Implementation,Medium,How can you limit the number of clients that can connect to a Socket.IO server?,"To limit the number of clients that can connect to a Socket.IO server, you can use the server.engine.clientsCount property to keep track of the number of clients currently connected, and then reject connections when the maximum number of clients has been reached. Here's an example of how you can limit the number of clients that can connect to a Socket.IO server:
+
+
+const io = require('socket.io')(server);
+const MAX_CLIENTS = 10;
+let connectedClients = 0;
+
+io.on('connection', (socket) => {
+  if (connectedClients >= MAX_CLIENTS) {
+    console.log('Max number of clients reached, rejecting connection');
+    socket.disconnect();
+    return;
+  }
+  connectedClients++;
+  console.log(`New client connected: ${socket.id}`);
+  
+  // Handle events for the client
+  
+  socket.on('disconnect', () => {
+    connectedClients--;
+    console.log(`Client disconnected: ${socket.id}`);
+  });
+});
+In the above code snippet, we're using a connectedClients variable to keep track of the number of clients currently connected. When a new client connects, we check if the number of connected clients has reached the MAX_CLIENTS limit. If the limit has been reached, we disconnect the client immediately and log a message to the console. If the limit has not been reached, we increment the connectedClients variable and log a message to the console indicating that a new client has connected.
+
+Note that this implementation is very simple and does not take into account cases where clients may be disconnected unexpectedly (e.g. due to network issues). You may want to implement additional logic to handle these cases more gracefully, such as automatically reconnecting clients that have been disconnected due to network issues.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Approved,,
+Node,Node Intermediate,socket.io,5 min,Implementation,Medium,How can you limit the number of messages that can be sent to a client from the server in Socket.IO? You can use express-rate-limit library.,"To limit the number of messages that can be sent to a client from the server in Socket.IO, you can use a rate-limiting technique. There are several libraries available for Node.js that provide rate-limiting functionality, such as express-rate-limit and limiter.
+
+Here's an example of how you can use the express-rate-limit library to limit the number of messages that can be sent to a client from the server:
+
+
+const express = require('express');
+const rateLimit = require('express-rate-limit');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+// Create a rate limiter that allows a maximum of 10 messages per minute
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 10, // limit each IP to 10 requests per minute
+});
+
+// Apply the rate limiter to the endpoint that sends messages to clients
+app.post('/send-message', limiter, (req, res) => {
+  // Send the message to the client
+});
+
+io.on('connection', (socket) => {
+  console.log(`New client connected: ${socket.id}`);
+
+  // Handle events for the client
+
+  socket.on('disconnect', () => {
+    console.log(`Client disconnected: ${socket.id}`);
+  });
+});
+
+server.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+In the above code snippet, we're creating a rate limiter that allows a maximum of 10 messages per minute. We're then applying the rate limiter to the endpoint that sends messages to clients. This ensures that clients can only receive a maximum of 10 messages per minute from the server.
+
+Note that this implementation is very simple and only limits the number of messages sent to clients by a single endpoint. If you have multiple endpoints that can send messages to clients, you'll need to apply the rate limiter to each endpoint individually. Additionally, this implementation limits the number of messages per minute for all clients, regardless of their individual connection status or behavior. You may want to implement more advanced rate-limiting techniques that take into account individual client behavior to better protect your server from abuse.",Yes,Yes,Yes,Yes,Mahesh,Yes,,,,Rejected,type tag implementation,Yes
+Node,Node Intermediate,setTimeout,1 min,Knowledge,Low,How can you cancel a setTimeout() function?,"You can cancel a setTimeout() function by calling the clearTimeout() function and passing it the identifier returned by the original setTimeout() call.
+
+Here's an example of how to cancel a setTimeout() function:
+
+function myFunction() {
+  console.log(""Hello world!"");
+}
+
+// Call myFunction() after 3 seconds
+const timeoutId = setTimeout(myFunction, 3000);
+
+// Cancel the setTimeout() function
+clearTimeout(timeoutId);",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setTimeout,1 min,Knowledge,Low,What is setTimeout() in JavaScript?,"setTimeout() is a built-in function in JavaScript that allows you to schedule a function to be executed after a specified amount of time has elapsed. It takes two parameters: the first parameter is the function that you want to execute, and the second parameter is the number of milliseconds that you want to wait before the function is executed.
+
+Here's an example of how to use setTimeout():
+
+function myFunction() {
+  console.log(""Hello world!"");
+}
+
+// Call myFunction() after 3 seconds
+setTimeout(myFunction, 3000);",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setTimeout,1 min,Implementation,Low,"Can you pass arguments to a function in setTimeout()? If yes, use code to explain.","Yes, you can pass arguments to a function in setTimeout() by specifying them after the delay time parameter.
+
+Here's an example of how to pass arguments to a function in setTimeout():
+
+function myFunction(arg1, arg2) {
+  console.log(arg1 + arg2);
+}
+
+// Call myFunction() after 3 seconds and pass two arguments
+setTimeout(myFunction, 3000, ""Hello, "", ""world!"");",Yes,Yes,Yes,Yes,Huzaifa,Yes,"Please reframe the question, by adding student to explain by an example",,Yes,Approved,,
+Node,Node Intermediate,setTimeout,1 min,Knowledge,Low,How does setTimeout() differ from setInterval()?,"setTimeout() and setInterval() are both built-in functions in JavaScript that allow you to execute a function after a certain amount of time has passed. The main difference between the two is how they handle the execution of the function.
+
+setTimeout() will execute the function once after the specified delay time has passed, while setInterval() will execute the function repeatedly at a specified interval until it is stopped.
+
+Here's an example of how setInterval() works:
+
+function myFunction() {
+  console.log(""Hello world!"");
+}
+
+// Call myFunction() every 3 seconds
+const intervalId = setInterval(myFunction, 3000);
+In this example, myFunction() will be called every 3 seconds until clearInterval() is called to stop the interval. If you want to stop the interval, you can call clearInterval() and pass it the identifier returned by setInterval().
+
+Here's an example of how to stop the interval:
+
+
+// Stop the interval after 10 seconds
+setTimeout(function() {
+  clearInterval(intervalId);
+}, 10000);
+In this example, we use setTimeout() to wait 10 seconds before calling clearInterval() and passing it intervalId to stop the interval.
+
+In summary, setTimeout() executes the function once after a specified delay time, while setInterval() repeatedly executes the function at a specified interval until it is stopped.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,1 min time,Yes
+Node,Node Intermediate,setTimeout,3 min,Implementation,Low,How do you create a loop with delay using setTimeout()?,"You can create a loop using setTimeout() by calling a function recursively with setTimeout(). In each iteration of the loop, the function will schedule the next iteration by calling setTimeout() with a delay time.
+
+Here's an example of how to create a loop using setTimeout():
+
+let count = 0;
+
+function loop() {
+  console.log(""Count:"", count);
+  count++;
+
+  if (count <= 10) {
+    setTimeout(loop, 1000);
+  }
+}
+
+// Call loop() to start the loop
+loop();",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setTimeout,1 min,Knowledge,Low,What happens if the delay time in setTimeout() is set to 0?,"If the delay time in setTimeout() is set to 0, the function specified as the first argument will be added to the event loop and executed as soon as possible, but not immediately.
+
+This means that the function will not execute synchronously in the current thread of execution, but instead will be scheduled to run in the next event loop iteration. The event loop is a mechanism used by the JavaScript engine to handle asynchronous events, such as user input or timer events, in a non-blocking way.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setTimeout,3 min,Implementation,Medium,How can you create a countdown timer using setTimeout()?,"// Set the timer duration (in seconds)
+var duration = 60;
+
+// Get the timer display element
+var timerDisplay = document.getElementById(""timer"");
+
+// Function to update the timer display and decrease the remaining time
+function updateTimer() {
+  // Convert remaining time to minutes and seconds
+  var minutes = Math.floor(duration / 60);
+  var seconds = duration % 60;
+  
+  // Display the remaining time
+  timerDisplay.innerHTML = minutes + "":"" + (seconds < 10 ? ""0"" : """") + seconds;
+  
+  // Decrease the remaining time by 1 second
+  duration--;
+  
+  // If the timer has not yet reached 0, schedule the next update with setTimeout()
+  if (duration >= 0) {
+    setTimeout(updateTimer, 1000);
+  }
+}
+
+// Call the updateTimer function to start the countdown
+updateTimer();
+",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setInterval,3 min,Implementation,Medium,How do you create a setInterval() function that runs only once?,"function runOnce() {
+  console.log('This function runs only once.');
+}
+
+let intervalId = setInterval(() => {
+  runOnce();
+  clearInterval(intervalId);
+}, 1000);
+",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setInterval,1 min,Knowledge,Medium,What happens if you set the delay parameter of setInterval() to 0?,"If you set the delay parameter of setInterval() to 0, the function will be executed immediately, as soon as the browser can handle it.
+
+However, setting a delay of 0 milliseconds does not guarantee that the function will execute immediately. It depends on the browser's event loop and the current tasks in the queue. If the browser is busy with other tasks or has a large backlog of tasks in the queue, the function may be delayed or deferred.
+
+It's important to note that setting a delay of 0 milliseconds does not mean that the function will execute synchronously. The function will still be executed asynchronously, but as soon as possible after being added to the event loop.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setInterval,5 min,Application,Low, Create a countdown timer using setInterval()  ,"function countdownTimer(duration, display) {
+  let timer = duration, minutes, seconds;
+  setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    display.textContent = minutes + ':' + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+  }, 1000);
+}
+
+// Example usage
+const countdownDisplay = document.querySelector('#countdown');
+const countdownDuration = 60 * 5; // 5 minutes
+countdownTimer(countdownDuration, countdownDisplay);
+",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setInterval,5 min,Implementation,Medium,How do you change the delay time of a setInterval() function while it's running?,"let intervalId;
+let delayTime = 1000; // initial delay time of 1 second
+
+function doSomething() {
+  console.log('This function runs every ' + delayTime + ' milliseconds.');
+}
+
+// Start the interval
+intervalId = setInterval(doSomething, delayTime);
+
+// Change the delay time after 5 seconds
+setTimeout(() => {
+  clearInterval(intervalId);
+  delayTime = 500; // new delay time of 0.5 seconds
+  intervalId = setInterval(doSomething, delayTime);
+}, 5000);
+
+In this example, the setInterval() function is used to repeatedly execute the doSomething() function every delayTime milliseconds. The initial delay time is set to 1000 milliseconds (1 second).
+
+After 5 seconds, the clearInterval() function is called to stop the existing interval. Then, the delayTime variable is updated to 500 milliseconds (0.5 seconds), and a new interval is started with the new delay time using setInterval().
+
+By stopping the existing interval with clearInterval() and starting a new one with setInterval(), you can change the delay time of the interval while it's running.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,type should be implementation ,Yes
+Node,Node Intermediate,setInterval,5 min,Implementation,Medium,"Create a setInterval() function that automatically saves user input every 5 minutes. The input tag has an id = ""user-input""","const inputField = document.getElementById('user-input');
+
+function saveUserInput() {
+  const userInput = inputField.value;
+  localStorage.setItem('user-input', userInput);
+}
+
+inputField.addEventListener('input', () => {
+  // Save user input whenever it changes
+  saveUserInput();
+});
+
+// Save user input automatically every 5 minutes
+setInterval(() => {
+  saveUserInput();
+}, 300000);
+
+In this example, the setInterval() function is used to repeatedly call a function that saves user input to local storage. The interval time is set to 300,000 milliseconds (5 minutes) using the second parameter of setInterval().",Yes,Yes,Yes,Yes,Huzaifa,Yes,Please remove copy code and other unnecessary things from the solution,,Yes,Approved,,
+Node,Node Intermediate,Oauth,3 min,Knowledge,Low,What is OAuth and how does it work?,"OAuth (Open Authorization) is an open standard protocol that allows third-party applications to access the resources of a user on a different web service, without sharing their password. It provides a secure and reliable way of granting authorization to third-party applications to access user data from other services, without the need for the user to share their login credentials with the third-party application.
+
+Here's how OAuth works:
+
+The user initiates an authentication request to the web service via the third-party application.
+
+The third-party application redirects the user to the web service's authentication server, which prompts the user to enter their login credentials.
+
+The user enters their login credentials on the authentication server, which authenticates the user and generates an access token.
+
+The access token is returned to the third-party application's server.
+
+The third-party application's server can now use the access token to make authorized requests on behalf of the user to the web service's API.
+
+The web service's API validates the access token and processes the request. If the token is valid, the API returns the requested data to the third-party application's server.
+
+The third-party application's server can now use the data to provide services to the user.
+
+OAuth uses a token-based system to authorize access to resources. Access tokens are short-lived and can be refreshed or revoked at any time, which provides an extra layer of security.
+
+OAuth is widely used by popular web services, such as Google, Facebook, Twitter, and GitHub, to allow third-party applications to access user data.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,Make time limit to 3 min ,Yes
+Node,Node Intermediate,Oauth,3 min,Knowledge,Medium,What are the advantages of using OAuth for user authentication and authorization?,"There are several advantages to using OAuth for user authentication and authorization:
+
+Increased Security: OAuth allows users to grant access to their data without having to provide their username and password to third-party applications, reducing the risk of password theft or misuse.
+
+User Control: OAuth provides users with the ability to grant and revoke access to their data at any time. This gives users more control over their data and privacy.
+
+Simplified User Experience: OAuth simplifies the user experience by allowing users to sign in to third-party applications with their existing social media or email accounts, eliminating the need to create a new account for each service.
+
+Scalability: OAuth is designed to handle a large number of users and applications, making it a scalable solution for user authentication and authorization.
+
+Standardization: OAuth is an open standard, which means it can be implemented across different platforms and applications, allowing for interoperability between different systems.
+
+Reduced Development Time: OAuth provides developers with pre-built authentication and authorization functionality, reducing the time and effort required to implement these features in their applications.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Oauth,3 min,Knowledge,Medium,How does OAuth differ from traditional authentication systems?,"OAuth differs from traditional authentication systems in several ways:
+
+User Permission: With traditional authentication systems, the user provides their login credentials (username and password) directly to the third-party application. With OAuth, the user grants permission to the third-party application to access their data without sharing their login credentials.
+
+Token-based: OAuth uses access tokens to authorize access to resources, whereas traditional authentication systems typically use session cookies or other forms of authentication tokens.
+
+Revocable: OAuth access tokens are revocable, which means that the user can revoke access to their data at any time, even after granting permission to the third-party application. Traditional authentication systems typically do not offer this level of control to the user.
+
+Third-party Authentication: With traditional authentication systems, the user typically authenticates directly with the application they are accessing. With OAuth, the user authenticates with the authorization server, which verifies the user's identity and issues an access token to the third-party application.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,Make time limit to 3 min ,Yes
+Node,Node Intermediate,Oauth,1 min,Knowledge,Medium,What is the role of access tokens in OAuth?,"Access tokens play a crucial role in OAuth. They are used to authorize access to protected resources, such as a user's data or resources on a web server.
+
+When a user grants permission to a third-party application to access their data, the authorization server issues an access token to the application. The access token is a unique identifier that represents the user's permission to access the requested resources.
+
+The third-party application then sends the access token with each request to the resource server, which verifies the token to ensure that the application has the necessary permission to access the requested resource. If the access token is valid, the resource server grants access to the requested resource.
+
+Access tokens are typically short-lived and can expire after a certain period of time. This helps to prevent unauthorized access to protected resources if an access token is stolen or compromised.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Oauth,3 min,Knowledge,High,What are the benefits of using JWTs (JSON Web Tokens) with OAuth?,"JSON Web Tokens (JWTs) can provide several benefits when used with OAuth:
+
+Stateless: JWTs are stateless, which means that the server doesn't need to store session information or maintain a database to keep track of which users are authenticated. This can simplify the implementation of the OAuth system and reduce server load.
+
+Secure: JWTs use digital signatures to ensure the integrity of the token and protect against tampering. This makes them more secure than traditional session-based authentication methods, which can be vulnerable to session hijacking and other attacks.
+
+Portable: JWTs can be used across different systems and platforms, making them ideal for building distributed systems and microservices.
+
+Scalable: JWTs can be used to distribute authorization information across multiple servers, allowing for horizontal scaling and improved performance.
+
+Versatile: JWTs can include arbitrary metadata, such as user information or other claims, which can be used by downstream systems to make authorization decisions.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,Make time limit to 3 min ,Yes
+Node,Node Intermediate,setTimeout,3 min,Knowledge,Medium,What is event loop?,"The event loop is a core concept in JavaScript that allows for the execution of asynchronous code. It is a mechanism that allows JavaScript to handle multiple tasks simultaneously without blocking the main execution thread.
+
+The event loop works by continuously checking the message queue for new events or tasks to execute. When an event or task is added to the queue, the event loop will process it in a first-in, first-out (FIFO) order. If an event or task is long-running or blocking, it can cause the event loop to become blocked and prevent other tasks from being processed until it is completed.
+
+To prevent the event loop from becoming blocked, JavaScript uses asynchronous callbacks and promises. When an asynchronous operation is started, such as a network request or a setTimeout() function, it is added to the queue along with a callback function. The event loop will continue to process other tasks while waiting for the asynchronous operation to complete. Once the operation is finished, the callback function is added to the message queue, and the event loop will process it when it gets to the front of the queue.
+
+Overall, the event loop is a critical component of JavaScript that allows for the efficient handling of asynchronous code and ensures that the application remains responsive and performant.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Mongo Aggregations,1 min,Knowledge,Low,What is Aggregation in mongo db?,"- In simple words - collecting something.
+- **An aggregation pipeline consists of one or more stages that process documents:** **Each stage performs an operation on the input documents**. For example, a stage can filter documents, group documents, and calculate values. The documents that are output from a stage are passed to the next stage.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Knowledge,Low,What are regular expressions?,"Regular expressions are commonly used in text editors, programming languages, and other tools for searching, filtering, and replacing text. They are based on a formal language for describing patterns in text, which uses a combination of literal characters (such as letters and digits) and special characters (such as wildcards and quantifiers) to define the pattern to match.
+
+For example, a simple regular expression might match all email addresses that have the format ""username@domain.com"". This regular expression could be written as:
+
+
+^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,Low,Write a regex pattern to match any sequence of characters that does not include the letter 'e'.,"/^[^e]*$/
+Here, ^ indicates the beginning of the string, [^e] means any character except 'e', * means zero or more occurrences of the preceding character, and $ indicates the end of the string.
+
+So, the pattern [^e]* matches any sequence of zero or more characters that does not include the letter 'e'. The ^ and $ anchors ensure that the entire string matches the pattern, not just a substring.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,Low,Write a regex pattern to match any sequence of alphanumeric characters that starts with a capital letter.,"/^[A-Z][a-zA-Z0-9]*$/
+This pattern matches any string that starts with a capital letter (denoted by [A-Z]) and is followed by zero or more alphanumeric characters (denoted by [a-zA-Z0-9]*). The ^ and $ symbols match the start and end of the string, respectively, ensuring that the entire string matches the pattern.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,Please provide the description in solution ,Yes
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,Low,"Write a regex pattern to match any string that ends with the word ""end"".","/.*end$/
+The dollar sign anchors the match to the end of the string.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Rejected,Please provide the description in solution ,Yes
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,Low,"Write a regex pattern to match any string that starts with the word ""begin"" and ends with the word ""end"".","The regex pattern to match any string that starts with the word ""begin"" and ends with the word ""end"" is /^begin.*end$/. This pattern starts by anchoring the match to the beginning of the string with ^begin, matches any characters in between with .*, and then anchors the match to the end of the string with end$. The .* is a wildcard that matches any character zero or more times.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,Yes,Rejected,Please provide the description in solution ,Yes
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,Medium,Write a regex pattern to match any sequence of characters that contains a valid date in the format YYYY-MM-DD.,"/\b\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\b/
+Here, \b matches a word boundary to ensure that the pattern does not match dates embedded within longer strings. The pattern \d{4} matches any four-digit number, which represents the year in the date. The pattern (0[1-9]|1[0-2]) matches the month, allowing for leading zeros in single-digit months. The pattern (0[1-9]|[12][0-9]|3[01]) matches the day, allowing for leading zeros in single-digit days and ensuring that the day is a valid number for the given month.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,Medium,Write a regex pattern to match any sequence of characters that contains at least one special character.,"/[\W_]/
+Here, the square brackets [ ] denote a character class that matches any character within it. The \W meta-character matches any non-alphanumeric character, and the underscore _ is also included to match underscore characters. Therefore, [\W_] matches any non-alphanumeric character or underscore.
+
+So, the pattern [\W_] matches any sequence of characters that contains at least one special character.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,High,Write a regex pattern to match any string that contains at least one word that starts with a vowel and ends with a consonant.,"/\b[aeiou][a-zA-Z]*[^aeiou\W_]\b/
+Here, \b matches word boundaries. [aeiou] matches any vowel, followed by [a-zA-Z]* which matches zero or more letters of any case. Finally, [^aeiou\W_] matches any non-vowel and non-special character (i.e., a consonant).
+
+So, the pattern \b[aeiou][a-zA-Z]*[^aeiou\W_]\b matches any word that starts with a vowel and ends with a consonant.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,High,Write a regex pattern to match any string that contains at least one word that is exactly 7 characters long.,"/\b\w{7}\b/
+Here, \b matches word boundaries, and \w matches any word character (alphanumeric characters and underscore). {7} specifies that the preceding character (i.e., \w) must appear exactly 7 times.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,1 min,Implementation,High,Write a regex pattern to match any string that contains a valid email address with a domain name that starts with the letter 'm'.,"/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[mM][A-Za-z]{2,}\b/
+Here, \b matches word boundaries. [A-Za-z0-9._%+-]+ matches one or more characters that can appear in the local part of an email address (before the '@' symbol). @[A-Za-z0-9.-]+ matches the '@' symbol followed by one or more characters that can appear in the domain part of an email address (after the '@' symbol), including dots and hyphens. \.[mM] matches a dot followed by the letter 'm' (case-insensitive). Finally, [A-Za-z]{2,} matches two or more letters that make up the top-level domain.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,Regular Expressions,3 min,Implementation,High,"You have a string variable called inputString that contains a sentence. Write a JavaScript function called findWordWithA that takes inputString as a parameter and returns the first word in the sentence that contains the letter 'a'. If there are no words containing the letter 'a', the function should return null.
+
+Use regex and the .match method to implement this function.","function findWordWithA(inputString) {
+  const regex = /\b\w*a\w*\b/;
+  const match = inputString.match(regex);
+  return match ? match[0] : null;
+}
+In this solution, we use the regex pattern \b\w*a\w*\b to match any word that contains the letter 'a', regardless of its position in the word. The \b at the beginning and end of the pattern ensure that we only match whole words. We then use the .match method to find the first word in the input string that matches this pattern. Finally, we return the matched word, or null if there are no matches.",Yes,Yes,Yes,Yes,Huzaifa,Yes,,,,Approved,,
+Node,Node Intermediate,setTimeout,1 min,Knowledge,Low,"Is the time specified in ""setTimeout"" a guaranteed exact time at which the callback function will run?","No, the time given in setTimeout is not guaranteed to be the exact time at which the callback function runs. The time specified in the setTimeout function is a minimum time that the browser should wait before executing the callback function. The actual time at which the callback function is executed may be slightly later due to factors such as other tasks that the browser is currently processing or system load.
+
+The setTimeout function is part of the JavaScript Web API, which provides an asynchronous way to execute code in the future. When you call setTimeout, the browser schedules the execution of the callback function after the specified delay. However, the actual time at which the function runs is not guaranteed to be exactly the same as the time specified in the setTimeout call.
+
+In general, the setTimeout function provides a reliable way to execute code after a specified delay, but it should not be relied upon for precise timing or real-time applications. If precise timing is required, other techniques such as the Web Audio API or the Web Workers API may be more appropriate.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Knowledge,Low,What is process.nextTick?,"process.nextTick() is a method in Node.js that allows a function to be executed on the next iteration of the event loop. When a function is passed to process.nextTick(), it is added to a queue of tasks to be executed in the next iteration of the event loop, after the current operation has completed.
+
+The main difference between process.nextTick() and setTimeout() is that process.nextTick() schedules a callback to be executed on the same phase of the event loop, after the current operation completes, while setTimeout() schedules a callback to be executed on a subsequent iteration of the event loop, with a minimum delay specified in milliseconds.
+
+Using process.nextTick() can be useful for ensuring that a callback is executed before any other I/O events fire or other async operations occur. It can also be used to break up long running tasks so that the event loop is not blocked for too long. However, it's important to use process.nextTick() judiciously, as adding too many callbacks to the queue can cause the event loop to become blocked, leading to poor application performance.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Knowledge,Low,How does process.nextTick() differ from setTimeout()?,"process.nextTick() is a method that allows you to schedule a callback function to be executed on the next iteration of the Node.js event loop, immediately after the current operation completes. It has a very high priority and is often used to defer execution of a function until the next loop iteration, to ensure that it runs as soon as possible. Since the callback is executed immediately after the current operation completes, it's not subject to any minimum delay or latency.
+
+setTimeout() is a method that allows you to schedule a callback function to be executed after a specified delay, measured in milliseconds. The callback function is placed on a timer queue, and will not be executed until the specified delay has elapsed. The actual time when the callback function is executed may be slightly later than the specified delay, due to the scheduling of other events in the event loop.",Yes,Yes,Yes,Yes,Prakash,Yes,answer should be more descriptive according to 3min,,,Approved,,
+Node,Node Intermediate,process.nextTick(),3 min,Knowledge,Medium,Can process.nextTick() cause an infinite loop? Why or why not?,"Yes, process.nextTick() can potentially cause an infinite loop if it's used inappropriately.
+
+This is because process.nextTick() allows you to defer the execution of a callback function until the next iteration of the Node.js event loop. If you schedule a process.nextTick() callback inside another process.nextTick() callback, and the inner callback schedules another inner callback, and so on, you can create an infinite loop that will keep executing callbacks without ever giving other parts of your application a chance to run.
+
+Here's an example of how this could happen:
+
+function callback() {
+  console.log('Hello');
+  process.nextTick(callback);
+}
+
+process.nextTick(callback);",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Implementation,Medium,Write a code snippet that uses process.nextTick() to execute a function after the current operation completes.,"function doSomething() {
+  console.log('Doing something...');
+  process.nextTick(doSomethingElse);
+}
+
+function doSomethingElse() {
+  console.log('Doing something else...');
+}
+
+// call the doSomething() function
+doSomething();
+
+
+In this example, the doSomething() function logs a message to the console, and then schedules the ""doSomethingElse()"" function to be executed using ""process.nextTick()"". The ""doSomethingElse()"" function will be executed on the next iteration of the event loop, after the current operation (logging 'Doing something...') completes.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),3 min,Implementation,Low,Write a code snippet that demonstrates the difference between process.nextTick() and setTimeout() with a minimum delay of 0ms.,"console.log('Start');
+
+// Using process.nextTick()
+process.nextTick(() => console.log('process.nextTick callback'));
+
+// Using setTimeout() with a delay of 0ms
+setTimeout(() => console.log('setTimeout callback'), 0);
+
+console.log('End');
+
+
+//OUTPUT
+Start
+End
+process.nextTick callback
+setTimeout callback
+
+As we can see, the ""process.nextTick()"" callback is executed before the ""setTimeout()"" callback, even though it was scheduled after it. This is because process.nextTick() callbacks are executed on the current iteration of the event loop, before any I/O or timer callbacks. On the other hand, setTimeout() callbacks are executed after a minimum delay, even if there are other callbacks waiting to be executed.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),3 min,Application,Low,"How would you use process.nextTick() to defer a callback until the next tick, while still allowing other I/O events to fire in the meantime?","To defer a callback until the next tick, while still allowing other I/O events to fire in the meantime, you can use process.nextTick() to schedule the callback to be executed on the next tick of the event loop. Here's an example:
+
+function doSomething(callback) {
+  console.log('Doing something...');
+
+  // schedule the callback to be executed on the next tick of the event loop
+  process.nextTick(callback);
+}
+
+// example usage
+doSomething(() => {
+  console.log('Callback executed');
+});
+
+console.log('I/O event firing...');
+
+In this example, the doSomething() function takes a callback function as an argument. The function performs some work and then schedules the callback to be executed on the next tick of the event loop using process.nextTick().
+
+After calling doSomething(), the code logs a message to the console indicating that an I/O event is firing. However, because the callback has been scheduled to be executed on the next tick of the event loop, it will not be executed until all other I/O events that are currently queued have been processed.
+
+When the callback is finally executed on the next tick of the event loop, it logs a message to the console indicating that it has been executed.
+
+Overall, this approach allows other I/O events to fire in the meantime, while still ensuring that the callback is executed on the next tick of the event loop. This can be useful in situations where you want to defer the execution of a callback until after all other I/O events have been processed.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),3 min,Knowledge,Medium,In what situations might you prefer to use process.nextTick() over setTimeout()?,"You might prefer to use process.nextTick() over setTimeout() in situations where you need to defer the execution of a callback until the next tick of the event loop, but don't want to incur the overhead of a timer.
+
+Here are some specific situations where process.nextTick() may be preferred:
+
+Deferred execution of callbacks: If you have a callback function that you want to execute after the current operation completes, but before any other I/O events are processed, process.nextTick() is a good choice.
+
+Avoiding blocking the event loop: If you have a long-running task that you need to break up into smaller, asynchronous steps, process.nextTick() can be used to schedule each step to run on the next tick of the event loop. This can help prevent your code from blocking the event loop and causing your application to become unresponsive.
+
+Micro-optimizations: If you need to perform a large number of small, quick operations in succession, using process.nextTick() can be faster than setting up a series of timers with setTimeout(). This is because setting up a timer incurs a small amount of overhead, whereas process.nextTick() does not.
+
+Overall, process.nextTick() is a good choice when you need fine-grained control over when a callback function is executed, and want to avoid the overhead of a timer. However, if you need to delay the execution of a callback function for a specific amount of time, setTimeout() is still the preferred option.",Yes,Yes,Yes,Yes,Prakash,Yes,Should be implemention tag,,Yes,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Implementation,Low,Write a function that uses process.nextTick() to increment a counter after the current operation completes.,"let counter = 0;
+
+function incrementCounter() {
+  // increment the counter on the next tick of the event loop
+  process.nextTick(() => {
+    counter++;
+    console.log(`Counter: ${counter}`);
+  });
+}
+
+// example usage
+incrementCounter();
+incrementCounter();
+incrementCounter();
+",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,process.nextTick(),3 min,Implementation,Medium,"Is it possible to  use process.nextTick() to schedule a task that runs immediately after the current operation completes, even if there are other tasks scheduled with setImmediate()? If yes give an example.","Yes, you can use process.nextTick() to schedule a task that runs immediately after the current operation completes, even if there are other tasks scheduled with setImmediate().
+
+process.nextTick() schedules a callback to be executed on the next iteration of the event loop, just after the current operation completes, while setImmediate() schedules a callback to be executed during the next iteration of the event loop, but after any I/O events that are already in the event queue.
+
+So, if you schedule a callback with process.nextTick(), it will be executed before any callbacks scheduled with setImmediate(), even if they were scheduled earlier.
+
+Here's an example to illustrate this:
+
+console.log('Start');
+
+process.nextTick(() => {
+  console.log('process.nextTick() callback');
+});
+
+setImmediate(() => {
+  console.log('setImmediate() callback');
+});
+
+console.log('End');
+In this example, the output will be:
+
+//OUTPUT
+Start
+End
+process.nextTick() callback
+setImmediate() callback
+As you can see, the callback scheduled with process.nextTick() was executed before the callback scheduled with setImmediate(), even though it was scheduled later.",Yes,Yes,Yes,Yes,Prakash,Yes,structure the question in better manner refer below comment,,Yes,Rejected,Type Tag Implementation ,Yes
+Node,Node Intermediate,process.nextTick(),1 min,Knowledge,Low,What is the maximum number of tasks that can be scheduled with process.nextTick() in a single tick?,"There is no specific limit to the number of tasks that can be scheduled with process.nextTick() in a single tick. The only limit is the amount of available memory and the processing power of the system. However, it is important to use process.nextTick() judiciously, as scheduling too many tasks can cause the event loop to block and prevent other I/O events from executing. It is recommended to use process.nextTick() for short, non-blocking tasks, such as updating a UI or logging a message, and to use other asynchronous functions, such as setTimeout() or setImmediate(), for longer running or blocking operations.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,Low,What is web socket?,"WebSocket is a protocol that provides a bi-directional, full-duplex communication channel over a single, long-lived connection between a client and a server. It allows real-time data to be transmitted between the two endpoints, without the overhead and latency of HTTP requests and responses. WebSocket is particularly useful for applications that require frequent updates, such as chat applications, online gaming, and real-time collaboration tools.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,Need for web sockets,1 min,Knowledge,Low,What are the benefits of using WebSockets over traditional HTTP requests?,"WebSockets are designed to provide real-time, bidirectional communication between a client and a server. Here are some benefits of using WebSockets over traditional HTTP requests for this type of communication:
+
+1.Low latency: WebSockets offer lower latency than traditional HTTP requests because they establish a persistent connection between the client and server, enabling instant data transfer.
+
+2.Real-time communication: WebSockets enable real-time communication between the client and server, allowing for instantaneous updates and notifications.
+
+3.Reduced bandwidth usage: Because WebSockets maintain a persistent connection, there's no need for clients to repeatedly send requests to the server to check for updates, reducing bandwidth usage.
+
+4.Efficient server utilization: With WebSockets, the server can push updates to clients only when necessary, reducing the load on the server.
+
+However, WebSockets may not be suitable for all types of applications. For example, if your application doesn't require real-time bidirectional communication, or if you don't need to maintain a persistent connection between the client and server, traditional HTTP requests may be a better choice.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,Low,What is the default port number for WebSockets using HTTP and HTTPS protocol?,The default port number for WebSockets is 80 for WebSocket connections that use the HTTP protocol and 443 for secure WebSocket connections that use the HTTPS protocol.,Yes,Yes,Yes,Yes,Prakash,Yes,"Make question lil bit toughr , add ""why"" in question ",,Yes,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,Low,What is the WebSocket handshake process?,"The WebSocket handshake process is a process that occurs when a client wants to establish a WebSocket connection with a server. The WebSocket handshake is initiated by the client and consists of the following steps:
+
+The client sends an HTTP request to the server with an ""Upgrade"" header indicating that it wants to upgrade to a WebSocket connection.
+
+The server responds with an HTTP response with a ""101 Switching Protocols"" status code, indicating that it agrees to upgrade the connection to a WebSocket connection.
+
+The client and server exchange WebSocket-specific headers, such as the ""Sec-WebSocket-Key"" header, which is used to generate a unique key that is used for encryption.
+
+The client and server perform a handshake verification to ensure that both parties understand the WebSocket protocol and have agreed to upgrade the connection.
+
+Once the handshake is complete, the WebSocket connection is established, and the client and server can exchange data in real-time.
+
+The WebSocket handshake process is only performed once when the connection is first established. After the handshake, the connection remains open and can be used for bidirectional communication between the client and server.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,Low,What is the maximum number of WebSocket connections that can be established by a browser at a given time?,"The maximum number of WebSocket connections that can be established by a browser at a given time depends on the browser and the device's resources.
+
+According to the WebSocket protocol specification, there is no limit on the number of WebSocket connections that a server can accept or a client can establish. However, in practice, browsers and devices have limits on the number of simultaneous connections that they can handle.
+
+The WebSocket connections share the same resources as other types of connections, such as HTTP requests, so the number of WebSocket connections that can be established simultaneously depends on various factors such as available system resources, network bandwidth, and the device's processing power.
+
+Different browsers have different limits on the number of connections they allow. For example, Google Chrome limits the number of connections per origin to 6 connections in earlier versions, but now it's increased to 60 per origin. Similarly, Firefox has a limit of 200 connections per host.
+
+It's important to keep in mind that establishing too many WebSocket connections simultaneously can impact the performance of the browser and the device, so it's essential to optimize the number of connections to ensure the best user experience.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,Medium,What are the different events in the WebSocket API?,"open: This event is triggered when the WebSocket connection is established and ready to send and receive data.
+
+message: This event is triggered when a message is received from the server. The event.data property contains the message data.
+
+error: This event is triggered when an error occurs during the WebSocket connection.
+
+close: This event is triggered when the WebSocket connection is closed. The event.code property contains the close code, and the event.reason property contains a string explaining the reason for the closure.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,Medium,Can WebSockets be used to establish a connection between two different domains? if Yes Explain how ?,"Yes, WebSockets can be used to establish a connection between two different domains.
+
+However, by default, modern web browsers implement the Same-Origin Policy (SOP), which restricts JavaScript code from accessing resources from a different domain. This security policy prevents cross-site scripting (XSS) attacks by isolating resources to their respective domains.
+
+To establish a WebSocket connection between two different domains, you would need to implement Cross-Origin Resource Sharing (CORS) on the server-side. CORS is a mechanism that allows a web server to specify who can access its resources, bypassing the Same-Origin Policy.
+
+To enable CORS for WebSocket connections, the server should include the Access-Control-Allow-Origin header in the HTTP response. ",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,What is Web socket?,1 min,Knowledge,High,"What is the difference between a WebSocket and a Socket.IO connection?
+","Both WebSocket and Socket.IO provide full-duplex communication channels over a single TCP connection, but they differ in a few key ways:
+
+1.Protocol: WebSocket is a standardized protocol, while Socket.IO is a library that provides a protocol wrapper around WebSocket, as well as other transport protocols like long-polling and server-sent events.
+
+2.Browser support: WebSocket is supported by all modern browsers, while Socket.IO is designed to provide a fallback mechanism for older browsers that don't support WebSocket natively.
+
+3.Features: Socket.IO provides additional features on top of WebSocket, such as automatic reconnection, message buffering, and support for broadcasting messages to multiple clients.
+
+4.Language support: While WebSocket is primarily used in JavaScript-based applications, Socket.IO can be used in a variety of languages, including Python, Java, and C#.
+
+Overall, WebSocket is a more low-level protocol, while Socket.IO provides a higher-level API that makes it easier to build real-time applications with features like automatic reconnection and message buffering.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,setImmediate,1 min,Knowledge,Low,What is the purpose of the setImmediate() function in Node.js?,"The setImmediate() function in Node.js is used to schedule a function to be executed immediately after the current operation in the event loop is completed. It provides a way to execute a callback function asynchronously, without blocking the event loop.
+
+The setImmediate() function is similar to setTimeout() with a timeout value of 0, but it is more efficient and has a higher priority in the event loop. When both setImmediate() and setTimeout() are called from within the same I/O cycle, setImmediate() will be executed first.",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,setImmediate,3 min,Knowledge,High,How does setImmediate() execute its callback function in the event loop?,"The event loop in Node.js is responsible for executing asynchronous code in a non-blocking way, allowing Node.js to handle multiple requests simultaneously without getting bogged down by long-running tasks. The event loop operates in a continuous loop, processing events and callbacks in a predefined sequence of phases.
+
+The phases of the event loop in Node.js are:
+
+timers: This phase executes any callbacks scheduled by setTimeout() or setInterval() functions. Any callbacks in this phase are executed in ascending order of their timeout value.
+
+I/O: This phase handles I/O operations, such as reading or writing to a file or network socket. Any callbacks for I/O events, such as receiving data from a network socket or completing a file read, are executed in this phase.
+
+idle, prepare: These phases are internal and are generally not used in typical applications.
+
+check: This phase executes callbacks registered by setImmediate(). Unlike setTimeout(), which executes its callbacks after a specified delay, setImmediate() schedules its callbacks to execute immediately after the current phase completes.
+
+close callbacks: This phase executes any callbacks registered by the socket.on('close', ...) method. These callbacks are executed when a socket is closed.
+
+After the close callbacks phase completes, the event loop checks for any outstanding setImmediate() callbacks before returning to the timers phase to begin the next iteration of the loop.
+
+Overall, the event loop in Node.js allows for efficient and non-blocking handling of asynchronous operations, enabling Node.js to handle high levels of concurrent requests while remaining responsive and performant.",Yes,Yes,Yes,Yes,Prakash,Yes,"tag should be mid , implemention and answer should have block of code to demostrat",,,Rejected,"Answer should be framed well including all phase like ""Poll"" Phase also in solution, Time duration should be 3 min ",
+Node,Node Intermediate,setImmediate,1 min,Implementation,Low,How do you cancel a callback registered with setImmediate() in Node.js? Use code to explain.,"In Node.js, you can cancel a callback registered with setImmediate() by using the clearImmediate() method.
+
+setImmediate() returns an immediate object that represents the scheduled callback function. You can pass this object to clearImmediate() to cancel the callback before it's executed.
+
+Here's an example of how to use clearImmediate() to cancel a scheduled callback:
+
+
+const immediateObj = setImmediate(() => {
+  console.log('This will not be executed.');
+});
+
+clearImmediate(immediateObj);",Yes,Yes,Yes,Yes,Prakash,Yes,,,,Approved,,
+Node,Node Intermediate,setImmediate,1 min,Knowledge,Low,"Can you use setImmediate() in a browser environment, or is it only available in Node.js?","setImmediate() is a function that is only available in Node.js, and is not part of the standard JavaScript API. It is used to schedule a function to be executed immediately after the current operation in the event loop is completed, and is optimized for use in server-side applications.
+
+In a browser environment, you can achieve similar functionality using the setTimeout() function with a delay of 0. This schedules a function to be executed asynchronously as soon as possible, without blocking the UI thread. However, it's important to note that setTimeout() with a delay of 0 is not guaranteed to execute immediately, as the browser may have other tasks to complete before running the callback function.",Yes,Yes,Yes,Yes,Prakash,Yes,"question should be like ""is it possible to use....?"" format for better user experience",,Yes,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Knowledge,Low,What is a tick?,"In the context of JavaScript and the event loop, a ""tick"" refers to a single iteration of the event loop.
+
+The event loop is a mechanism that allows JavaScript to handle asynchronous operations in a non-blocking way. When an asynchronous operation is started, such as a setTimeout() or fetch() call, it is added to a queue of pending operations. The event loop continuously checks this queue for pending operations and processes them one at a time, which is known as a tick.
+
+During each tick of the event loop, the following happens:
+
+The event loop checks the callback queue for any pending callbacks.
+If there are any pending callbacks, the event loop runs the oldest one (i.e., the one that has been waiting the longest) and removes it from the queue.
+If there are no pending callbacks, the event loop waits for new ones to be added.
+This process continues indefinitely, with the event loop checking the queue for new pending callbacks and processing them in order, one at a time.
+
+Each tick of the event loop can be thought of as a single iteration of the event loop, during which the event loop processes all pending callbacks that have been added since the previous tick. The exact definition of a tick can vary depending on the JavaScript environment and the specific implementation of the event loop.",Yes,Yes,Yes,Yes,Prakash,Yes,explanationn should be more descriptive ,,Yes,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Knowledge,Low,"How is setImmediate() different from setTimeout(() => {}, 0) (passing a 0ms timeout), and from process.nextTick() and Promise.then()?","All four of these functions (setImmediate(), setTimeout(() => {}, 0), process.nextTick(), and Promise.then()) are used in JavaScript to handle asynchronous operations, but they have some important differences in how they work.
+
+setImmediate() and setTimeout(() => {}, 0) both schedule a function to run in the next iteration of the event loop, but they do it in slightly different ways. setImmediate() is designed to run a callback as soon as possible after the current iteration of the event loop, while setTimeout(() => {}, 0) schedules the callback to run after a minimum delay of 0 milliseconds. This means that setImmediate() will always run before any setTimeout(() => {}, 0) callbacks, even if they were scheduled before it.
+
+process.nextTick() is similar to setImmediate(), but it schedules the callback to run at the end of the current iteration of the event loop, before any I/O operations are handled. This means that any I/O events that are scheduled during the current iteration of the event loop will be processed before the process.nextTick() callback.
+
+Promise.then() schedules a callback to run after a Promise is resolved or rejected. Unlike the other functions, it does not schedule the callback in the next iteration of the event loop, but rather as soon as the Promise is resolved or rejected.",Yes,Yes,Yes,Yes,Prakash,Yes,check  the answer and and try  to  add more descriptive ,,Yes,Approved,,
+Node,Node Intermediate,process.nextTick(),1 min,Implementation,Low,"Write a function countDown that accepts a number ""n"" as an argument and counts down from ""n"" to 0, logging each number to the console. However, the function should not use setTimeout or setInterval. Instead, it should use process.nextTick() to achieve the same effect.","function countDown(n) {
+  let i = n;
+
+  function nextTickCallback() {
+    console.log(i);
+    i--;
+
+    if (i >= 0) {
+      process.nextTick(nextTickCallback);
+    }
+  }
+
+  process.nextTick(nextTickCallback);
+}
+",Yes,Yes,Yes,Yes,Prakash,Yes,child tag should be nextTick() topic,,Yes,Approved,,
+Node,Node Intermediate,Short polling,1 min,Knowledge,Low,What is short polling?,"Short polling is a technique used in web development to send requests to a server to retrieve information without waiting for a response. With short polling, the client sends a request to the server, and the server immediately responds with the current data. The client then updates its interface based on the response.
+
+This approach is useful when the client needs to receive the latest data as quickly as possible and does not require real-time updates. However, it can be inefficient when there is a lot of traffic as it requires frequent requests to the server, which can result in increased server load and bandwidth usage.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Long polling,1 min,Knowledge,Low,What is long polling?,"Long polling is a technique used in web development to provide real-time updates to clients. Unlike short polling, where the client sends a request to the server and receives an immediate response, with long polling, the client sends a request to the server, but the server does not immediately respond. Instead, it waits until new data is available, and then sends a response to the client.
+
+Long polling can be used to create real-time applications, such as chat rooms, news feeds, and stock tickers, where it is important to update the client with new data as soon as it becomes available. It can also be used to reduce server load and bandwidth usage, as it allows the server to only send data to the client when it is necessary.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Event Emitter,1 min,Knowledge,Low,What is event emitter?,"An event emitter is a programming construct used in many languages, including JavaScript, to facilitate communication between different parts of a program or application. The basic idea is that an event emitter provides a way for one part of the program to ""emit"" events, or signals, when certain actions or conditions occur, and for other parts of the program to ""listen"" for those events and react accordingly.
+
+In JavaScript, the event emitter is typically implemented as an object that has methods for registering event listeners and emitting events. When an event is emitted, the event emitter invokes any registered listeners for that event, passing any relevant data as arguments.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Short polling,1 min,Knowledge,Low,What are some use cases for short polling?,"Short polling is a technique used in web development to retrieve data from a server at regular intervals to keep the user interface updated. Here are some of the use cases for short polling:
+
+Chat applications: Chat applications use short polling to retrieve new messages from the server at regular intervals, so users can see new messages without manually refreshing the page.
+
+Social media applications: Social media applications use short polling to update the user interface with new posts, likes, comments, and messages.
+
+Real-time data monitoring: Applications that monitor real-time data such as stock prices, weather updates, and traffic information use short polling to update the data on the user interface.
+
+Gaming: Online gaming applications use short polling to retrieve data from the server at regular intervals to update the game state, player positions, and scores.
+
+News websites: News websites use short polling to update the user interface with the latest news and headlines.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Long polling,1 min,Knowledge,Low,What are some use cases for long polling?,"Long polling is a technique used in web development to retrieve data from a server when the data is not immediately available. Here are some of the use cases for long polling:
+
+Chat applications: Chat applications use long polling to retrieve new messages from the server when they are available, rather than at regular intervals. This can reduce the delay in delivering messages to the user.
+
+Online gaming: Online gaming applications use long polling to retrieve data from the server when new game events occur, such as player movement or game state changes. This can improve the responsiveness and real-time nature of the game.
+
+Real-time collaboration tools: Applications that allow real-time collaboration, such as document editing or video conferencing, use long polling to retrieve updates from the server when they are available, rather than at regular intervals.
+
+Live sports updates: Sports websites and applications use long polling to provide live updates on games and events in real-time.
+
+Notification systems: Applications that send notifications to users, such as email or messaging applications, use long polling to retrieve new messages when they are available, rather than at regular intervals.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Event Emitter,3 min,Knowledge,Low,What is .emit method?,".emit is a method in the Node.js EventEmitter class that allows you to trigger an event by emitting it. When you call .emit, it triggers all of the listeners that are attached to that event, passing any arguments to those listeners.
+
+The syntax for .emit is as follows:
+
+emitter.emit(eventName[, ...args])
+
+where eventName is the name of the event to be emitted, and args is an optional list of arguments to be passed to the event listeners.",Yes,Yes,Yes,Yes,Tanya,Yes,Time can be 3 min,,,Rejected,1 Min time would be enough to explain if imlementation not asked,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Low,"Create an instance of the EventEmitter class called myEmitter. Define an event called greet and attach a listener to it using the .on() method.
+You should be able to emit the greet event and pass the name of the person to be greeted as an argument using the .emit() method.","myEmitter.on('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+myEmitter.emit('greet', 'John');
+",Yes,Yes,Yes,Yes,Tanya,Yes,Time can be 3 min,,,Approved,,
+Node,Node Intermediate,Event Emitter,1 min,Knowledge,Low,What is the return value of the .emit method?,"The .emit method does not return any value. It is used to trigger an event and notify all the listeners that are attached to that event. When an event is emitted using the .emit method, any listeners that are listening for that event will be invoked with the specified arguments.",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Event Emitter,1 min,Knowledge,Low,Can you emit multiple events at once using the .emit method?,"No, the .emit method can only trigger a single event at a time. If you need to emit multiple events, you will need to call the .emit method separately for each event. ",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Medium,Can you emit events asynchronously using the .emit method? Use code to explain.,"In most event emitter implementations, the .emit method is a synchronous operation, meaning that the listeners attached to the event will be invoked immediately when the event is emitted. However, some event emitter implementations may support emitting events asynchronously.
+
+For example, in Node.js, the built-in EventEmitter class provides an asynchronous version of the .emit method called .emitAsync. This method returns a Promise that resolves when all the listeners have been invoked, allowing you to emit events asynchronously.
+
+Here's an example of how to use .emitAsync in Node.js:
+
+const { EventEmitter } = require('events');
+
+const emitter = new EventEmitter();
+
+emitter.on('myEvent', async () => {
+  await someAsyncOperation();
+});
+
+async function emitMyEvent() {
+  console.log('Emitting myEvent');
+  await emitter.emitAsync('myEvent');
+  console.log('All listeners for myEvent have been invoked');
+}
+
+emitMyEvent();
+",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Medium,Can you attach a listener to an event after it has already been emitted? Use an example to demonstrate this,"Yes, it is possible to attach a listener to an event after it has already been emitted. However, the listener will not be called for that specific event emission. The listener will only be called when the event is emitted again in the future.
+
+Here's an example to demonstrate this:
+
+const { EventEmitter } = require('events');
+
+const emitter = new EventEmitter();
+
+emitter.emit('myEvent', 'first emission');
+
+emitter.on('myEvent', (data) => {
+  console.log(`Second listener called with data: ${data}`);
+});
+
+emitter.emit('myEvent', 'second emission');
+In this example, we're emitting the ""myEvent"" event with some data before we've attached a listener to it. Then, we attach a listener to ""myEvent"" and emit it again with some different data.
+
+When we run this code, the output will be:
+
+Second listener called with data: second emission
+
+This is because the first emission of ""myEvent"" occurred before we attached the listener, so the listener was not called for that emission. The listener is only called for the second emission, which occurs after we attach the listener.",Yes,Yes,Yes,Yes,Tanya,Yes,"In question, you can show with the help of code",,Example was added already,Rejected,Medium difficulty,Yes
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Low,How do you remove a specific listener from an event? Use code to demonstrate.,"In most programming languages, to remove a specific listener from an event, you need to first obtain a reference to the event object and then call the appropriate method to remove the listener.
+
+Here's an example of how you might remove a listener in JavaScript using the removeEventListener method:
+
+// Get a reference to the button element
+const button = document.querySelector('#my-button');
+
+// Define a listener function
+function handleClick() {
+  console.log('Button clicked!');
+}
+
+// Add the listener to the button
+button.addEventListener('click', handleClick);
+
+// Remove the listener from the button
+button.removeEventListener('click', handleClick);",Yes,Yes,Yes,Yes,Tanya,Yes,Increase the time,,,Approved,,
+Node,Node Intermediate,Event Emitter,1 min,Knowledge,Medium,Can you remove all listeners from an event using the .emit method?,"No, the .emit() method is typically used to trigger an event, not to remove listeners from an event.
+
+In JavaScript using the Node.js event emitter library, you can remove all listeners for a specific event by calling the removeAllListeners method with the event name as an argument, like this:
+
+// Get a reference to the event emitter object
+const myEmitter = new MyEventEmitter();
+
+// Add some listeners to the ""myEvent"" event
+myEmitter.on('myEvent', listener1);
+myEmitter.on('myEvent', listener2);
+myEmitter.on('myEvent', listener3);
+
+// Remove all listeners for the ""myEvent"" event
+myEmitter.removeAllListeners('myEvent');",Yes,Yes,Yes,Yes,Tanya,Yes,,,,Approved,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Low,How do you pass arguments to event listeners using the .emit method? Use code to explain.,"In JavaScript using the built-in EventEmitter module, you can emit an event with some data by calling the emit method and passing the event name and the data as arguments:
+
+
+const EventEmitter = require('events');
+
+const myEmitter = new EventEmitter();
+
+// Emit an event with some data
+myEmitter.emit('myEvent', 'Hello, world!');
+In this example, we create an instance of the EventEmitter class and emit an event called myEvent with the string 'Hello, world!' as data.
+
+To listen for the myEvent event with data, you can add a listener function to the event using the on method and receive the data as an argument:
+
+myEmitter.on('myEvent', (data) => {
+  console.log('Received event with data:', data);
+});",Yes,Yes,Yes,Yes,Tanya,Yes,time can 3 min if studnent need to show the code,,,Approved,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Low,How do you remove a subscriber from an event emitter? Use code to explain.,"To remove a subscriber from an event emitter, you can use the .removeListener() method of the event emitter object.
+
+Here's an example of how you can remove a subscriber from an event emitter in Node.js:
+
+
+const EventEmitter = require('events');
+
+// create a new event emitter
+const myEmitter = new EventEmitter();
+
+// create a listener function
+const listener = () => console.log('Hello world!');
+
+// add the listener to the emitter
+myEmitter.on('greeting', listener);
+
+// emit the event
+myEmitter.emit('greeting');
+
+// remove the listener from the emitter
+myEmitter.removeListener('greeting', listener);
+
+// emit the event again - this time the listener won't be called
+myEmitter.emit('greeting');",Yes,Yes,Yes,Yes,Tanya,Yes,time can 3 min if studnent need to show the code,,,Approved,,
+Node,Node Intermediate,Event Emitter,5 min,Implementation,High,"Implement an event emitter that can handle once-only events. Complete the below code
+
+class MyEmitter {
+  constructor() {
+    // create an object to hold event listeners
+    this.events = {};
+  }
+
+  // method to add event listeners
+  on(eventName, listener) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push(listener);
+  }
+
+  // method to remove event listeners
+  off(eventName, listener) {
+    if (!this.events[eventName]) {
+      return;
+    }
+    this.events[eventName] = this.events[eventName].filter(
+      (eventListener) => eventListener !== listener
+    );
+  }
+
+  // method to add once-only event listeners - WRITE CODE HERE
+ 
+
+  // method to emit events
+  emit(eventName, ...args) {
+    if (!this.events[eventName]) {
+      return;
+    }
+
+    // copy the array of listeners so that removing listeners during the loop doesn't affect iteration
+    const listeners = [...this.events[eventName]];
+    for (const listener of listeners) {
+      listener(...args);
+    }
+  }
+}","class MyEmitter {
+  constructor() {
+    // create an object to hold event listeners
+    this.events = {};
+  }
+
+  // method to add event listeners
+  on(eventName, listener) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push(listener);
+  }
+
+  // method to remove event listeners
+  off(eventName, listener) {
+    if (!this.events[eventName]) {
+      return;
+    }
+    this.events[eventName] = this.events[eventName].filter(
+      (eventListener) => eventListener !== listener
+    );
+  }
+
+  // method to add once-only event listeners
+  once(eventName, listener) {
+    // create a new listener function that removes itself after it's called once
+    const onceListener = (...args) => {
+      listener(...args);
+      this.off(eventName, onceListener);
+    };
+    this.on(eventName, onceListener);
+  }
+
+  // method to emit events
+  emit(eventName, ...args) {
+    if (!this.events[eventName]) {
+      return;
+    }
+    // copy the array of listeners so that removing listeners during the loop doesn't affect iteration
+    const listeners = [...this.events[eventName]];
+    for (const listener of listeners) {
+      listener(...args);
+    }
+  }
+}
+In this implementation, the MyEmitter class has a new method once() that works like the on() method, but adds a listener that will be removed automatically after it's called once.
+
+The once() method creates a new listener function that calls the original listener and then removes itself using the off() method. This ensures that the listener is only called once.
+
+Here's an example usage of this event emitter:
+
+const myEmitter = new MyEmitter();
+
+myEmitter.once('hello', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+myEmitter.on('goodbye', (name) => {
+  console.log(`Goodbye, ${name}!`);
+});
+
+myEmitter.emit('hello', 'Alice');
+myEmitter.emit('hello', 'Bob');
+myEmitter.emit('goodbye', 'Charlie');
+myEmitter.emit('goodbye', 'David');
+
+In this example, we create a new MyEmitter object and add one once-only listener and one regular listener. We then emit two hello events and two goodbye events with different arguments. The once-only listener is only called once, for the first hello event. The regular listener is called for both goodbye events",Yes,Yes,Yes,Yes,Tanya,Yes,add more context  to the question,,Yes,Rejected,add more context  to the question,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Low,Implement an event emitter using the Node.js built-in EventEmitter module.,"const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+
+myEmitter.on('event', (arg1, arg2) => {
+  console.log('event', arg1, arg2);
+});
+
+myEmitter.emit('event', 'hello', 'world');
+",Yes,Yes,Yes,Yes,Tanya,Yes,time can be 3 mins,,,Approved,,
+Node,Node Intermediate,Event Emitter,1 min,Implementation,Medium,How do you subscribe to an event using the addListener method in an event emitter?,"The first argument is a string that represents the name of the event you want to listen to.
+
+The second argument is a callback function that will be executed when the event is emitted.
+
+Here's an example of how to use the on method to subscribe to an event:
+
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+myEmitter.on('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+myEmitter.emit('greet', 'John');",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,1 min,Implementation,Low,How do you unsubscribe from an event in an event emitter?,"To unsubscribe from an event in an event emitter, you need to use the off method. The off method is used to remove a listener function from the specified event.
+
+Here's an example of how to unsubscribe from an event using the off method:
+
+
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+const callback = (name) => {
+  console.log(`Hello, ${name}!`);
+};
+
+myEmitter.on('greet', callback);
+
+myEmitter.emit('greet', 'John'); // logs ""Hello, John!""
+
+myEmitter.off('greet', callback);
+
+myEmitter.emit('greet', 'Alice'); // nothing is logged",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Low,How do you unsubscribe all listeners from a specific event in an event emitter?,"To unsubscribe all listeners from a specific event in an event emitter, you can use the removeAllListeners method. The removeAllListeners method is used to remove all listener functions from the specified event.
+
+Here's an example of how to unsubscribe all listeners from a specific event using the removeAllListeners method:
+
+
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+const callback1 = (name) => {
+  console.log(`Hello, ${name}!`);
+};
+
+const callback2 = () => {
+  console.log(`Goodbye!`);
+};
+
+myEmitter.on('greet', callback1);
+myEmitter.on('greet', callback2);
+
+myEmitter.emit('greet', 'John'); // logs ""Hello, John!"" and ""Goodbye!""
+
+myEmitter.removeAllListeners('greet');
+
+myEmitter.emit('greet', 'Alice'); // nothing is logged",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Medium,How do you use once method to listen to an event only once in an event emitter?,"To listen to an event only once in an event emitter, you can use the once method. The once method is used to add a one-time listener function to the specified event.
+
+Here's an example of how to use the once method to listen to an event only once:
+
+
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+myEmitter.once('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+myEmitter.emit('greet', 'John'); // logs ""Hello, John!""
+
+myEmitter.emit('greet', 'Alice'); // nothing is logged",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Medium,How do you use eventNames method to get an array of all the event names in an event emitter?,"const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+myEmitter.on('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+myEmitter.on('bye', () => {
+  console.log(`Goodbye!`);
+});
+
+const eventNames = myEmitter.eventNames();
+
+console.log(eventNames); // logs [""greet"", ""bye""]",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,3 min,Implementation,Medium,How do you extend the Node.js built-in EventEmitter class to create a custom event emitter class?,"To extend the Node.js built-in EventEmitter class and create a custom event emitter class, you can use the extends keyword and create a new class that inherits from EventEmitter.
+
+Here's an example of how to extend the EventEmitter class to create a custom MyEmitter class:
+
+
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {
+  constructor() {
+    super();
+  }
+
+  // custom methods for the new class
+  myMethod() {
+    console.log('This is my custom method!');
+  }
+}
+
+const myEmitter = new MyEmitter();
+myEmitter.on('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+myEmitter.emit('greet', 'John'); // logs ""Hello, John!""
+
+myEmitter.myMethod(); // logs ""This is my custom method!""",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,1 min,Implementation,Medium,How do you use setMaxListeners method to set the maximum number of listeners for all events in an event emitter?,"In Node.js, you can use the setMaxListeners method of an EventEmitter instance to set the maximum number of listeners for all events in the emitter. By default, an EventEmitter instance will print a warning message to the console if more than 10 listeners are added to a single event, as this can potentially indicate a memory leak in the code.
+
+Here's an example of how to use the setMaxListeners method to set the maximum number of listeners for all events in an EventEmitter instance:
+
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+myEmitter.setMaxListeners(20);
+
+myEmitter.on('greet', (name) => {
+  console.log(`Hello, ${name}!`);
+});
+
+for (let i = 0; i < 15; i++) {
+  myEmitter.on('count', () => {
+    console.log(`Count: ${i}`);
+  });
+}
+
+console.log(myEmitter.getMaxListeners()); // logs 20",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,1 min,Implementation,Medium,How do you use getMaxListeners method to get the maximum number of listeners for all events in an event emitter?,"const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+console.log(myEmitter.getMaxListeners()); // logs 10
+
+myEmitter.setMaxListeners(20);
+
+console.log(myEmitter.getMaxListeners()); // logs 20",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,10 min,Implementation,Medium,"How do you implement a throttle for an event in an event emitter?
+","class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+  
+  on(event, listener, wait) {
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+    const debounce = this.debounce(listener, wait);
+    this.events[event].push(debounce);
+  }
+  
+  emit(event, ...args) {
+    if (this.events[event]) {
+      this.events[event].forEach((listener) => listener(...args));
+    }
+  }
+  
+  debounce(fn, wait) {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        fn(...args);
+      }, wait);
+    };
+  }
+}
+
+const emitter = new EventEmitter();
+emitter.on(""click"", () => console.log(""Clicked""), 1000); // Throttles the click event to every 1000ms
+emitter.emit(""click"");",,,,,,,,,,,,
+Node,Node Intermediate,Event Emitter,10 min,Implementation,Medium,How do you implement a debounce for an event in an event emitter?,"class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+
+  on(eventName, callback, delay = 500) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName].push({
+      callback,
+      delay,
+      timer: null
+    });
+  }
+
+  emit(eventName, ...args) {
+    const event = this.events[eventName];
+    if (event) {
+      event.forEach(({ callback, delay, timer }) => {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+          callback(...args);
+          timer = null;
+        }, delay);
+      });
+    }
+  }
+}
+",,,,,,,,,,,,
