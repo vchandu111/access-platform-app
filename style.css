@@ -98,11 +98,10 @@ select {
   width: 100%;
 } */
 
-/* .logo {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 0px;
-} */
+.logo {
+  padding-top: 10px;
+  margin-bottom: 50px;
+}
 
 body {
   margin: 0;
