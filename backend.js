@@ -11,21 +11,21 @@ searchBtn.addEventListener("click", () => {
   // Fetch data from the URL
   fetch(`https://assess-admin-backend.cyclic.app/assess/links?email=${email}`)
     .then((response) => response.json())
-    .then((results) => {
+    .then((data) => {
       // Map the data according to the sample structure
-      // const mappedData = data.map((item) => {
-      //   const {
-      //     userDetailsDump: { group1: group, block },
-      //     uniqueID,
-      //     url,
-      //     email,
-      //     failed: success,
-      //     "Total No of questions": totalQ,
-      //     "Total Time": time
-      //   } = item;
+      const results = data.map((item) => {
+        const {
+          userDetailsDump: { group1: group, block },
+          uniqueID,
+          url,
+          email,
+          failed: success,
+          "Total No of questions": totalQ,
+          "Total Time": time
+        } = item;
 
-      //   return { uniqueID, url, email, success, group, block, totalQ, time };
-      // });
+        return { uniqueID, url, email, success, group, block, totalQ, time };
+      });
 
       // // Retrieve email and group values
      
