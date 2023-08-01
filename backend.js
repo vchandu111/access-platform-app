@@ -31,7 +31,7 @@ searchBtn.addEventListener("click", () => {
      
 
       // // Filter the array for matching rows
-      // const results = mappedData.filter((row) => row.email.toLowerCase() === email);
+      // const results = mappedData.filter((row) => row.email.toLowerCase() === email)
       // console.log(results);
 
       // Display results
