@@ -4,32 +4,35 @@ searchBtn.addEventListener("click", () => {
   // Disable the search button
   searchBtn.disabled = true;
   searchBtn.innerHTML = "Loading...";
-
+ const email = document.getElementById("email").value.toLowerCase();
+ if(!email){
+  alert("Please enter a valid email")
+ }
   // Fetch data from the URL
-  fetch("https://assess-admin-backend.cyclic.app/assess/links")
+  fetch(`https://assess-admin-backend.cyclic.app/assess/links?email=${email}`)
     .then((response) => response.json())
-    .then((data) => {
+    .then((results) => {
       // Map the data according to the sample structure
-      const mappedData = data.map((item) => {
-        const {
-          userDetailsDump: { group1: group, block },
-          uniqueID,
-          url,
-          email,
-          failed: success,
-          "Total No of questions": totalQ,
-          "Total Time": time
-        } = item;
+      // const mappedData = data.map((item) => {
+      //   const {
+      //     userDetailsDump: { group1: group, block },
+      //     uniqueID,
+      //     url,
+      //     email,
+      //     failed: success,
+      //     "Total No of questions": totalQ,
+      //     "Total Time": time
+      //   } = item;
 
-        return { uniqueID, url, email, success, group, block, totalQ, time };
-      });
+      //   return { uniqueID, url, email, success, group, block, totalQ, time };
+      // });
 
-      // Retrieve email and group values
-      const email = document.getElementById("email").value.toLowerCase();
+      // // Retrieve email and group values
+     
 
-      // Filter the array for matching rows
-      const results = mappedData.filter((row) => row.email.toLowerCase() === email);
-      console.log(results);
+      // // Filter the array for matching rows
+      // const results = mappedData.filter((row) => row.email.toLowerCase() === email);
+      // console.log(results);
 
       // Display results
       const resultEl = document.getElementById("resultDiv");
